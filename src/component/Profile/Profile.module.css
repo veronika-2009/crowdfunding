@@ -1,0 +1,8 @@
+.body {
+    position: relative;
+    display: flex;
+    width: 100%;
+    min-height: 600px;
+    max-height: 100%;
+    background-color: rgb(43, 44, 46);
+  }
