@@ -6,25 +6,6 @@ const Model = require('../models/Model');
 
 process.env.SECRET_KEY = 'secret';
 
-users.get("/profile", (req, res) =>
-    Model.findAll().then((respone) => res.send(respone))
-);
-users.post("/delete/:id", function (req, res) {
-    const id = req.params.id;
-    console.log(req)
-    Model.destroy({ where: { id: id } }).then((response) => {
-        return res.sendStatus(200);
-    })
-    .catch(err => console.log(err));
-});
-
-users.post("/block/:id", function (req, res) {
-    const id = req.params.id;
-    Model.update({ status: "BLOCK" }, { where: { id: id } }).then((response) => {
-        return res.send(response);
-    })
-        .catch(err => console.log(err));
-});
 
 users.post("/createCompany/",  function (req, res) {
     if(!req.body) return res.sendStatus(400); 
@@ -37,15 +18,6 @@ users.post("/createCompany/",  function (req, res) {
 });
 
 
-
-users.post("/", function (req, res) {
-    const id = req.params.id;
-    Model.update({ status: "UNBLOCK" }, { where: { id: id } }).then((response) => {
-        return res.send(response);
-    })
-    console.log('yty')
-        .catch(err => console.log(err));
-});
 
 users.post('/createCompanys/', (req, res) => {
     const userData = {
