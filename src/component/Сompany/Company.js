@@ -11,7 +11,7 @@ import { withRouter } from 'react-router-dom';
 const Company = (props) => {
     const CreateCompanyFormRedux = reduxForm({ form: 'createCompany' })(CompanyForm)
     const onSubmit = (values) => {
-        axios.post('http://localhost:4000/createCompany/' , { 
+        axios.post('http://us-cdbr-iron-east-01.cleardb.net/createCompany/' , { 
             nameCompany: values.nameCompany,
             description: values.description,
             tag: values.tag})
