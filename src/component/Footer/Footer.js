@@ -28,32 +28,32 @@ const Footer = (props) => {
           <div className="col-md-3 col-lg-4 col-xl-3 mb-1">
             <h6 className="text-uppercase font-weight-bold" style={{color:"#6a6a6a"}}>EXPLORE</h6>
             <hr className="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style={{width:" 80px" }}/>
-           <p><NavLink to='/profile' >What We Do</NavLink></p> 
-            <p><NavLink to='/profile' >Funding</NavLink></p>
-            <p><NavLink to='/profile'>GoFundMe</NavLink></p>
+           <p><NavLink style={{color:"#2a2a2a"}} to='/profile' >What We Do</NavLink></p> 
+            <p><NavLink style={{color:"#2a2a2a"}} to='/profile' >Funding</NavLink></p>
+            <p><NavLink style={{color:"#2a2a2a"}} to='/profile'>GoFundMe</NavLink></p>
           </div>
           <div className="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
             <h6 className="text-uppercase font-weight-bold" style={{color:"#6a6a6a"}}>ABOUT</h6>
             <hr className="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style={{width: "60px"}} />
-            <p><NavLink className="dark-grey-text" to='/profile'>About Us</NavLink> </p>
-            <p><NavLink className="dark-grey-text" to='/profile'>Blog</NavLink></p>
-            <p><NavLink className="dark-grey-text" to='/profile'>Trust & Safety</NavLink></p>
-            <p><NavLink className="dark-grey-text" to='/profile'>Help & Support</NavLink> </p>
-            <p><NavLink className="dark-grey-text" to='/profile'>Press</NavLink> </p>
-            <p><NavLink className="dark-grey-text" to='/profile'>Careers</NavLink> </p>
-            <p><NavLink className="dark-grey-text" to='/profile'>Contact</NavLink> </p>
+            <p><NavLink style={{color:"#2a2a2a"}} className="dark-grey-text" to='/profile'>About Us</NavLink> </p>
+            <p><NavLink style={{color:"#2a2a2a"}} className="dark-grey-text" to='/profile'>Blog</NavLink></p>
+            <p><NavLink style={{color:"#2a2a2a"}} className="dark-grey-text" to='/profile'>Trust & Safety</NavLink></p>
+            <p><NavLink style={{color:"#2a2a2a"}} className="dark-grey-text" to='/profile'>Help & Support</NavLink> </p>
+            <p><NavLink style={{color:"#2a2a2a"}} className="dark-grey-text" to='/profile'>Press</NavLink> </p>
+            <p><NavLink style={{color:"#2a2a2a"}} className="dark-grey-text" to='/profile'>Careers</NavLink> </p>
+            <p><NavLink style={{color:"#2a2a2a"}} className="dark-grey-text" to='/profile'>Contact</NavLink> </p>
 
           </div>
           <div className="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
             <h6 className="text-uppercase font-weight-bold" style={{color:"#6a6a6a"}}>ENTREPRENEURS</h6>
             <hr className="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style={{width: "150px" }}/>
-            <p><NavLink className="dark-grey-text" to='/profile'>How it Works</NavLink></p>
-            <p><NavLink className="dark-grey-text" to='/profile'>Indiegogo vs. Kickstarter</NavLink></p>
-            <p> <NavLink className="dark-grey-text" to='/profile'>Education Center</NavLink></p>
-            <p><NavLink className="dark-grey-text" to='/profile'>Experts Directory</NavLink></p>
-            <p><NavLink className="dark-grey-text" to='/profile'>Fees</NavLink> </p>
-            <p><NavLink className="dark-grey-text" to='/profile'>Enterprise</NavLink> </p>
-            <p><NavLink className="dark-grey-text" to='/profile'>China</NavLink> </p>
+            <p><NavLink style={{color:"#2a2a2a"}} className="dark-grey-text" to='/profile'>How it Works</NavLink></p>
+            <p><NavLink style={{color:"#2a2a2a"}} className="dark-grey-text" to='/profile'>Indiegogo vs. Kickstarter</NavLink></p>
+            <p> <NavLink style={{color:"#2a2a2a"}} className="dark-grey-text" to='/profile'>Education Center</NavLink></p>
+            <p><NavLink style={{color:"#2a2a2a"}} className="dark-grey-text" to='/profile'>Experts Directory</NavLink></p>
+            <p><NavLink style={{color:"#2a2a2a"}} className="dark-grey-text" to='/profile'>Fees</NavLink> </p>
+            <p><NavLink style={{color:"#2a2a2a"}} className="dark-grey-text" to='/profile'>Enterprise</NavLink> </p>
+            <p><NavLink style={{color:"#2a2a2a"}} className="dark-grey-text" to='/profile'>China</NavLink> </p>
           </div>
           <div className="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
             <h6 className="text-uppercase font-weight-bold" style={{color:"#6a6a6a"}}>CONTACT</h6>
@@ -66,7 +66,6 @@ const Footer = (props) => {
         </div>
       </div>
       <div className="footer-copyright text-center text-black-50 py-3">© 2020 Indiegogo, Inc.All Rights Reserved
-    {/* <NavLink className="dark-grey-text" to="/profile"> Inc</NavLink> */}
       </div>
     </footer>
   )

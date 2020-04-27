@@ -7,7 +7,7 @@ const Header = (props) => {
         <div className={styles.header}>
             <nav className="navbar fixed-top navbar-light bg-light ">
                 <NavLink to='/profile' className={styles.logo} >INDIEGOGO</NavLink>
-                <NavLink className="nav-item nav-link" to='/start' > Start a Campaign</NavLink>
+                <NavLink className="nav-item nav-link" to='/newCompany' > Start a Campaign</NavLink>
                 <NavLink className="nav-item nav-link" to='/logIn' >Log In</NavLink>
                 <NavLink className="nav-item nav-link" to='/signUp' >Sign Up</NavLink>
 
