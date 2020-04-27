@@ -1,0 +1,10 @@
+mysql://
+b7dd8f543e5f58 //user
+:
+5833cb15 //password
+@
+us-cdbr-iron-east-01.cleardb.net //host
+/
+heroku_3d322cb1144a021 //database
+?
+reconnect=true

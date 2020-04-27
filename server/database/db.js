@@ -2,8 +2,8 @@
 // var sequelize = require('sequelize');
 // var db = {}
 
-// var sequelize = new Sequelize('users', 'root', 'mc1982118', {
-//     host: 'localhost',
+// var sequelize = new Sequelize('heroku_3d322cb1144a021', 'b7dd8f543e5f58', '5833cb15', {
+//     host: 'us-cdbr-iron-east-01.cleardb.net',
 //     dialect: 'mysql',
 //     operatorsAliases: false,
 //     pool: {
