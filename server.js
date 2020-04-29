@@ -3,6 +3,7 @@ const cors = require ('cors');
 const bodyParser = require ('body-parser');
 const app = express();
 var Sequelize = require('sequelize');
+var cookieParser = require('cookie-parser');
 var db = {}
 
 var sequelize = new Sequelize('users', 'root', 'mc1982118', {
@@ -26,16 +27,16 @@ var port = process.env.PORT || 4000
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(cors());
-
-
+app.use(cookieParser())
 let routes = require('./server/routes/routes');
-app.use('/', routes)
+app.use('/', routes);
+
+// app.use(express.static('public'));
+
+
 
 sequelize.sync().then(()=>{
   app.listen(port, function(){
     console.log("Example app listening on port 4000!");
   });
 }).catch(err=>console.log(err));
-// app.listen(port, function () {
-//   console.log('Example app listening on port 4000!');
-//  });

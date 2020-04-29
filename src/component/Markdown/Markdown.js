@@ -1,69 +1,67 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-// import db from '../firebase';
-import ReactMarkdown from 'react-markdown';
+import * as React from "react";
+import ReactMde from "react-mde";
+import * as Showdown from "showdown";
+import "react-mde/lib/styles/css/react-mde-all.css";
+import styles from './Markdown.module.css';
 
-class Markdown extends Component {
-  constructor(props) {
-    super(props);
-
-    this.titleRef = React.createRef();
-    this.bodyRef = React.createRef();
-    // this.postFBRef = db.ref(`posts/${this.props.match.params.postId}`);
-    this.state = {
-      mdBody: ''
-    };
-  }
-
-  componentDidMount() {
-    // this.postFBRef.on('value', (snapshot) => {
-    //   if (!snapshot.val()) return;
-    //   this.titleRef.current &&
-    //     (this.titleRef.current.value = snapshot.val().title);
-    //   this.bodyRef.current &&
-    //     (this.bodyRef.current.value = snapshot.val().body);
-    //   this.setState({
-    //     mdBody: snapshot.val().body
-    //   });
-    // });
-  }
-//   onChange = () => {
-//     this.postFBRef
-//       .set({
-//         title: this.titleRef.current.value,
-//         body: this.bodyRef.current.value
-//       })
-//       .then((res) => console.log(res))
-//       .catch((err) => console.log(err));
-//   };
-
-  render() {
-    return (
-      <React.Fragment>
-        <div className="row">
-          <div className="col col-sm-12">
-            <textarea
-              className="form-control"
-              placeholder="Description"
-              ref={this.bodyRef}
-              type="text"
-              onChange={this.onChange}
-              rows={5}
-            />
-          </div>
-          <div className="col col-sm-6">
-            <ReactMarkdown
-              source={this.state.mdBody}
-              className="markdown-preview"
-            />
-          </div>
-        </div>
-      </React.Fragment>
-    );
-  }
+function loadSuggestions(text) {
+  return new Promise((accept, reject) => {
+    setTimeout(() => {
+      const suggestions = [
+        {
+          preview: "Andre",
+          value: "@andre"
+        },
+        {
+          preview: "Angela",
+          value: "@angela"
+        },
+        {
+          preview: "David",
+          value: "@david"
+        },
+        {
+          preview: "Louise",
+          value: "@louise"
+        }
+      ].filter(i => i.preview.toLowerCase().includes(text.toLowerCase()));
+      accept(suggestions);
+    }, 250);
+  });
 }
 
-export default Markdown;
+const converter = new Showdown.Converter({
+  tables: true,
+  simplifiedAutoLink: true,
+  strikethrough: true,
+  tasklists: true
+});
+
+export default function Markdown() {
+  const [value, setValue] = React.useState();
+  const [selectedTab, setSelectedTab] = React.useState("write");
+
+  return (
+    <div className={styles.container}>
+      <ReactMde
+        value={value}
+        onChange={setValue}
+        selectedTab={selectedTab}
+        onTabChange={setSelectedTab}
+        generateMarkdownPreview={markdown =>
+          Promise.resolve(converter.makeHtml(markdown))
+        }
+        loadSuggestions={loadSuggestions}
+        childProps={{
+          writeButton: {
+            tabIndex: -1
+          }
+        }}
+      />
+    </div>
+  );
+}
+
 
 
 
