@@ -1,31 +1,27 @@
 const express = require('express');
 const users = express.Router();
 const Model = require('../models/Model');
-const cloudinary = require('cloudinary')
+const cloudinary = require('cloudinary').v2
 const cloudinaryStorage = require('multer-storage-cloudinary');
 const multer = require('multer');
-// const upload = multer({ dest: 'uploads/' })
-// const path = require("path");
 
 cloudinary.config({
     cloud_name: 'site1',
     api_key: '682213162769324',
     api_secret: '6j3sGiCQbU3kESqYhEJyWxYE4LA',
 });
-var parser = multer({ 
-    storage: cloudinaryStorage({
-      cloudinary: cloudinary,
-      folder: 'photo',
-      filename: function (req, file, cb) {
-        cb(undefined, file.originalname);
-      }
-    })
-  });
-  
-users.post('/upload', parser.array('file'), (req, res, next) => {
-    res.json("done")
-    console.log(res)
+
+  users.post('/upload', function(req, res, next){
+      console.log(req.files.file)
+      const file = req.files.file
+      cloudinary.uploader.upload(file.tempFilePath, function(req, result){
+          res.send({
+              success: true,
+              result
+          })
+      })
   })
+
 
 
 users.get("/myCabinet/", (req, res) => {

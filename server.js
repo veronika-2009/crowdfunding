@@ -30,15 +30,13 @@ module.exports = db
 var port = process.env.PORT || 4000
 
 // app.use(uploads.any());
-app.use(fileUpload());
+app.use(fileUpload({useTempFiles:true}));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(cors());
 app.use(cookieParser())
 let routes = require('./server/routes/routes');
 app.use('/', routes);
-
-
 
 
 sequelize.sync().then(()=>{
