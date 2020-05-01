@@ -2,9 +2,7 @@ import React from 'react';
 import PersonalCabinet from './PersonalCabinet';
 import { getCompanyAPI } from '../API/api';
 import Cookies from 'universal-cookie';
-import * as axios from 'axios';
 import { withRouter } from 'react-router-dom';
-import EditCompanyContainer from './EditCompanyContainer';
 
 const cookies = new Cookies();
 cookies.set('nameCompany', 'name', { path: '/' });

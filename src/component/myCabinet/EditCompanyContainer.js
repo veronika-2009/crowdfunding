@@ -1,37 +1,64 @@
-import React from 'react';
-import PersonalCabinet from './PersonalCabinet';
-import { getCompanyAPI } from '../API/api';
-import Cookies from 'universal-cookie';
-import * as axios from 'axios';
+import axios, { post } from 'axios';
 import { withRouter } from 'react-router-dom';
 import EditCompany from './EditCompany';
-
+import React from "react";
+import FormData from 'form-data';
 
 class EditCompanyContainer extends React.Component {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state = {
-            data: []
+            data: [],
+            file: null,
         }
+        this.onFormSubmit = this.onFormSubmit.bind(this)
+        this.onChange = this.onChange.bind(this)
+        this.fileUpload = this.fileUpload.bind(this)
     }
-    componentDidMount() {
-        let url = this.props.location.search
-        let id = Number(url.split('?').slice(1))
-        axios.get('http://localhost:4000/editCompany/' + id)
-            .then(response => {
-                let data = response.data;
-                this.setState({
-                    data: data
-                });
-            })
-            .catch(error => {
-                console.error();
-            })
+    onFormSubmit(e) {
+        e.preventDefault() 
+        this.fileUpload(this.state.file).then((response) => {
+            console.log(response.data);
+        })
     }
+    onChange(e) {
+        this.setState({ file: e.target.files[0] })
+    }
+    fileUpload(file) {
+        debugger
+        const url = 'http://localhost:4000/upload';
+        const formData = new FormData();
+        formData.append('file', file)
+        const config = {
+            headers: {
+                'content-type': 'multipart/form-data'
+            }
+        }
+        return post(url, formData, config)
+    }
+    // componentDidMount() {
+    //     let url = this.props.location.search
+    //     let id = Number(url.split('?').slice(1))
+    //     axios.get('http://localhost:4000/editCompany/' + id)
+    //         .then(response => {
+    //             let data = response.data;
+    //             this.setState({
+    //                 data: data
+    //             });
+    //         })
+    //         .catch(error => {
+    //             console.error();
+    //         })
+    // }
     render() {
         return (
             <div >
                 <EditCompany state={this.state} />
+                <form onSubmit={this.onFormSubmit}>
+                    <h1>File Upload</h1>
+                    <input type="file" onChange={this.onChange} />
+                    <button type="submit">Upload</button>
+                </form>
             </div>
         )
     }
