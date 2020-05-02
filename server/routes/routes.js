@@ -11,17 +11,21 @@ cloudinary.config({
     api_secret: '6j3sGiCQbU3kESqYhEJyWxYE4LA',
 });
 
-  users.post('/upload', function(req, res, next){
-      console.log(req.files.file)
-      const file = req.files.file
-      cloudinary.uploader.upload(file.tempFilePath, function(req, result){
+users.post('/upload', function (req, res, next) {
+    console.log(req.files.file)
+    const file = req.files.file
+    cloudinary.uploader.upload(file.tempFilePath, function (req, result) {
           res.send({
               success: true,
               result
           })
-      })
-  })
-
+        const image = result.url
+        console.log(image)
+        //     Model.create({ nameCompany: image}).then(() => {
+        //       return res.sendStatus(200);
+        //   }).catch(err => console.log(err));
+    })
+})
 
 
 users.get("/myCabinet/", (req, res) => {

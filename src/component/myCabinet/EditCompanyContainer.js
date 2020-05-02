@@ -54,11 +54,6 @@ class EditCompanyContainer extends React.Component {
         return (
             <div >
                 <EditCompany state={this.state} />
-                <form onSubmit={this.onFormSubmit}>
-                    <h1>File Upload</h1>
-                    <input type="file" onChange={this.onChange} />
-                    <button type="submit">Upload</button>
-                </form>
             </div>
         )
     }

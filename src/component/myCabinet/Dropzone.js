@@ -1,11 +1,20 @@
-import React, { useCallback } from 'react'
-import { useDropzone } from 'react-dropzone'
+import React, { useCallback, useEffect, useState } from 'react'
+import { useDropzone, FileWithPreview } from 'react-dropzone'
 import axios from 'axios';
 import FormData from 'form-data';
+import img from '../../img/nophoto.png'
+import styles from './Dropzone.module.css'
 
 
-function MyDropzone() {
-    const onDrop = useCallback(acceptedFiles => {
+function MyDropzone() {  
+    const onDrop = useCallback(acceptedFiles => {  
+        var preview = document.querySelector('img');
+                var reader = new FileReader();
+                reader.readAsDataURL(acceptedFiles[0]);
+                reader.onloadend = function () {
+                    preview.src = reader.result;
+                  }
+   
         const formData = new FormData();
         const file = acceptedFiles[0];
         formData.append('file', file)
@@ -14,22 +23,20 @@ function MyDropzone() {
             console.log(res.statusText)
         })
     }, [])
-
     const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop })
-
-    return (
-        <div {...getRootProps()}>
-            <input  {...getInputProps()} />
-            {
-                isDragActive ?
-                    <p>Drop the files here ...</p> :
-                    <p>Drag 'n' drop some files here, or click to select files</p>
-            }
-
-        </div>
-    )
-}
-export default MyDropzone;
+        return (
+            <div {...getRootProps()} className={styles.dropzone}>
+                <input  {...getInputProps()} />
+                {
+                    isDragActive ?
+                        <p>Drop the files here ...</p> :
+                        <p>Drag 'n' drop some files here, or click to select files</p>
+                }
+                 <img id="imageUploadPreview" src={img} alt="yourImage" />
+            </div>
+        )
+    }
+    export default MyDropzone;
 
 
 
