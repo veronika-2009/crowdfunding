@@ -1,7 +1,7 @@
 .header {
     font-family: benton-sans,Helvetica,"Sans-serif";
-    background-color: #e6e6e6;
   }
+
   .header a {
     font-weight: 700;
     text-decoration: none;
@@ -18,7 +18,7 @@
     border-color:  #e51075;
     background-color:   #e51075;
   }
- 
+
   .header a:hover {
     color:   #e51075;
   }
@@ -36,5 +36,6 @@
     cursor: pointer;
     font-weight: bold;
   } 
+ 
  
   

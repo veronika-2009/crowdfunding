@@ -15,12 +15,12 @@ const EditCompany = (props) => {
         <NavLink to='/'>ЛИТЕРАТУРА</NavLink>
         {/* <div className={'tag'}>{company.tag}</div> */}
         <div >
-            <div class="container">
-                <div class="row">
-                    <div class="col">Left column
+            <div className="container">
+                <div className="row">
+                    <div className="col">Left column
                      <div className={'youtube'}>video</div>
                     </div>
-                    <div class="col">Right column
+                    <div className="col">Right column
                      <div className={'bonusList'}>
                             <div className={'manyTarget'}>Many</div>
                             <div className={'dateEnd'}></div>

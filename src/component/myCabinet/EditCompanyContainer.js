@@ -2,39 +2,26 @@ import axios, { post } from 'axios';
 import { withRouter } from 'react-router-dom';
 import EditCompany from './EditCompany';
 import React from "react";
-import FormData from 'form-data';
+import ReactPlayer from "react-player";
 
 class EditCompanyContainer extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
             data: [],
-            file: null,
+            inputValue: "",
+            url: ""
         }
-        this.onFormSubmit = this.onFormSubmit.bind(this)
-        this.onChange = this.onChange.bind(this)
-        this.fileUpload = this.fileUpload.bind(this)
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
-    onFormSubmit(e) {
-        e.preventDefault() 
-        this.fileUpload(this.state.file).then((response) => {
-            console.log(response.data);
-        })
+    handleChange = (event) => {
+        this.setState({ inputValue: event.target.value })
     }
-    onChange(e) {
-        this.setState({ file: e.target.files[0] })
-    }
-    fileUpload(file) {
-        debugger
-        const url = 'http://localhost:4000/upload';
-        const formData = new FormData();
-        formData.append('file', file)
-        const config = {
-            headers: {
-                'content-type': 'multipart/form-data'
-            }
-        }
-        return post(url, formData, config)
+
+    handleSubmit = (event) => {
+        event.preventDefault();
+        this.setState({ url: this.state.inputValue })
     }
     // componentDidMount() {
     //     let url = this.props.location.search
@@ -53,8 +40,13 @@ class EditCompanyContainer extends React.Component {
     render() {
         return (
             <div >
-                <EditCompany state={this.state} />
-            </div>
+                <EditCompany state={this.state} onChange={this.handleChange} onClick={this.handleSubmit}/>
+                {/* <form onSubmit={this.handleSubmit}>
+                <input onChange={this.handleChange} style={{margin:"20px"}} className="form-control" type="text" placeholder="Input the vidoe url" />
+                <button style={{margin:"20px"}} className="btn btn-primary">PLAY VIDEO</button>
+              </form> */}
+          </div>
+           
         )
     }
 }

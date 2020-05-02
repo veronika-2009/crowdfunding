@@ -54,10 +54,6 @@ h4 {
 .generalPhoto{
     width: 100%;
     margin-bottom: 3%;
-
-}
-.video{
-    width: 50%;
 }
 .container {
     border: 0 ;
@@ -68,4 +64,9 @@ h4 {
 }
 .form-control {
   color: rgba(0, 0, 0, 0.3);
+}
+.reactPlayer {
+    background: url(../../img/youtube2.png)  no-repeat;
+    background-size: contain;
+    margin: 3% 0 0 0;
 }

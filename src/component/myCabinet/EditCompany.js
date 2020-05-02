@@ -5,11 +5,12 @@ import Markdown from '../Markdown/Markdown';
 import 'react-autocomplete-input/dist/bundle.css';
 import AutoCompleteFilter from './InputAutocomplete/AutocompleteFilter';
 import MyDropzone from './Dropzone';
+import ReactPlayer from "react-player";
 
 
 
 const EditCompany = (props) => {
-
+  
     return (
         <div >
             <div className={styles.header}>
@@ -38,11 +39,8 @@ const EditCompany = (props) => {
                                 <p>Describe the purpose of your company in one sentence.</p>
                             </div>
                             <div className={styles.container}>
-                                <h5>Company tags</h5>
+                                <h5>Company tag</h5>
                                 <div className="form-row">
-                                    <div className="col">
-                                        <AutoCompleteFilter />
-                                    </div>
                                     <div className="col">
                                         <AutoCompleteFilter />
                                     </div>
@@ -54,14 +52,19 @@ const EditCompany = (props) => {
                                 <p>This is the main image of your project.JPG, PNG, GIF, BMP / Format: 16x9 / Limit: 5 Mb</p>
                                 <MyDropzone />
                                 <div className="form-row">
-                                    <div className="col">
-                                        <img className={styles.video} src={youtube} alt='noVideo' />
+                                    <div className="col" >
+                                        <input type="text"  style={{ marginTop: '10px'}} name='link' value={props.state.inputValue} onChange={props.onChange} className="form-control" placeholder="Specify link with YouTube"/>
+                                        
+                                        <ReactPlayer url={props.state.url}  controls={true} 
+                                        width='80%'
+                                        height='80%'
+                                        className={styles.reactPlayer}
+                                        />
                                     </div>
                                     <div className="col">
+                                    <button  onClick={ props.onClick} value={props.state.url} style={{ marginTop: '170px', marginLeft:'20px' }} type="button" className="btn btn-danger">Add video</button>
                                     </div>
-                                    <button style={{ marginTop: '40px', marginLeft: '20%' }} type="button" className="btn btn-danger">Add video</button>
                                 </div>
-                                <p>Projects with video are more likely to succeed! Add a link from YouTube.</p>
                             </div>
                             <div className={styles.container}>
                                 <h5>Budget and Campaign Duration</h5>
