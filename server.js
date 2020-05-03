@@ -26,7 +26,7 @@ var sequelize = new Sequelize('heroku_3d322cb1144a021', 'b7dd8f543e5f58', '5833c
 db.sequelize = sequelize
 db.Sequelize = Sequelize
 module.exports = db
-var port = process.env.PORT || 4000
+var PORT = process.env.PORT || 4000
 
 // app.use(uploads.any());
 app.use(fileUpload({useTempFiles:true}));
@@ -39,7 +39,7 @@ app.use('/', routes);
 
 
 sequelize.sync().then(()=>{
-  app.listen(port, function(){
-    console.log("Example app listening on port 4000!");
+  app.listen(PORT, function(){
+    console.log(`Example app listening on port ${PORT}!`);
   });
 }).catch(err=>console.log(err));
