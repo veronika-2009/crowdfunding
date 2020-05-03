@@ -73,7 +73,7 @@ const EditCompany = (props) => {
                                         <input type="number" min="1"  className="form-control" placeholder="Enter the amount of money in USA" />
                                     </div>
                                     <div className="col">
-                                        <input type="number" min="1"  className="form-control" placeholder="Days" />
+                                        <input type="number" min="1" max="180"  className="form-control" placeholder="Days" />
                                     </div>
                                     <p>from 1 to 180 days</p>
                                 </div>

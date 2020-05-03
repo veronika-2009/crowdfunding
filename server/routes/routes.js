@@ -26,7 +26,14 @@ users.post('/upload', function (req, res, next) {
         //   }).catch(err => console.log(err));
     })
 })
-
+users.post("/uploadVideo/", function (req, res) {
+    if (!req.body) return res.sendStatus(400);
+    const link = req.body.videoUrl;
+    console.log(link)
+    Model.create({ link: link }).then(() => {
+        return res.sendStatus(200);
+    }).catch(err => console.log(err));
+});
 
 users.get("/myCabinet/", (req, res) => {
     Model.findAll()
