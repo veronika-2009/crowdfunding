@@ -2,8 +2,6 @@ import React from 'react';
 import hand from '../../img/hand.jpg';
 import { reduxForm } from 'redux-form';
 import CompanyForm from '../Form/CompanyForm';
-import { connect } from 'react-redux';
-import newCompany from '../../Redux/profileReducer';
 import * as axios from 'axios';
 import { withRouter } from 'react-router-dom';
 
@@ -11,7 +9,8 @@ import { withRouter } from 'react-router-dom';
 const Company = (props) => {
     const CreateCompanyFormRedux = reduxForm({ form: 'createCompany' })(CompanyForm)
     const onSubmit = (values) => {
-        axios.post('http://us-cdbr-iron-east-01.cleardb.net/createCompany/' , { 
+        axios.post('http://localhost:4000/createCompany/' , { 
+            withCredentials: true,
             nameCompany: values.nameCompany,
             description: values.description,
             tag: values.tag})

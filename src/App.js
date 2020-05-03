@@ -7,9 +7,12 @@ import Picture from './component/Picture/Picture';
 import TagCloud from './component/TagCloud/TagCloud';
 import Company from './component/Сompany/Company';
 import PersonalCabinetContainer from './component/myCabinet/PersonalCabinetContainer';
+import EditCompanyContainer from './component/myCabinet/EditCompanyContainer';
+
 
 
 const App = (props) => {
+ 
   return (
     <div className='app-wrapper'>
       <Header />
@@ -20,6 +23,8 @@ const App = (props) => {
           render={() => <Company />} />
            <Route path='/myCabinet'
           render={() => <PersonalCabinetContainer />} />
+          <Route path='/editCompany/'
+          render={() => <EditCompanyContainer />} />
         <Route path='/profile'
           render={() => <TagCloud />} />
       </div>
