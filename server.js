@@ -5,9 +5,6 @@ const app = express();
 var Sequelize = require('sequelize');
 var cookieParser = require('cookie-parser');
 const fileUpload = require('express-fileupload');
-// const multer = require('multer');
-// const uploads = multer({dest:'uploads/'});
-// var cloudinary = require('cloudinary').v2;
 
 var db = {}
 
@@ -29,7 +26,6 @@ db.Sequelize = Sequelize
 module.exports = db
 var port = process.env.PORT || 4000
 
-// app.use(uploads.any());
 app.use(fileUpload({useTempFiles:true}));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}))

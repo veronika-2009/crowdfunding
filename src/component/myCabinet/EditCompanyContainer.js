@@ -9,22 +9,46 @@ class EditCompanyContainer extends React.Component {
         this.state = {
             data: [],
             inputValue: "",
-            url: ""
+            url: "",
+            nameCompany: "",
+            shortDescription: "",
+            money: "",
+            days: "",
+            description: "",
+            tag: ""
         }
-        this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.onGetInfo = this.onGetInfo.bind(this);
+        this.onSubmit = this.onSubmit.bind(this)
     }
-    handleChange = (event) => {
-        this.setState({ inputValue: event.target.value })
-    }
-
     handleSubmit = (event) => {
         event.preventDefault();
         this.setState({ url: this.state.inputValue })
-        const videoUrl = this.state.inputValue 
-        axios.post('http://localhost:4000/uploadVideo/', {videoUrl}, {
+        const videoUrl = this.state.inputValue
+        axios.post('http://localhost:4000/uploadVideo/', { videoUrl }, {
         }).then(res => {
             console.log(res.statusText)
+        })
+    }
+    onGetInfo(e) {
+        this.setState({ [e.target.name]: e.target.value })
+        // this.setState({ inputValue: e.target.value })
+    }
+    onSubmit(e) {
+        e.preventDefault()
+        const newCompany = {
+            nameCompany: this.state.nameCompany,
+            shortDescription: this.state.shortDescription,
+            money: this.state.money,
+            days: this.state.days,
+            description: this.state.description,
+            tag: this.state.tag
+        }
+        axios.post('http://localhost:4000/saveNewCompany/', { newCompany }, {
+        }).then(response => {
+            if (response) {
+                return this.props.history.push("/myCabinet");
+            }
         })
     }
     // componentDidMount() {
@@ -44,9 +68,10 @@ class EditCompanyContainer extends React.Component {
     render() {
         return (
             <div >
-                <EditCompany state={this.state} onChange={this.handleChange} onClick={this.handleSubmit}/>
-          </div>
-           
+                <EditCompany state={this.state} 
+                onClick={this.handleSubmit} 
+                onChange={this.onGetInfo} onSubmit={this.onSubmit} />
+            </div>
         )
     }
 }
