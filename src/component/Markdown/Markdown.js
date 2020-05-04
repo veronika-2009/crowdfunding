@@ -36,11 +36,10 @@ const converter = new Showdown.Converter({
   strikethrough: true,
   tasklists: true
 });
-
 export default function Markdown() {
   const [value, setValue] = React.useState();
   const [selectedTab, setSelectedTab] = React.useState("write");
-
+  
   return (
     <div className={styles.container}>
       <ReactMde
@@ -58,6 +57,7 @@ export default function Markdown() {
           }
         }}
       />
+
     </div>
   );
 }

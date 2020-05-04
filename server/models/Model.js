@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 const db = require('../../server');
 
-module.exports = db.sequelize.define(
+const Company = db.sequelize.define(
     "company",
     {
         id: {
@@ -12,7 +12,7 @@ module.exports = db.sequelize.define(
         },
         nameCompany: {
             type: Sequelize.STRING,
-            allowNull: false,
+            allowNull: true,
             unique: true
         },
         description: {
@@ -39,35 +39,14 @@ module.exports = db.sequelize.define(
             allowNull: true
         }
     },
+    
     {
         timestamps: false
-    },
-    "video_link",
-    {
-        id_video: {
-            type: Sequelize.INTEGER,
-            autoIncrement: true,
-            primaryKey: true,
-            allowNull: false
-        },
-        link: {
-            type: Sequelize.STRING,
-            allowNull: false,
-            unique: true
-        }
-    },
-    "image_link",
-    {
-        id_image: {
-            type: Sequelize.INTEGER,
-            autoIncrement: true,
-            primaryKey: true,
-            allowNull: false
-        },
-        link_image: {
-            type: Sequelize.STRING,
-            allowNull: false,
-            unique: true
-        }
     }
 )
+module.exports = Company;
+
+
+db.sequelize.sync().then(result=>{
+  })
+  .catch(err=> console.log(err));
