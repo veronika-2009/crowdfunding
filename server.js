@@ -9,7 +9,10 @@ const fileUpload = require('express-fileupload');
 var db = {}
 
 
-var sequelize = new Sequelize('mysql://b7dd8f543e5f58:5833cb15@us-cdbr-iron-east-01.cleardb.net/heroku_3d322cb1144a021?reconnect=true', {
+var sequelize = new Sequelize('b7dd8f543e5f58', '5833cb15', {
+    host: 'us-cdbr-iron-east-01.cleardb.net',
+    dialect: 'mysql',
+    database: 'heroku_3d322cb1144a021',
     operatorsAliases: false,
     pool: {
         max:5,
