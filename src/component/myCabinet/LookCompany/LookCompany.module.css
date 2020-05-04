@@ -48,7 +48,7 @@
   margin-top: 10%;
   background-color: #e51075;
   border-color: #e51075;
-  padding: 5%;
+  padding: 4%;
 }
 .editButton button:hover {
   background-color: #f02885;
@@ -59,13 +59,12 @@
   border-color: #f02885;
 }
 .infoBar {
-    width: 100%;
+  width: 100%;
   border: 0;
   border-radius: 5px;
   margin-bottom: 9px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
   padding: 3%;
- 
 }
 .figures {
   font-size: 40px;
@@ -76,12 +75,12 @@
   font-weight: 700;
 }
 .text {
-    text-transform: uppercase;
+  text-transform: uppercase;
   color: #666666;
   font-size: 12px;
 }
 .reactPlayer {
-    background: url(../../../img/youtube2.png)  no-repeat;
-    background-size: contain;
-    margin: 3% 0 0 0;
+  background: url(../../../img/youtube2.png) no-repeat;
+  background-size: contain;
+  margin: 3% 0 0 0;
 }
