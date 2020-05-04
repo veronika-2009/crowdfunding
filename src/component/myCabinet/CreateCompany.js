@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './EditCompany.module.css';
+import styles from './CreateCompany.module.css';
 import Markdown from '../Markdown/Markdown';
 import 'react-autocomplete-input/dist/bundle.css';
 import AutoCompleteFilter from './InputAutocomplete/AutocompleteFilter';
@@ -8,7 +8,7 @@ import ReactPlayer from "react-player";
 
 
 
-const EditCompany = (props) => {
+const CreateCompany = (props) => {
 
     return (
         <div >
@@ -116,4 +116,4 @@ const EditCompany = (props) => {
     );
 }
 
-export default EditCompany;
+export default CreateCompany;

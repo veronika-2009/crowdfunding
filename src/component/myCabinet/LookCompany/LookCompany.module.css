@@ -1,0 +1,87 @@
+.nameCompany {
+  font-size: 36px;
+  font-weight: 400;
+}
+.generalImage {
+  width: 98%;
+}
+.container a {
+  text-decoration: none;
+  color: #2a2a2a;
+}
+.youtube {
+  width: 40%;
+}
+.hrShadow {
+  margin: -30px auto 10px;
+  padding: 0;
+  height: 50px;
+  border: none;
+  border-bottom: 1px solid #1f1209;
+  box-shadow: 0 20px 20px -20px #333;
+  width: 100%;
+}
+.topnav {
+  overflow: hidden;
+}
+
+.topnav a {
+  float: left;
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+  border-bottom: 3px solid transparent;
+}
+
+.topnav a:hover {
+  border-bottom: 3px solid #e51075;
+}
+
+.topnav a.active {
+  border-bottom: 3px solid #e51075;
+}
+.editButton button {
+  margin-left: 10%;
+  margin-top: 10%;
+  background-color: #e51075;
+  border-color: #e51075;
+  padding: 5%;
+}
+.editButton button:hover {
+  background-color: #f02885;
+  border-color: #f02885;
+}
+.editButton button:focus {
+  background-color: #f02885;
+  border-color: #f02885;
+}
+.infoBar {
+    width: 100%;
+  border: 0;
+  border-radius: 5px;
+  margin-bottom: 9px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  padding: 3%;
+ 
+}
+.figures {
+  font-size: 40px;
+  font-weight: 700;
+}
+.figures span {
+  font-size: 20px;
+  font-weight: 700;
+}
+.text {
+    text-transform: uppercase;
+  color: #666666;
+  font-size: 12px;
+}
+.reactPlayer {
+    background: url(../../../img/youtube2.png)  no-repeat;
+    background-size: contain;
+    margin: 3% 0 0 0;
+}

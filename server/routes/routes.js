@@ -19,8 +19,10 @@ users.post('/saveNewCompany', function (req, res, next) {
     const shortDescription = req.body.newCompany.shortDescription;
     const money = req.body.newCompany.money;
     const days = req.body.newCompany.days;
-    Company.create({ nameCompany: nameCompany, many: money, 
-        short_description: shortDescription, tag: tag, days: days }).then(() => {
+    Company.create({
+        nameCompany: nameCompany, many: money,
+        short_description: shortDescription, tag: tag, days: days
+    }).then(() => {
         return res.sendStatus(200);
     }).catch(err => console.log(err));
 
@@ -50,6 +52,13 @@ users.post("/uploadVideo/", function (req, res) {
 
 users.get("/myCabinet/", (req, res) => {
     Company.findAll()
+        .then((respone) =>
+            res.send(respone))
+});
+
+users.get("/lookCompany/:id", (req, res) => {
+    const id = req.params.id;
+    Company.findAll({ where: { id: id } })
         .then((respone) =>
             res.send(respone))
 });

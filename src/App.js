@@ -7,26 +7,29 @@ import Picture from './component/Picture/Picture';
 import TagCloud from './component/TagCloud/TagCloud';
 import Company from './component/Сompany/Company';
 import PersonalCabinetContainer from './component/myCabinet/PersonalCabinetContainer';
-import EditCompanyContainer from './component/myCabinet/EditCompanyContainer';
+import CreateCompanyContainer from './component/myCabinet/CreateCompanyContainer';
+import LookCompanyContainer from './component/myCabinet/LookCompany/LookCompanyContainer';
 
 
 
 const App = (props) => {
- 
+
   return (
     <div className='app-wrapper'>
       <Header />
       <Route path='/profile'
-          render={() => <Picture /> } />
+        render={() => <Picture />} />
       <div className='appWrapperContent'>
         <Route path='/newCompany'
           render={() => <Company />} />
-           <Route path='/myCabinet'
+        <Route path='/myCabinet'
           render={() => <PersonalCabinetContainer />} />
-          <Route path='/editCompany/'
-          render={() => <EditCompanyContainer />} />
+        <Route path='/createCompany/'
+          render={() => <CreateCompanyContainer />} />
         <Route path='/profile'
           render={() => <TagCloud />} />
+          <Route path='/lookCompany/'
+            render={() => <LookCompanyContainer />} />
       </div>
       <div className='appWrapperFooter'>
         <Footer />

@@ -1,9 +1,9 @@
 import axios from 'axios';
 import { withRouter } from 'react-router-dom';
-import EditCompany from './EditCompany';
+import CreateCompany from './CreateCompany';
 import React from "react";
 
-class EditCompanyContainer extends React.Component {
+class CreateCompanyContainer extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -68,11 +68,11 @@ class EditCompanyContainer extends React.Component {
     render() {
         return (
             <div >
-                <EditCompany state={this.state} 
+                <CreateCompany state={this.state} 
                 onClick={this.handleSubmit} 
                 onChange={this.onGetInfo} onSubmit={this.onSubmit} />
             </div>
         )
     }
 }
-export default withRouter(EditCompanyContainer);
+export default withRouter(CreateCompanyContainer);

@@ -13,7 +13,7 @@ const Header = (props) => {
                 <div className="collapse navbar-collapse" id="collapsibleNavbar">
                     <ul className="navbar-nav">
                         <li className="nav-item">
-                            <NavLink className="nav-item nav-link" to='/editCompany'> Start a Campaign</NavLink>
+                            <NavLink className="nav-item nav-link" to='/createCompany'> Start a Campaign</NavLink>
                         </li>
                         <li className="nav-item">
                             <NavLink className="nav-item nav-link" to='/myCabinet'> My cabinet</NavLink>
