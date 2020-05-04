@@ -5,15 +5,11 @@ const app = express();
 var Sequelize = require('sequelize');
 var cookieParser = require('cookie-parser');
 const fileUpload = require('express-fileupload');
-// const multer = require('multer');
-// const uploads = multer({dest:'uploads/'});
-// var cloudinary = require('cloudinary').v2;
 
 var db = {}
 
-var sequelize = new Sequelize('heroku_3d322cb1144a021', 'b7dd8f543e5f58', '5833cb15', {
-    host: 'us-cdbr-iron-east-01.cleardb.net',
-    dialect: 'mysql',
+
+var sequelize = new Sequelize('mysql://b7dd8f543e5f58:5833cb15@us-cdbr-iron-east-01.cleardb.net/heroku_3d322cb1144a021?reconnect=true', {
     operatorsAliases: false,
     pool: {
         max:5,
@@ -28,7 +24,6 @@ db.Sequelize = Sequelize
 module.exports = db
 var PORT = process.env.PORT || 4000
 
-// app.use(uploads.any());
 app.use(fileUpload({useTempFiles:true}));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}))
@@ -40,6 +35,6 @@ app.use('/', routes);
 
 sequelize.sync().then(()=>{
   app.listen(PORT, function(){
-    console.log(`Example app listening on port ${PORT}!`);
+    console.log("Example app listening on port 4000!");
   });
 }).catch(err=>console.log(err));
