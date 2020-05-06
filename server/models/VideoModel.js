@@ -1,6 +1,7 @@
 const Sequelize = require('sequelize');
 const db = require('../../server');
 
+
 const Video = db.sequelize.define(
     "video",
     {

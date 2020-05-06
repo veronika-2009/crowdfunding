@@ -1,3 +1,4 @@
+
 const Sequelize = require('sequelize');
 const db = require('../../server');
 
@@ -18,6 +19,7 @@ const Image = db.sequelize.define(
         timestamps: false
     }
 )
+
 module.exports = Image;
 db.sequelize.sync().then(result=>{
 })

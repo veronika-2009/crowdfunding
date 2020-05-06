@@ -14,6 +14,7 @@ cloudinary.config({
 });
 
 users.post('/saveNewCompany', function (req, res, next) {
+    console.log(req.body)
     const nameCompany = req.body.newCompany.nameCompany;
     const tag = req.body.newCompany.tag;
     const shortDescription = req.body.newCompany.shortDescription;
@@ -25,11 +26,18 @@ users.post('/saveNewCompany', function (req, res, next) {
     }).then(() => {
         return res.sendStatus(200);
     }).catch(err => console.log(err));
-
 })
-users.post('/upload', function (req, res, next) {
+users.post('/saveDescription/:id', function (req, res, next) {
+    const description = req.body.value;
+    const id = req.params.id
+    Company.update({ description: description }, { where: { id: id } }).then(() => {
+        return res.sendStatus(200);
+    }).catch(err => console.log(err));
+})
+users.post('/upload/:id', function (req, res, next) {
     console.log(req.files.file)
     const file = req.files.file
+    const id = req.params.id
     cloudinary.uploader.upload(file.tempFilePath, function (req, result) {
         res.send({
             success: true,
@@ -37,21 +45,22 @@ users.post('/upload', function (req, res, next) {
         })
         const image = result.url
         console.log(image)
-        Image.create({ link_image: image }).then(() => {
-            return res.sendStatus(200);
+        Image.create({ link_image: image, id:id }).then(() => {
+            return next();
         }).catch(err => console.log(err));
     })
 })
-users.post("/uploadVideo/", function (req, res) {
+users.post("/uploadVideo/:id", function (req, res) {
     if (!req.body) return res.sendStatus(400);
-    const video = req.body.videoUrl
-    Video.create({ video: video }).then(() => {
+    const id = req.params.id
+    const video = req.body.videoUrl;
+    Video.create({  video: video, id:id }).then(() => {
         return res.sendStatus(200);
     }).catch(err => console.log(err));
 });
 
 users.get("/myCabinet/", (req, res) => {
-    Company.findAll()
+    Company.findAll({ raw: true })
         .then((respone) =>
             res.send(respone))
 });
@@ -70,15 +79,14 @@ users.get("/editCompany/:id", (req, res) => {
             res.send(respone))
 });
 
-users.post("/createCompany/", function (req, res) {
+users.post("/createCompany", function (req, res, next) {
     if (!req.body) return res.sendStatus(400);
-    const nameCompany = req.body.nameCompany;
-    const description = req.body.description;
-    const tag = req.body.tag;
-    Company.create({ nameCompany: nameCompany, description: description, tag: tag }).then(() => {
+    console.log(req.body)
+    const nameCompany = req.body.values.nameCompany;
+    const shortDescription = req.body.values.shortDescription;
+    Company.create({ nameCompany: nameCompany, short_description: shortDescription }).then(() => {
         return res.sendStatus(200);
     }).catch(err => console.log(err));
 });
-
 
 module.exports = users;

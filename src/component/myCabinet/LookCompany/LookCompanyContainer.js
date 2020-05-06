@@ -16,7 +16,7 @@ class LookCompanyContainer extends React.Component {
     }
     componentDidMount() {
         const id = this.props.location.state.data
-        axios.get('http://localhost:4000/lookCompany/' + id, {
+        axios.get('http://localhost:4000/lookCompany/', {
         }).then((response) => {
             let data = response.data;
             this.setState({

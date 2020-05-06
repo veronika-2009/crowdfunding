@@ -6,9 +6,7 @@ import AutoCompleteFilter from './InputAutocomplete/AutocompleteFilter';
 import MyDropzone from './Dropzone';
 import ReactPlayer from "react-player";
 
-
 const CreateCompany = (props) => {
-
     return (
         <div >
             <div className={styles.header}>
@@ -20,6 +18,12 @@ const CreateCompany = (props) => {
                             <a className="nav-item nav-link active" id="nav-home-tab"
                                 data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home"
                                 aria-selected="true">General information</a>
+                            <a className="nav-item nav-link" id="nav-profile-tab" data-toggle="tab"
+                                href="#nav-profile" role="tab" aria-controls="nav-profile"
+                                aria-selected="false">Detailed information</a>
+                            <a className="nav-item nav-link" id="nav-contact-tab" data-toggle="tab"
+                                href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">
+                                Photo gallery</a>
                             <button type="submit" style={{ marginLeft: '150px' }}
                                 className="btn btn-danger">Save changes</button>
                         </div>
@@ -54,8 +58,31 @@ const CreateCompany = (props) => {
                                     </div>
                                 </div>
                             </div>
-                        
-                       
+                            <div className={styles.container}>
+                                <h5> Project cover and video</h5>
+                                <button type="button" className="btn btn-danger">Add cover</button>
+                                <p>This is the main image of your project.JPG, PNG, GIF, BMP / Format: 16x9 / Limit: 5 Mb</p>
+                                <MyDropzone />
+                                <div className="form-row">
+                                    <div className="col" >
+                                        <input type="text" style={{ marginTop: '10px' }} name='inputValue'
+                                            value={props.state.inputValue}
+                                            onChange={props.onChange} className="form-control"
+                                            placeholder="Specify link with YouTube" />
+                                        <ReactPlayer url={props.state.url} controls={true}
+                                            width='80%'
+                                            height='80%'
+                                            className={styles.reactPlayer}
+                                        />
+                                    </div>
+                                    <div className="col">
+                                        <button onClick={props.onClick} value={props.state.url}
+                                            style={{ marginTop: '170px', marginLeft: '20px' }} type="button"
+                                            className="btn btn-danger">Add video
+                                    </button>
+                                    </div>
+                                </div>
+                            </div>
                             <div className={styles.container}>
                                 <h5>Budget and Campaign Duration</h5>
                                 <div className="form-row">
@@ -74,6 +101,11 @@ const CreateCompany = (props) => {
                                     takes a commission only from successful projects.</p>
                             </div>
                         </div>
+                        <div className="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                            <Markdown />
+                        </div>
+                        <div className="tab-pane fade" id="nav-contact"
+                            role="tabpanel" aria-labelledby="nav-contact-tab">...</div>
                     </div>
                 </form>
             </div>

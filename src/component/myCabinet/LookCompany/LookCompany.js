@@ -23,13 +23,13 @@ const LookCompany = (props) => {
                         <div className="col-9">
                             <img className={styles.generalImage} src={generalImage} alt='generalImage' />
                         </div>
-                        <div className="xs-col">
+                        <div className="xs-col ml-4 ">
                             <div className={styles.infoBar}>
-                                <div className={styles.figures}>0</div>
+                                <div className={styles.data}>0</div>
                                 <div className={styles.text}>sponsors</div>
-                                <div className={styles.figures}>0<span>USA</span></div>
+                                <div className={styles.data}>0<span>USA</span></div>
                                 <div className={styles.text}><span>is necessary</span>{company.many}</div>
-                                <div className={styles.figures}>{company.days}</div>
+                                <div className={styles.data}>{company.days}</div>
                                 <span className={styles.text}>days left</span>
                                 <br />
                             </div>
@@ -37,26 +37,23 @@ const LookCompany = (props) => {
                                 <button type="submit"
                                     className="btn btn-danger">Edit company</button>
                             </div>
-
                         </div>
                     </div>
                     {/* <img className={styles.youtube} src={youtube} alt='youtube' /> */}
                     <ReactPlayer url={`https://www.youtube.com/watch?v=_BXuxeuT8ms`} controls={true}
-                                            width='583px'
-                                            height='300px'
+                                            width='73%'
+                                            height='20em'
                                             className={styles.reactPlayer}
                                         />
-                    <div className={'shortDescription'}>{company.short_description}</div>
+                    <div className={styles.shortDescription}>{company.short_description}</div>
                     <hr className={styles.hrShadow} />
                 </div>
                 <div className={styles.topnav}>
-                    <NavLink to='/lookCompany' className={styles.active} >About</NavLink>
-
+                    <NavLink to='/lookCompany' className={styles.active}>About</NavLink>
                     <NavLink to='/lookCompany/news'>News</NavLink>
                     <NavLink to='/lookCompany/gallery'>Gallery</NavLink>
                 </div>
                 <div className={'shortDescription'}>{company.short_description}</div>
-
             </div>
         )}
     </div>

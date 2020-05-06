@@ -2,24 +2,23 @@ import React from 'react';
 import hand from '../../img/hand.jpg';
 import { reduxForm } from 'redux-form';
 import CompanyForm from '../Form/CompanyForm';
-import * as axios from 'axios';
+import axios from 'axios';
 import { withRouter } from 'react-router-dom';
 
 
 const Company = (props) => {
     const CreateCompanyFormRedux = reduxForm({ form: 'createCompany' })(CompanyForm)
     const onSubmit = (values) => {
-        axios.post('http://localhost:4000/createCompany/' , { 
-            withCredentials: true,
-            nameCompany: values.nameCompany,
-            description: values.description,
-            tag: values.tag})
-            .then(response => {
-                if (response) {
-                    return props.history.push("/myCabinet");
-                }
-            })
+        // const newCompany = {
+            
+        // }
+        axios.post('http://localhost:4000/createCompany', {values}).then(response => {
+            if (response) {
+                return props.history.push("/myCabinet");
+            }
+        })
     }
+
     return (
         <div >
             <img style={{ width: "60%", marginLeft: "10%" }} src={hand} alt='hand'></img>

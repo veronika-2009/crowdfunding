@@ -66,11 +66,12 @@
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
   padding: 3%;
 }
-.figures {
+.data {
+  margin-left: 20px;
   font-size: 40px;
   font-weight: 700;
 }
-.figures span {
+.data span {
   font-size: 20px;
   font-weight: 700;
 }

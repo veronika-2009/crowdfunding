@@ -12,15 +12,11 @@ const CompanyForm = (props) => {
                     component={'input'} placeholder={"Enter name company"}  />
             </div>
             <div className="form-group">
-                <label >Description</label>
-                <Field  className="form-control" name={'description'}
-                    component={'input'} placeholder={"Description"}  />
+                <label >Short description</label>
+                <Field  className="form-control" name={'shortDescription'}
+                    component={'textarea'} placeholder={"Short description"}  />
             </div>
-            <div className="form-group">
-                <label >Tag</label>
-                <Field  className="form-control" name={'tag'}
-                    component={'input'} placeholder={"Tag"}  />
-            </div>
+          
             <button className="btn btn-primary" >Submit</button>
         </form>
     );

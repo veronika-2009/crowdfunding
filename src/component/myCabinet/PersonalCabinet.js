@@ -12,8 +12,9 @@ const PersonalCabinet = (props) => {
                 <div className={'tag'}>{company.tag}</div>
                 <div className={'money'}>{company.many}</div>
                 <div className={'days'}>{company.days}</div>
-                    <button onClick={() => { props.handleClick(company.id) }}>Edit company</button>
-              <Link to={{pathname: '/lookCompany', state: { data: company.id }}} className="ml-3"> Look company</Link>
+              <Link to={{pathname: '/description', state: { data: company.id }}} className="ml-3">Add description</Link>
+              <Link to={{pathname: '/lookCompany', state: { data: company.id }}} className="ml-3">Look company</Link>
+              <Link to={{pathname: '/lookCompany', state: { data: company.id }}} className="ml-3">Remove company</Link>
                     
             </div>
         )}

@@ -21,6 +21,7 @@ class CreateCompanyContainer extends React.Component {
         this.onGetInfo = this.onGetInfo.bind(this);
         this.onSubmit = this.onSubmit.bind(this)
     }
+    
     handleSubmit = (event) => {
         event.preventDefault();
         this.setState({ url: this.state.inputValue })
@@ -32,7 +33,6 @@ class CreateCompanyContainer extends React.Component {
     }
     onGetInfo(e) {
         this.setState({ [e.target.name]: e.target.value })
-        // this.setState({ inputValue: e.target.value })
     }
     onSubmit(e) {
         e.preventDefault()

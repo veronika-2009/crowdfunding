@@ -1,12 +1,12 @@
-import React, { useCallback, useEffect, useState } from 'react'
-import { useDropzone, FileWithPreview } from 'react-dropzone'
+import React, { useCallback } from 'react'
+import { useDropzone } from 'react-dropzone'
 import axios from 'axios';
 import FormData from 'form-data';
 import img from '../../img/nophoto.png'
 import styles from './Dropzone.module.css'
 
 
-function MyDropzone() {  
+function MyDropzone(props) {  
     const onDrop = useCallback(acceptedFiles => {  
         var preview = document.querySelector('img');
                 var reader = new FileReader();
@@ -18,7 +18,8 @@ function MyDropzone() {
         const formData = new FormData();
         const file = acceptedFiles[0];
         formData.append('file', file)
-        axios.post('http://localhost:4000/upload', formData, {
+       const idCompany = props.idCompany;
+        axios.post('http://localhost:4000/upload/'+ idCompany, formData, {
         }).then(res => {
             console.log(res.statusText)
         })
