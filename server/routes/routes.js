@@ -3,9 +3,7 @@ const users = express.Router();
 const Image = require('../models/ImageModel');
 const Video = require('../models/VideoModel');
 const Company = require('../models/Model');
-const cloudinary = require('cloudinary').v2
-// const cloudinaryStorage = require('multer-storage-cloudinary');
-// const multer = require('multer');
+const cloudinary = require('cloudinary').v2;
 
 cloudinary.config({
     cloud_name: 'site1',

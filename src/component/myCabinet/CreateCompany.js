@@ -20,7 +20,7 @@ const CreateCompany = (props) => {
                             <a className="nav-item nav-link active" id="nav-home-tab"
                                 data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home"
                                 aria-selected="true">General information</a>
-                            <button type="submit" style={{ marginLeft: '150px' }}
+                            <button type="submit" style={{ marginLeft: '40%' }}
                                 className="btn btn-danger">Save changes</button>
                         </div>
                     </nav>

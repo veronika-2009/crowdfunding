@@ -55,7 +55,6 @@ function Markdown(props) {
           console.log(error)
       }) 
 }
-  
   return (
     <div className={styles.container}>
       <ReactMde

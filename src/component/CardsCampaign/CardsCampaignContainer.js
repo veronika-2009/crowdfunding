@@ -1,9 +1,10 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import LookCompany from './LookCompany';
+import CardsCampaign from './CardsCampaign';
 import axios from 'axios';
 
-class LookCompanyContainer extends React.Component {
+
+class CardsCampaignContainer extends React.Component {
     constructor() {
         super()
         this.state = {
@@ -13,25 +14,26 @@ class LookCompanyContainer extends React.Component {
     }
     handleClick = (id) => {
         this.setState({ id: id })
+        this.props.history.push('/editCompany/?'+id);
     }
     componentDidMount() {
-        const id = this.props.location.state.data
-        axios.get('http://localhost:4000/lookCompany/'+id, {
-        }).then((response) => {
+        axios.get('http://localhost:4000/myCabinet').then((response) => {
             let data = response.data;
             this.setState({
                 data: data
             });
-        }).catch(error => {
-            console.log(error);
-        });
+        })
+            .catch(error => {
+                console.log(error);
+            });
     }
     render() {
         return (
             <div >
-                <LookCompany state={this.state} handleClick={this.handleClick} />
+                <CardsCampaign state={this.state} handleClick={this.handleClick} />
             </div>
         )
     }
 }
-export default withRouter(LookCompanyContainer);
+export default withRouter(CardsCampaignContainer);
+

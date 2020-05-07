@@ -1,0 +1,28 @@
+.advertising {
+  margin-top: 40px;
+  padding-top: 20px;
+  background-position: 70%;
+  background-size: cover;
+  padding-bottom: 15px;
+  position: relative;
+  background-repeat: no-repeat;
+  background-color: #1f1f1f;
+  height: 300px;
+  background-image: url("https://entrepreneur.indiegogo.com/how-it-works/wp-content/uploads/sites/5/2017/07/IGG_HIW-header-1440x400.png");
+}
+.advertising h2 {
+  /* width: 60%; */
+  font-size: 46px;
+  margin-top: 5%;
+  margin-left: 32%;
+  color: #fff;
+  font-weight: 400;
+  letter-spacing: 1px;
+  line-height: 1.1;
+}
+.advertising p {
+  width: 65%;
+  margin-left: 16%;
+  color: #fff;
+  text-align: center;
+}
