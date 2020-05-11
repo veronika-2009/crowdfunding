@@ -1,0 +1,17 @@
+.remove {
+    font-size: 13px;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: solid 1px;
+    background-color: #e51075;
+    color: #ffffff;
+    border-radius: 4px;
+    padding: 9px;
+    margin-left: 5px;
+}
+.remove:hover{
+    background-color: #eb3288;
+    color: #ffffff;
+    border-color: #e51075;
+    text-decoration: none;
+}

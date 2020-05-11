@@ -13,11 +13,11 @@ cloudinary.config({
 
 users.post('/saveNewCompany', function (req, res, next) {
     console.log(req.body)
-    const nameCompany = req.body.newCompany.nameCompany;
-    const tag = req.body.newCompany.tag;
-    const shortDescription = req.body.newCompany.shortDescription;
-    const money = req.body.newCompany.money;
-    const days = req.body.newCompany.days;
+    const nameCompany = req.body.values.nameCompany;
+    const tag = req.body.values.tag;
+    const shortDescription = req.body.values.shortDescription;
+    const money = req.body.values.money;
+    const days = req.body.values.days;
     Company.create({
         nameCompany: nameCompany, many: money,
         short_description: shortDescription, tag: tag, days: days
