@@ -12,7 +12,7 @@ import DescriptionContainer from './component/Description/DescriptionContainer';
 import ScreenSaved from './component/screenSaved/screenSaved';
 import Advertising from './component/Advertising/Advertising';
 import CardsCampaignContainer from './component/CardsCampaign/CardsCampaignContainer';
-import Counter from './component/counter/Counter';
+import Count from './component/counter/Count';
 
 
 const App = (props) => {
@@ -42,7 +42,7 @@ const App = (props) => {
         <Route path='/lookCompany/'
           render={() => <LookCompanyContainer />} />
           <Route path='/counter'
-          render={() => <Counter />} />
+          render={() => <Count />} />
       </div>
       <div className='appWrapperFooter'>
         <Footer />

@@ -1,10 +1,12 @@
 import {createStore, combineReducers, applyMiddleware, compose } from 'redux';
-import profileReducer from './profileReducer';
+import companyReducer from './companyReducer';
 import thunkMiddleware from 'redux-thunk';
 import {reducer as formReducer} from 'redux-form';
+import {routerReducer} from 'react-router-redux';
 
 let reducers = combineReducers({
-    profilePage: profileReducer,
+    routing: routerReducer,
+    companyPage: companyReducer,
     form: formReducer
 });
 

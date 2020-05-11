@@ -1,8 +1,8 @@
-import React from 'react';
-import styles from './Description.module.css';
-import Markdown from '../Markdown/Markdown';
-import 'react-autocomplete-input/dist/bundle.css';
-import MyDropzone from '../myCabinet/Dropzone';
+import React from "react";
+import styles from "./Description.module.css";
+import Markdown from "../Markdown/Markdown";
+import "react-autocomplete-input/dist/bundle.css";
+import MyDropzone from "../myCabinet/Dropzone";
 import ReactPlayer from "react-player";
 
 
@@ -30,22 +30,22 @@ const Description = (props) => {
                                 <h5> Project cover and video</h5>
                                 <button type="button" className="btn btn-danger">Add cover</button>
                                 <p>This is the main image of your project.JPG, PNG, GIF, BMP / Format: 16x9 / Limit: 5 Mb</p>
-                                <MyDropzone idCompany={props.idCompany}/>
+                                <MyDropzone idCompany={props.idCompany} />
                                 <div className="form-row">
                                     <div className="col" >
-                                        <input type="text" style={{ marginTop: '10px' }} name='inputValue'
+                                        <input type="text" style={{ marginTop: "10px" }} name="inputValue"
                                             value={props.state.inputValue}
                                             onChange={props.onChange} className="form-control"
                                             placeholder="Specify link with YouTube" />
                                         <ReactPlayer url={props.state.url} controls={true}
-                                            width='80%'
-                                            height='80%'
+                                            width="80%"
+                                            height="80%"
                                             className={styles.reactPlayer}
                                         />
                                     </div>
                                     <div className="col">
                                         <button onClick={props.onClick} value={props.state.url}
-                                            style={{ marginTop: '170px', marginLeft: '20px' }} type="button"
+                                            style={{ marginTop: "170px", marginLeft: "20px" }} type="button"
                                             className="btn btn-danger">Add video
                                     </button>
                                     </div>
@@ -53,7 +53,7 @@ const Description = (props) => {
                             </div>
                         </div>
                         <div className="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-                            <Markdown idCompany={props.idCompany}/>
+                            <Markdown idCompany={props.idCompany} />
                         </div>
                         <div className="tab-pane fade" id="nav-contact"
                             role="tabpanel" aria-labelledby="nav-contact-tab">...</div>
@@ -63,5 +63,4 @@ const Description = (props) => {
         </div>
     );
 }
-
 export default Description;

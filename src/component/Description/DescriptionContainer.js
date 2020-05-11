@@ -1,7 +1,8 @@
-import axios from 'axios';
-import { withRouter } from 'react-router-dom';
+import axios from "axios";
+import { withRouter } from "react-router-dom";
 import React from "react";
-import Description from './Description';
+import Description from "./Description";
+
 
 class DescriptionContainer extends React.Component {
     constructor(props) {
@@ -20,7 +21,7 @@ class DescriptionContainer extends React.Component {
         this.setState({ url: this.state.inputValue })
         const videoUrl = this.state.inputValue
         const idCompany = this.props.location.state.data
-        axios.post('http://localhost:4000/uploadVideo/' + idCompany, { videoUrl }, {
+        axios.post("http://localhost:4000/uploadVideo/" + idCompany, { videoUrl }, {
         }).then(res => {
             console.log(res.statusText)
         })
@@ -28,7 +29,6 @@ class DescriptionContainer extends React.Component {
     onGetInfo(e) {
         this.setState({ [e.target.name]: e.target.value })
     }
-
     render() {
         return (
             <div >

@@ -1,40 +1,60 @@
 import { myCompanyAPI } from '../component/API/api';
 const SET_NEW_COMPANY = 'SET_NEW_COMPANY';
 const SET_DESCRIPTION = 'SET_DESCRIPTION';
-const SET_COUNTER = 'SET_COUNTER';
+const FETCH_TRACKS_SUCCESS = 'FETCH_TRACKS_SUCCESS';
+const SET_NEW_MESSAGE = 'SET_NEW_MESSAGE';
+const GET_NEW_MESSAGE = 'GET_NEW_MESSAGE';
+
 
 let initialState = {
-    nameCompany: null,
-    description: null,
-    tag: null,
-    counter: 0
+    body: [
+        'bhh',
+        'njbjj'
+    ],
+    newBody:[],
+    object:[
+        {id:'kkf', name:'lfl'},
+        {id:'kkf2', name:'lfl'},
+    ]
 };
-
-const profileReducer = (state = initialState, action) => {
+const companyReducer = (state = initialState, action) => {
     switch (action.type) {
         case SET_NEW_COMPANY: {
             return {
                 ...state, 
-                ...action.payload
+                body: [...state.body, action.payload]
             }
         }
-        case SET_DESCRIPTION: {
+        case FETCH_TRACKS_SUCCESS: {
             return {
                 ...state, 
-                ...action.payload
+                body: [...state.body, action.payload]
             }
         }
-        case SET_COUNTER: {
+        case SET_NEW_MESSAGE: {
+            let mybody = state.newBody;
             return {
                 ...state,
+                newBody:'',
+                body: [...state.body, mybody]
+            }
+        }
+        case GET_NEW_MESSAGE: {
+            return {
+                ...state, 
+                newBody: action.payload
             }
         }
         default:
             return state;
     }
 }
+
+export const getAddTrack = ( ) => ({ type: SET_NEW_MESSAGE});
+export const sendAddTrack  = ( payload) => ({ type: GET_NEW_MESSAGE, payload});
+// export const updateNewMessageBodyCreator = ( body) => ({ type: UPDATE_NEW_MESSAGE_BODY, body: body});
+// export const sendMessageCreator = ( ) => ({ type: SET_NEW_COMPANY});
 export const addCompanyActionCreator = (nameCompany, tag) => ({ type: SET_NEW_COMPANY, payload: { nameCompany,  tag } });
-export const counterActionCreator = (counter) => ({ type: SET_COUNTER, counter});
 export const addDescriptionActionCreator = (description) => ({type: SET_DESCRIPTION, payload:{description}});
 // export const newCompany = (nameCompany, description, tag) => async (dispatch) => {
 //     myCompanyAPI.newCompanyAPI(nameCompany, description, tag)
@@ -46,4 +66,4 @@ export const addDescriptionActionCreator = (description) => ({type: SET_DESCRIPT
 //         })
 // }
 
-export default profileReducer;
+export default companyReducer;
