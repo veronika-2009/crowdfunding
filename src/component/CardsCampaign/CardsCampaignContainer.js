@@ -1,7 +1,7 @@
-import React from 'react';
-import { withRouter } from 'react-router-dom';
-import CardsCampaign from './CardsCampaign';
-import axios from 'axios';
+import React from "react";
+import { withRouter } from "react-router-dom";
+import CardsCampaign from "./CardsCampaign";
+import axios from "axios";
 
 
 class CardsCampaignContainer extends React.Component {
@@ -10,14 +10,9 @@ class CardsCampaignContainer extends React.Component {
         this.state = {
             data: []
         }
-        this.handleClick = this.handleClick.bind(this);
-    }
-    handleClick = (id) => {
-        this.setState({ id: id })
-        this.props.history.push('/editCompany/?'+id);
     }
     componentDidMount() {
-        axios.get('http://localhost:4000/myCabinet').then((response) => {
+        axios.get("http://localhost:4000/myCabinet").then((response) => {
             let data = response.data;
             this.setState({
                 data: data
@@ -30,7 +25,7 @@ class CardsCampaignContainer extends React.Component {
     render() {
         return (
             <div >
-                <CardsCampaign state={this.state} handleClick={this.handleClick} />
+                <CardsCampaign state={this.state} />
             </div>
         )
     }

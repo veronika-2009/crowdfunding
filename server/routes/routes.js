@@ -87,4 +87,12 @@ users.post("/createCompany", function (req, res, next) {
     }).catch(err => console.log(err));
 });
 
+users.post("/remove/:id", function (req, res) {
+    const id = req.params.id;
+    Company.destroy({ where: { id: id }}).then((response) => {
+        return res.sendStatus(200);
+    })
+    .catch(err => console.log(err));
+});
+
 module.exports = users;

@@ -14,8 +14,18 @@ class LookCompanyContainer extends React.Component {
     handleClick = (id) => {
         this.setState({ id: id })
     }
+    removeCompany = (id) => {
+        axios.post("http://localhost:4000/remove/" + id).then((response) => {
+            if (response) {
+                return this.props.history.push("/myCabinet");
+            }
+            })
+            .catch(error => {
+                console.log(error);
+            });
+    } 
     componentDidMount() {
-        const id = this.props.location.state.data
+        const id = this.props.match.params.id
         axios.get('http://localhost:4000/lookCompany/'+id, {
         }).then((response) => {
             let data = response.data;
@@ -29,7 +39,7 @@ class LookCompanyContainer extends React.Component {
     render() {
         return (
             <div >
-                <LookCompany state={this.state} handleClick={this.handleClick} />
+                <LookCompany state={this.state} handleClick={this.handleClick} removeCompany={this.removeCompany} />
             </div>
         )
     }

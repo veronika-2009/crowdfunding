@@ -1,4 +1,4 @@
-.remove {
+.myCompanyLink {
     font-size: 13px;
     text-transform: uppercase;
     text-decoration: none;
@@ -9,9 +9,12 @@
     padding: 9px;
     margin-left: 5px;
 }
-.remove:hover{
+.myCompanyLink:hover{
     background-color: #eb3288;
     color: #ffffff;
     border-color: #e51075;
     text-decoration: none;
+}
+.container {
+    margin-bottom: 10px;
 }

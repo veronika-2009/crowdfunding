@@ -44,11 +44,11 @@ const Company = db.sequelize.define(
     },
     
     {
-        timestamps: false
+        timestamps: false,
     }
 )
-Company.hasMany(Image,{ foreignKey: 'id' })
-Company.hasMany(Video,{ foreignKey: 'id' })
+Company.hasMany(Image,{ foreignKey: 'id'})
+Company.hasMany(Video,{ foreignKey: 'id'})
 module.exports = Company;
 
 db.sequelize.sync().then(result=>{

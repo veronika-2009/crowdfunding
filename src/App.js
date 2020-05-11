@@ -4,7 +4,6 @@ import { Route } from 'react-router-dom';
 import Header from './component/Header/Header';
 import Footer from './component/Footer/Footer';
 import Picture from './component/Picture/Picture';
-import TagCloud from './component/TagCloud/TagCloud';
 import PersonalCabinetContainer from './component/myCabinet/PersonalCabinetContainer';
 import CreateCompanyContainer from './component/myCabinet/CreateCompanyContainer';
 import LookCompanyContainer from './component/myCabinet/LookCompany/LookCompanyContainer';
@@ -37,9 +36,7 @@ const App = (props) => {
           render={() => <CreateCompanyContainer />} />
         <Route path='/home'
           render={() => <CardsCampaignContainer />} />
-        <Route path='/home'
-          render={() => <TagCloud />} />
-        <Route path='/lookCompany/'
+        <Route path='/lookCompany/:id'
           render={() => <LookCompanyContainer />} />
           <Route path='/counter'
           render={() => <Count />} />
