@@ -6,7 +6,7 @@ const Header = (props) => {
     return (
         <div className={styles.header}>
             <nav className="navbar fixed-top navbar-expand-md bg-light navbar-light">
-                <NavLink to='/home' className={styles.logo} >INDIEGOGO</NavLink>
+                <NavLink to='/' className={styles.logo} >INDIEGOGO</NavLink>
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
                     <span className="navbar-toggler-icon"></span>
                 </button>

@@ -1,22 +1,41 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./LookCompany.module.css";
 import generalImage from "../../../img/hand.jpg";
 import tag from "../../../img/tag.png";
 import { NavLink } from "react-router-dom";
 import ReactPlayer from "react-player";
+import { useState } from "react";
+import CompanyDataForm from "./CompanyDataForm";
 
 
 const LookCompany = (props) => {
-    const myCompany = Object.values(props.state.data);
+    debugger
+    const image = props.image;
+    const onSubmit = (formData ) => {
+        props.saveCompany(formData);
+        props.saveImage(image)
+        props.history.push("/myCabinet")
+    }
+    let [editMode, setEditMode] = useState(false);
+    return (
+        <div>
+            {editMode
+                ? <CompanyDataForm company={props.company} onSubmit={onSubmit} initialValues={props.company} 
+                image={props.image} video={props.video}/>
+                : <EditCompany goToEditMode={() => { setEditMode(true) }} {...props} company={props.company} 
+                image={props.image}/>}
+        </div>
+    )
+}
+const EditCompany = (props) => {
     return (<div>
-        {myCompany.map((company) =>
-            <div key={company.id} className={styles.container}>
+            <div  className={styles.container}>
                 <div className={styles.general}>
-                    <span className={styles.nameCompany}>{company.nameCompany}</span>
+                    <span className={styles.nameCompany}>{props.company.nameCompany}</span>
                     <div>
                         <NavLink to="/" className={"tag"}>
                             <img src={tag} alt="tag" />
-                            {company.tag}
+                            {props.company.tag}
                         </NavLink>
                     </div>
                     <div className="form-row">
@@ -28,17 +47,17 @@ const LookCompany = (props) => {
                                 <div className={styles.data}>0</div>
                                 <div className={styles.text}>sponsors</div>
                                 <div className={styles.data}>0<span>USA</span></div>
-                                <div className={styles.text}><span>is necessary</span>{company.many}</div>
-                                <div className={styles.data}>{company.days}</div>
+                                <div className={styles.text}><span>is necessary</span>{props.company.many}</div>
+                                <div className={styles.data}>{props.company.days}</div>
                                 <span className={styles.text}>days left</span>
                                 <br />
                             </div>
                             <div className={styles.editButton}>
-                                <button type="submit"
+                                <button type="submit" onClick={props.goToEditMode}
                                     className="btn btn-danger">Edit company</button>
-                                <button to='/myCabinet'
-                                    onClick={() => props.removeCompany(company.id)}
-                                    className="btn btn-danger" >Remove</button>
+                                <button to="/myCabinet"
+                                    onClick={() => props.removeCompany(props.company.id)}
+                                    className="btn btn-danger">Remove</button>
                             </div>
                         </div>
                     </div>
@@ -47,7 +66,7 @@ const LookCompany = (props) => {
                         height="20em"
                         className={styles.reactPlayer}
                     />
-                    <div className={styles.shortDescription}>{company.short_description}</div>
+                    <div className={styles.shortDescription}>{props.company.short_description}</div>
                     <hr className={styles.hrShadow} />
                 </div>
                 <div className={styles.topnav}>
@@ -68,8 +87,8 @@ const LookCompany = (props) => {
                         <div className="tab-pane fade show active" id="nav-home" role="tabpanel"
                             aria-labelledby="nav-home-tab">
                             <div className={styles.container}>
-                                <div className={"shortDescription"}>{company.short_description}</div>
-                                <div className={"description"}>{company.description}</div>
+                                <div className={"shortDescription"}>{props.company.short_description}</div>
+                                <div className={"description"}>{props.company.description}</div>
                             </div>
                         </div>
                         <div className="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
@@ -80,7 +99,6 @@ const LookCompany = (props) => {
                     </div>
                 </div>
             </div>
-        )}
     </div>
     );
 }

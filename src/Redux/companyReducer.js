@@ -1,9 +1,11 @@
-import { myCompanyAPI } from '../component/API/api';
+import { myCompanyAPI } from "../component/API/api";
 const SET_NEW_COMPANY = 'SET_NEW_COMPANY';
 const SET_DESCRIPTION = 'SET_DESCRIPTION';
 const FETCH_TRACKS_SUCCESS = 'FETCH_TRACKS_SUCCESS';
 const SET_NEW_MESSAGE = 'SET_NEW_MESSAGE';
 const GET_NEW_MESSAGE = 'GET_NEW_MESSAGE';
+const SET_COMPANY = "SET_COMPANY";
+const SET_IMAGE = "SET_IMAGE";
 
 
 let initialState = {
@@ -11,23 +13,38 @@ let initialState = {
         'bhh',
         'njbjj'
     ],
-    newBody:[],
-    object:[
-        {id:'kkf', name:'lfl'},
-        {id:'kkf2', name:'lfl'},
+    newBody: [],
+    object: [
+        { id: 'kkf', name: 'lfl' },
+        { id: 'kkf2', name: 'lfl' },
+    ],
+    company: [
+        {
+            id: "",
+            nameCompany: "",
+            short_description: "",
+            tag: "",
+            days: "",
+            many: "",
+            path: ""
+        }
+    ],
+    image: [
+        { id: "", path: "" }
     ]
 };
 const companyReducer = (state = initialState, action) => {
+    
     switch (action.type) {
         case SET_NEW_COMPANY: {
             return {
-                ...state, 
+                ...state,
                 body: [...state.body, action.payload]
             }
         }
         case FETCH_TRACKS_SUCCESS: {
             return {
-                ...state, 
+                ...state,
                 body: [...state.body, action.payload]
             }
         }
@@ -35,27 +52,43 @@ const companyReducer = (state = initialState, action) => {
             let mybody = state.newBody;
             return {
                 ...state,
-                newBody:'',
+                newBody: '',
                 body: [...state.body, mybody]
             }
         }
         case GET_NEW_MESSAGE: {
             return {
-                ...state, 
+                ...state,
                 newBody: action.payload
             }
+        }
+        case SET_COMPANY: {
+            return {
+                ...state,
+                company: action.company
+            }
+        }
+        case SET_IMAGE: {
+            return {
+                ...state,
+                image: action.image
+            }
+
         }
         default:
             return state;
     }
 }
 
-export const getAddTrack = ( ) => ({ type: SET_NEW_MESSAGE});
-export const sendAddTrack  = ( payload) => ({ type: GET_NEW_MESSAGE, payload});
+export const setImage = (image) => ({ type: SET_IMAGE, image})
+export const setCompany = (company) => ({ type: SET_COMPANY, company })
+export const dateToFormat = (data) => ({ type: SET_COMPANY, data })
+export const getAddTrack = () => ({ type: SET_NEW_MESSAGE });
+export const sendAddTrack = (payload) => ({ type: GET_NEW_MESSAGE, payload });
 // export const updateNewMessageBodyCreator = ( body) => ({ type: UPDATE_NEW_MESSAGE_BODY, body: body});
 // export const sendMessageCreator = ( ) => ({ type: SET_NEW_COMPANY});
-export const addCompanyActionCreator = (nameCompany, tag) => ({ type: SET_NEW_COMPANY, payload: { nameCompany,  tag } });
-export const addDescriptionActionCreator = (description) => ({type: SET_DESCRIPTION, payload:{description}});
+export const addCompanyActionCreator = (nameCompany, tag) => ({ type: SET_NEW_COMPANY, payload: { nameCompany, tag } });
+export const addDescriptionActionCreator = (description) => ({ type: SET_DESCRIPTION, payload: { description } });
 // export const newCompany = (nameCompany, description, tag) => async (dispatch) => {
 //     myCompanyAPI.newCompanyAPI(nameCompany, description, tag)
 //         .then(response => {
@@ -65,5 +98,10 @@ export const addDescriptionActionCreator = (description) => ({type: SET_DESCRIPT
 //             }
 //         })
 // }
-
+export const saveCompany = (saveModifiedCompany) => async (dispatch) => {
+    let response = await myCompanyAPI.saveCompany(saveModifiedCompany);
+}
+export const saveImage = (saveModifiedImage) => async (dispatch) => {
+    let newImage = await myCompanyAPI.saveImageAPI(saveModifiedImage);
+}
 export default companyReducer;

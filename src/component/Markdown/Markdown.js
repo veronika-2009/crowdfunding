@@ -6,6 +6,7 @@ import "react-mde/lib/styles/css/react-mde-all.css";
 import styles from './Markdown.module.css';
 import axios from "axios";
 
+
 function loadSuggestions(text) {
   return new Promise((accept, reject) => {
     setTimeout(() => {

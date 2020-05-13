@@ -4,9 +4,11 @@ import axios from "axios";
 import FormData from "form-data";
 import img from "../../img/nophoto.png";
 import styles from "./Dropzone.module.css";
+import { connect } from "react-redux";
+import { setImage } from "../../Redux/companyReducer";
 
 
-function MyDropzone(props) {
+function EditDropzone(props) {
     const onDrop = useCallback(acceptedFiles => {
         var preview = document.querySelector("img");
         var reader = new FileReader();
@@ -17,11 +19,8 @@ function MyDropzone(props) {
         const formData = new FormData();
         const file = acceptedFiles[0];
         formData.append("file", file)
-        const idCompany = props.idCompany;
-        axios.post("http://localhost:4000/upload/" + idCompany, formData, {
-        }).then(res => {
-            console.log(res.statusText)
-        })
+        const id = props.company.id;
+        props.setImageAC({ id: id, path: acceptedFiles[0] })
     }, [])
     const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop })
     return (
@@ -36,8 +35,14 @@ function MyDropzone(props) {
         </div>
     )
 }
-export default MyDropzone;
-
-
-
-
+let mapStateToProps = (state) => ({
+    company: state.companyPage.company
+})
+let mapDispatchToProps = (dispatch) => {
+    return {
+        setImageAC: (payload) => {
+            dispatch(setImage(payload))
+        }
+    }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(EditDropzone);
