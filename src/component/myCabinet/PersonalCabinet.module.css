@@ -7,7 +7,10 @@
     color: #ffffff;
     border-radius: 4px;
     padding: 9px;
-    margin-left: 5px;
+    margin-left: 28%;
+}
+@media only screen and (max-width: 480px) {
+    .myCompanyLink {margin-left: 18%;}
 }
 .myCompanyLink:hover{
     background-color: #eb3288;

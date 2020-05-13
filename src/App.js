@@ -27,7 +27,7 @@ const App = (props) => {
       <Route exact path="/"
         render={() => <Picture />} />
       <div className="appWrapperContent">
-        <Route path="/description"
+        <Route path="/description/:id"
           render={() => <DescriptionContainer />} />
         <Route path="/myCabinet"
           render={() => <PersonalCabinetContainer />} />

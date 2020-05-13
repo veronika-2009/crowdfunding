@@ -20,7 +20,7 @@ class DescriptionContainer extends React.Component {
         event.preventDefault();
         this.setState({ url: this.state.inputValue })
         const videoUrl = this.state.inputValue
-        const idCompany = this.props.location.state.data
+        const idCompany = this.props.match.params.id;
         axios.post("http://localhost:4000/uploadVideo/" + idCompany, { videoUrl }, {
         }).then(res => {
             console.log(res.statusText)
@@ -34,7 +34,7 @@ class DescriptionContainer extends React.Component {
             <div >
                 <Description state={this.state}
                     onClick={this.handleSubmit}
-                    onChange={this.onGetInfo}  idCompany={this.props.location.state.data}/>
+                    onChange={this.onGetInfo}  idCompany={this.props.match.params.id}/>
             </div>
         )
     }

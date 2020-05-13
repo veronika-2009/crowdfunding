@@ -11,7 +11,8 @@ const CreateCompanyContainer = (props) => {
         axios.post("http://localhost:4000/saveNewCompany/", { values }, {
         }).then(response => {
             if (response) {
-                return props.history.push("/myCabinet");
+                let id = response.data.id
+                return props.history.push(`/description/${id}`);
             }
         })
     }

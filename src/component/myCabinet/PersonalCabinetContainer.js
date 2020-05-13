@@ -29,7 +29,6 @@ class PersonalCabinetContainer extends React.Component {
             this.setState({
                 data: data
             });
-            // cookies.set("nameCompany", "hhhhh", { path: "/"});
         })
             .catch(error => {
                 console.log(error);

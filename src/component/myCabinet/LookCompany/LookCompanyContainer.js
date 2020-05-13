@@ -42,7 +42,6 @@ class LookCompanyContainer extends React.Component {
         });
     }
     render() {
-        // debugger
         return (
             <div >
                 <LookCompany {...this.props} company={this.props.company} 

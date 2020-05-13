@@ -21,8 +21,10 @@ users.post('/saveNewCompany', function (req, res, next) {
     Company.create({
         nameCompany: nameCompany, many: money,
         short_description: shortDescription, tag: tag, days: days
-    }).then(() => {
-        return res.sendStatus(200);
+    }).then((data) => {
+        const id = data.id
+        console.log(id)
+       return res.json({ id: id })
     }).catch(err => console.log(err));
 })
 users.post('/saveDescription/:id', function (req, res, next) {

@@ -9,7 +9,6 @@ import CompanyDataForm from "./CompanyDataForm";
 
 
 const LookCompany = (props) => {
-    debugger
     const image = props.image;
     const onSubmit = (formData ) => {
         props.saveCompany(formData);

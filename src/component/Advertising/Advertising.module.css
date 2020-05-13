@@ -11,7 +11,6 @@
   background-image: url("https://entrepreneur.indiegogo.com/how-it-works/wp-content/uploads/sites/5/2017/07/IGG_HIW-header-1440x400.png");
 }
 .advertising h2 {
-  /* width: 60%; */
   font-size: 46px;
   margin-top: 5%;
   margin-left: 32%;
@@ -21,7 +20,7 @@
   line-height: 1.1;
 }
 .advertising p {
-  width: 65%;
+  width: 72%;
   margin-left: 16%;
   color: #fff;
   text-align: center;

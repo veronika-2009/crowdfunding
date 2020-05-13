@@ -4,7 +4,6 @@ import { counterActionCreator } from '../../Redux/profileReducer';
 
 
 const Counter =(props) => {
-    // debugger
    let handleClick = () =>{
         props.counterAction()
     }
