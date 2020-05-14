@@ -9,10 +9,15 @@ import CompanyDataForm from "./CompanyDataForm";
 
 
 const LookCompany = (props) => {
+    // debugger
+    // const textUpdate = props.newText
     const image = props.image;
     const onSubmit = (formData ) => {
+        debugger
         props.saveCompany(formData);
-        props.saveImage(image)
+        props.saveImage(image);
+        props.saveVideo(formData);
+        props.saveTextMarkdown(formData);
         props.history.push("/myCabinet")
     }
     let [editMode, setEditMode] = useState(false);
@@ -20,7 +25,7 @@ const LookCompany = (props) => {
         <div>
             {editMode
                 ? <CompanyDataForm company={props.company} onSubmit={onSubmit} initialValues={props.company} 
-                image={props.image} video={props.video}/>
+                image={props.image} video={props.video} setMarkdown={props.setMarkdown}/>
                 : <EditCompany goToEditMode={() => { setEditMode(true) }} {...props} company={props.company} 
                 image={props.image}/>}
         </div>

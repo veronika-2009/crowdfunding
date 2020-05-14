@@ -24,13 +24,31 @@ export const myCompanyAPI = {
               });
     },
     saveImageAPI(saveModifiedImage) {
+    
       let id = saveModifiedImage.id;
       const formData = new FormData();
         const file = saveModifiedImage.path;
         formData.append("file", file)
-      return instance.post(`editImage/${id}` , formData)
+      return instance.post(`editImage/${id}`, formData)
+      .then(response => {
+                return response.data;
+              });
+    },
+    saveVideoAPI(saveModifiedVideo) {
+      let id = saveModifiedVideo.id;
+      let videoNewURL = saveModifiedVideo.inputValue;
+      return instance.post(`editVideo/${id}`, {videoNewURL})
+      .then(response => {
+                return response.data;
+              });
+    },
+    saveTextMarkdownAPI(saveModifiedText) {
+      let id = saveModifiedText.id;
+      let newTextMarkdown = saveModifiedText.description;
+      return instance.post(`saveDescription/${id}`, {newTextMarkdown})
       .then(response => {
                 return response.data;
               });
     }
   }
+ 

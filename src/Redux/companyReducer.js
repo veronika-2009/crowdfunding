@@ -6,6 +6,7 @@ const SET_NEW_MESSAGE = 'SET_NEW_MESSAGE';
 const GET_NEW_MESSAGE = 'GET_NEW_MESSAGE';
 const SET_COMPANY = "SET_COMPANY";
 const SET_IMAGE = "SET_IMAGE";
+const SET_MARKDOWN = "SET_MARKDOWN";
 
 
 let initialState = {
@@ -26,15 +27,20 @@ let initialState = {
             tag: "",
             days: "",
             many: "",
-            path: ""
+            path: "",
+            video:"",
+            description:""
         }
     ],
     image: [
         { id: "", path: "" }
+    ],
+    textMarkdown: [
+        { id: "", description: "" }
     ]
 };
 const companyReducer = (state = initialState, action) => {
-    
+    // debugger
     switch (action.type) {
         case SET_NEW_COMPANY: {
             return {
@@ -73,7 +79,12 @@ const companyReducer = (state = initialState, action) => {
                 ...state,
                 image: action.image
             }
-
+        }
+        case SET_MARKDOWN: {
+            return {
+                ...state,
+                textMarkdown: action.textMarkdown
+            }
         }
         default:
             return state;
@@ -81,6 +92,7 @@ const companyReducer = (state = initialState, action) => {
 }
 
 export const setImage = (image) => ({ type: SET_IMAGE, image})
+export const setMarkdown = (textMarkdown) => ({ type: SET_MARKDOWN, textMarkdown})
 export const setCompany = (company) => ({ type: SET_COMPANY, company })
 export const dateToFormat = (data) => ({ type: SET_COMPANY, data })
 export const getAddTrack = () => ({ type: SET_NEW_MESSAGE });
@@ -103,5 +115,11 @@ export const saveCompany = (saveModifiedCompany) => async (dispatch) => {
 }
 export const saveImage = (saveModifiedImage) => async (dispatch) => {
     let newImage = await myCompanyAPI.saveImageAPI(saveModifiedImage);
+}
+export const saveVideo = (saveModifiedVideo) => async (dispatch) => {
+    let newVideo = await myCompanyAPI.saveVideoAPI(saveModifiedVideo);
+}
+export const saveTextMarkdown = (saveModifiedText) => async (dispatch) => {
+    let newText = await myCompanyAPI.saveTextMarkdownAPI(saveModifiedText);
 }
 export default companyReducer;

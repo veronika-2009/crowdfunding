@@ -20,7 +20,7 @@ function EditDropzone(props) {
         const file = acceptedFiles[0];
         formData.append("file", file)
         const id = props.company.id;
-        props.setImageAC({ id: id, path: acceptedFiles[0] })
+        props.setImageCreator({ id: id, path: acceptedFiles[0] })
     }, [])
     const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop })
     return (
@@ -31,7 +31,7 @@ function EditDropzone(props) {
                     <p>Drop the files here ...</p> :
                     <p>Drag 'n' drop some files here, or click to select files</p>
             }
-            <img id="imageUploadPreview" src={img} alt="yourImage" />
+            <img id="imageUploadPreview" src={props.company.image_links[0].link_image} alt="yourImage" />
         </div>
     )
 }
@@ -40,7 +40,7 @@ let mapStateToProps = (state) => ({
 })
 let mapDispatchToProps = (dispatch) => {
     return {
-        setImageAC: (payload) => {
+        setImageCreator: (payload) => {
             dispatch(setImage(payload))
         }
     }

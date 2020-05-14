@@ -3,11 +3,12 @@ import { createField, Input, Textarea } from "../../FormsControl/FormsControls";
 import { reduxForm } from "redux-form";
 import styles from "../CreateCompany.module.css";
 import EditDropzone from "../EditDropzone";
-import Markdown from "../../Markdown/Markdown";
 import ReactPlayer from "react-player";
+import EditMarkdown from "../../Markdown/EditMarkdown";
 
 
 const CompanyDataForm = (props) => {
+    // debugger
     return (
         <form onSubmit={props.handleSubmit} className={styles.header}>
             <nav>
@@ -67,31 +68,19 @@ const CompanyDataForm = (props) => {
                                 <div className="form-row">
                                     <div className="col" >
                                     {createField("inputValue", "inputValue", [], Input, { placeholder: "Specify link with YouTube" })}
-                                        {/* <input type="text" style={{ marginTop: '10px' }} 
-                                            //name='inputValue'
-                                            // value={props.state.inputValue}
-                                            // onChange={props.onChange} 
-                                           // className="form-control"
-                                           // placeholder="Specify link with YouTube" /> */}
                                         <ReactPlayer controls={true}
-                                        // url={props.state.url} 
+                                        url={props.video[0].video} 
                                             width='80%'
                                             height='80%'
                                             className={styles.reactPlayer}
                                         />
                                     </div>
-                                    <div className="col">
-                                        <button 
-                                        // onClick={props.onClick} value={props.state.url}
-                                            style={{ marginTop: '170px', marginLeft: '20px' }} type="button"
-                                            className="btn btn-danger">Edit video
-                                    </button>
-                                    </div>
                                 </div>
                             </div>
                 </div>
                     <div className="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-                            <Markdown />
+                            <EditMarkdown startEdit={props.company.description} setMarkdown={props.setMarkdown}
+                            id={props.company.id}/>
                         </div>
             </div>
         </form>

@@ -2,7 +2,7 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import LookCompany from './LookCompany';
 import axios from 'axios';
-import { setCompany, saveCompany, saveImage} from "../../../Redux/companyReducer";
+import { setCompany, saveCompany, saveImage, saveVideo, saveTextMarkdown, setMarkdown} from "../../../Redux/companyReducer";
 import { connect } from "react-redux";
 
 
@@ -41,20 +41,25 @@ class LookCompanyContainer extends React.Component {
             console.log(error);
         });
     }
+ 
     render() {
         return (
             <div >
                 <LookCompany {...this.props} company={this.props.company} 
-                image={this.props.image} video={this.props.video}
+                image={this.props.image} video={this.props.video} 
                 handleClick={this.handleClick} removeCompany={this.removeCompany} />
             </div>
         )
     }
+    
 }
+
 let mapStateToProps = (state) => ({
     company: state.companyPage.company,
     image: state.companyPage.image,
-    video: state.companyPage.company.videos
+    video: state.companyPage.company.videos,
+    name:state.companyPage.textMarkdown
 })
 let WithUrlData = withRouter(LookCompanyContainer);
-export default connect(mapStateToProps, { setCompany, saveCompany, saveImage})(WithUrlData);
+export default connect(mapStateToProps, { setCompany, saveCompany, saveImage, 
+    saveVideo, saveTextMarkdown, setMarkdown})(WithUrlData);

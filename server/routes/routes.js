@@ -28,8 +28,9 @@ users.post('/saveNewCompany', function (req, res, next) {
     }).catch(err => console.log(err));
 })
 users.post('/saveDescription/:id', function (req, res, next) {
-    const description = req.body.value;
+    const description = req.body.newTextMarkdown;
     const id = req.params.id
+    console.log(description)
     Company.update({ description: description }, { where: { id: id } }).then(() => {
         return res.sendStatus(200);
     }).catch(err => console.log(err));
@@ -51,6 +52,7 @@ users.post('/upload/:id', function (req, res, next) {
     })
 })
 users.post('/editImage/:id', function (req, res, next) {
+    if(!req.files) return 'no modified photo'
     console.log(req.files.file)
     const file = req.files.file
     const id = req.params.id
@@ -71,6 +73,14 @@ users.post("/uploadVideo/:id", function (req, res) {
     const id = req.params.id
     const video = req.body.videoUrl;
     Video.create({ video: video, id: id }).then(() => {
+        return res.sendStatus(200);
+    }).catch(err => console.log(err));
+});
+users.post("/editVideo/:id", function (req, res) {
+    if (!req.body) return res.sendStatus(400);
+    const id = req.params.id;
+    const video = req.body.videoNewURL;
+    Video.update({ video: video }, { where: { id: id } }).then(() => {
         return res.sendStatus(200);
     }).catch(err => console.log(err));
 });
