@@ -7,6 +7,8 @@ const GET_NEW_MESSAGE = 'GET_NEW_MESSAGE';
 const SET_COMPANY = "SET_COMPANY";
 const SET_IMAGE = "SET_IMAGE";
 const SET_MARKDOWN = "SET_MARKDOWN";
+const SET_GENERAL_IMAGE = "SET_GENERAL_IMAGE";
+const SET_GENERAL_VIDEO = "SET_GENERAL_VIDEO";
 
 
 let initialState = {
@@ -37,10 +39,15 @@ let initialState = {
     ],
     textMarkdown: [
         { id: "", description: "" }
+    ],
+    generalImage: [
+        {id_image:"", link_image:""}
+    ],
+    generalVideo: [
+        {id_video:"", video:""}
     ]
 };
 const companyReducer = (state = initialState, action) => {
-    // debugger
     switch (action.type) {
         case SET_NEW_COMPANY: {
             return {
@@ -80,6 +87,18 @@ const companyReducer = (state = initialState, action) => {
                 image: action.image
             }
         }
+        case SET_GENERAL_IMAGE: {
+            return {
+                ...state,
+                generalImage: action.generalImage
+            }
+        }
+        case SET_GENERAL_VIDEO: {
+            return {
+                ...state,
+                generalVideo: action.generalVideo
+            }
+        }
         case SET_MARKDOWN: {
             return {
                 ...state,
@@ -92,6 +111,8 @@ const companyReducer = (state = initialState, action) => {
 }
 
 export const setImage = (image) => ({ type: SET_IMAGE, image})
+export const setGeneralImage = (generalImage) => ({ type: SET_GENERAL_IMAGE, generalImage})
+export const setgeneralVideo = (generalVideo) => ({ type: SET_GENERAL_VIDEO, generalVideo})
 export const setMarkdown = (textMarkdown) => ({ type: SET_MARKDOWN, textMarkdown})
 export const setCompany = (company) => ({ type: SET_COMPANY, company })
 export const dateToFormat = (data) => ({ type: SET_COMPANY, data })

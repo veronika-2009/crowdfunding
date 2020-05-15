@@ -8,7 +8,6 @@ import EditMarkdown from "../../Markdown/EditMarkdown";
 
 
 const CompanyDataForm = (props) => {
-    // debugger
     return (
         <form onSubmit={props.handleSubmit} className={styles.header}>
             <nav>
@@ -79,7 +78,7 @@ const CompanyDataForm = (props) => {
                             </div>
                 </div>
                     <div className="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-                            <EditMarkdown startEdit={props.company.description} setMarkdown={props.setMarkdown}
+                            <EditMarkdown startEdit={props.company.description} 
                             id={props.company.id}/>
                         </div>
             </div>

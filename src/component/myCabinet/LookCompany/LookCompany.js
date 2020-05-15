@@ -9,15 +9,13 @@ import CompanyDataForm from "./CompanyDataForm";
 
 
 const LookCompany = (props) => {
-    // debugger
-    // const textUpdate = props.newText
+    const textUpdate = props.newTextMarkdown;
     const image = props.image;
     const onSubmit = (formData ) => {
-        debugger
         props.saveCompany(formData);
         props.saveImage(image);
         props.saveVideo(formData);
-        props.saveTextMarkdown(formData);
+        props.saveTextMarkdown(textUpdate);
         props.history.push("/myCabinet")
     }
     let [editMode, setEditMode] = useState(false);
@@ -25,9 +23,9 @@ const LookCompany = (props) => {
         <div>
             {editMode
                 ? <CompanyDataForm company={props.company} onSubmit={onSubmit} initialValues={props.company} 
-                image={props.image} video={props.video} setMarkdown={props.setMarkdown}/>
+                image={props.image} video={props.video} />
                 : <EditCompany goToEditMode={() => { setEditMode(true) }} {...props} company={props.company} 
-                image={props.image}/>}
+                image={props.company.image_links}/>}
         </div>
     )
 }
@@ -44,7 +42,7 @@ const EditCompany = (props) => {
                     </div>
                     <div className="form-row">
                         <div className="col-9">
-                            <img className={styles.generalImage} src={generalImage} alt="generalImage" />
+                            <img className={styles.generalImage} src={props.generalImage.link_image} alt="generalImage" />
                         </div>
                         <div className="xs-col ml-4">
                             <div className={styles.infoBar}>
@@ -65,7 +63,7 @@ const EditCompany = (props) => {
                             </div>
                         </div>
                     </div>
-                    <ReactPlayer url={`https://www.youtube.com/watch?v=_BXuxeuT8ms`} controls={true}
+                    <ReactPlayer url={props.generalVideo.video} controls={true}
                         width="73%"
                         height="20em"
                         className={styles.reactPlayer}

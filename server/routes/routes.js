@@ -28,7 +28,7 @@ users.post('/saveNewCompany', function (req, res, next) {
     }).catch(err => console.log(err));
 })
 users.post('/saveDescription/:id', function (req, res, next) {
-    const description = req.body.newTextMarkdown;
+    const description = req.body.updateTextMarkdown;
     const id = req.params.id
     console.log(description)
     Company.update({ description: description }, { where: { id: id } }).then(() => {
@@ -94,6 +94,19 @@ users.get("/myCabinet/", (req, res) => {
 users.get("/lookCompany/:id", (req, res) => {
     const id = req.params.id;
     Company.findAll({ where: { id: id }, include: [{ model: Image }, { model: Video } ] })
+        .then((respone) =>
+            res.send(respone))
+});
+
+users.get("/lookImage/:id", (req, res) => {
+    const id = req.params.id;
+    Image.findAll({ where: { id: id }  })
+        .then((respone) =>
+            res.send(respone))
+});
+users.get("/lookVideo/:id", (req, res) => {
+    const id = req.params.id;
+    Video.findAll({ where: { id: id }  })
         .then((respone) =>
             res.send(respone))
 });

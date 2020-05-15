@@ -1,8 +1,10 @@
-import  React, { useEffect } from "react";
+import  React from "react";
 import ReactMde from "react-mde";
 import * as Showdown from "showdown";
 import "react-mde/lib/styles/css/react-mde-all.css";
 import styles from "./Markdown.module.css";
+import { connect } from "react-redux";
+import { setMarkdown } from "../../Redux/companyReducer";
 
 
 function loadSuggestions(text) {
@@ -41,9 +43,9 @@ const EditMarkdown =(props) => {
 const [value, setValue] = React.useState(props.startEdit);
 const [selectedTab, setSelectedTab] = React.useState("write");
   const id = props.id;
-  useEffect(() => {
-    props.setMarkdown({ id:id, value: value })
-  });
+          props.setMarkdownCreator({ id:id, value: value })
+     
+//   });
 //   debugger
 //   props.setMarkdown({ id:id, value: value })
   return (
@@ -66,4 +68,14 @@ const [selectedTab, setSelectedTab] = React.useState("write");
     </div>
   );
 }
-export default EditMarkdown;
+// let mapStateToProps = (state) => ({
+//     company: state.companyPage.company
+// })
+let mapDispatchToProps = (dispatch) => {
+    return {
+        setMarkdownCreator: (textMarkdown) => {
+            dispatch(setMarkdown(textMarkdown))
+        }
+    }
+}
+export default connect(null, mapDispatchToProps)(EditMarkdown);

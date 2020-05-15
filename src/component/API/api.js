@@ -43,9 +43,10 @@ export const myCompanyAPI = {
               });
     },
     saveTextMarkdownAPI(saveModifiedText) {
+      debugger
       let id = saveModifiedText.id;
-      let newTextMarkdown = saveModifiedText.description;
-      return instance.post(`saveDescription/${id}`, {newTextMarkdown})
+      let updateTextMarkdown = saveModifiedText.value;
+      return instance.post(`saveDescription/${id}`, {updateTextMarkdown})
       .then(response => {
                 return response.data;
               });
