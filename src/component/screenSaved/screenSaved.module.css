@@ -19,3 +19,6 @@
     letter-spacing: 1px;
     line-height: 1.1;
 }
+@media only screen and (max-width: 480px) {
+    .generalImage h2 {font-size: 36px;}
+}

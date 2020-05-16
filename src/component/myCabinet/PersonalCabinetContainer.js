@@ -3,7 +3,6 @@ import PersonalCabinet from "./PersonalCabinet";
 import { getCompanyAPI } from "../API/api";
 import Cookies from "universal-cookie";
 import { withRouter } from "react-router-dom";
-import axios from "axios";
 
 
 const cookies = new Cookies();
@@ -13,15 +12,8 @@ class PersonalCabinetContainer extends React.Component {
     constructor() {
         super()
         this.state = {
-            data: [],
-            // nameCompany: cookies.get('nameCompany') 
+            data: []
         }
-        this.handleClick = this.handleClick.bind(this);
-    }
-       handleClick = () => {
-        // this.setState({ id: id })
-        // this.props.history.push('/editCompany/?'+id);
-     
     } 
     componentDidMount() {
         getCompanyAPI().then((response) => {
@@ -37,7 +29,7 @@ class PersonalCabinetContainer extends React.Component {
     render() {
         return (
             <div >
-                <PersonalCabinet state={this.state} handleClick={this.handleClick} />
+                <PersonalCabinet state={this.state} />
             </div>
         )
     }

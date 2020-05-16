@@ -28,7 +28,7 @@ const Description = (props) => {
                             aria-labelledby="nav-home-tab">
                             <div className={styles.container}>
                                 <h5> Project cover and video</h5>
-                                <button type="button" className="btn btn-danger">Add cover</button>
+                                {/* <button type="button" className="btn btn-danger">Add cover</button> */}
                                 <p>This is the main image of your project.JPG, PNG, GIF, BMP / Format: 16x9 / Limit: 5 Mb</p>
                                 <MyDropzone idCompany={props.idCompany} />
                                 <div className="form-row">

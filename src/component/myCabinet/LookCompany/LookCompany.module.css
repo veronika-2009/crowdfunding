@@ -12,20 +12,11 @@
 .youtube {
   width: 40%;
 }
-.hrShadow {
-  margin: -30px auto 10px;
-  padding: 0;
-  height: 50px;
-  border: none;
-  border-bottom: 1px solid #1f1209;
-  box-shadow: 0 20px 20px -20px #333;
-  width: 100%;
-}
-.topnav {
+.navigationСontent {
   overflow: hidden;
 }
 
-.topnav a {
+.navigationСontent a {
   float: left;
   display: block;
   color: black;
@@ -36,15 +27,15 @@
   border-bottom: 3px solid transparent;
 }
 
-.topnav a:hover {
+/* .navigationСontent a:hover {
   border-bottom: 3px solid #e51075;
 }
 
-.topnav a.active {
+.navigationСontent a.active {
   border-bottom: 3px solid #e51075;
-}
+} */
 .editButton button {
-  margin-left: 10%;
+  margin-left: 5%;
   margin-top: 10%;
   background-color: #e51075;
   border-color: #e51075;
@@ -61,13 +52,13 @@
 .infoBar {
   width: 100%;
   border: 0;
-  border-radius: 5px;
+  border-radius: 2px;
   margin-bottom: 9px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
-  padding: 3%;
+  padding: 13% 50px 13% 50px;
 }
 .data {
-  margin-left: 20px;
+  margin-bottom: 1px;
   font-size: 40px;
   font-weight: 700;
 }
@@ -83,5 +74,34 @@
 .reactPlayer {
   background: url(../../../img/youtube2.png) no-repeat;
   background-size: contain;
-  margin: 3% 0 0 0;
+  margin: 3% 0 0 3%;
+}
+.description p {
+  text-transform: none;
+}
+.headingDescription {
+  font-weight: 700;
+  margin-top: 30px;
+  font-size: 20px;
+}
+.navigationСontent {
+  margin-top: 20px;
+}
+.description {
+  margin-top: 20px;
+}
+@media only screen and (max-width: 480px) {
+  .generalImage {
+    width: 260px;
+    height: 200px;
+  }
+  .infoBar {
+    width: 200px;
+    height: 180px;
+    margin-top: 10px;
+    padding-top: 5px;
+  }
+  .data {
+    font-size: 20px;
+  }
 }

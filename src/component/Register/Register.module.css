@@ -1,0 +1,13 @@
+.button button{
+    background-color: #e51075;
+    border-color: #e51075;
+  
+}
+.button button:hover{
+    background-color:  #f02885;
+    border-color: #f02885;
+}
+.button button:focus{
+    background-color:  #f02885;
+    border-color: #f02885;
+}

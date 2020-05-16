@@ -30,3 +30,15 @@
     text-decoration: none;
     color: #2a2a2a;
   }
+  .container {
+    margin-bottom: 10px;
+    overflow: hidden;
+  }
+  .container img {
+     object-fit: cover;
+  } 
+  @media only screen and (max-width: 480px) {
+    .cardsLink {
+      margin-left: 7%;
+    }
+  }

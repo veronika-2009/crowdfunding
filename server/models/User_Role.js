@@ -1,25 +1,24 @@
 const Sequelize = require('sequelize');
 const db = require('../../server');
 
-const Image = db.sequelize.define(
-    "image_link",
+const User_Role = db.sequelize.define(
+    "user_role",
     {
-        id_image: {
+        id: {
             type: Sequelize.INTEGER,
             autoIncrement: true,
             primaryKey: true,
             allowNull: false
         },
-        link_image: {
-            type: Sequelize.STRING
+        roles: {
+            type: Sequelize.INTEGER
         }
     },
     {
         timestamps: false
     }
 )
-
-module.exports = Image;
-db.sequelize.sync().then(result=>{
+module.exports = User_Role;
+db.sequelize.sync().then(result => {
 })
-.catch(err=> console.log(err));
+    .catch(err => console.log(err));

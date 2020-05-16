@@ -19,10 +19,10 @@ const Header = (props) => {
                             <NavLink className="nav-item nav-link" to='/myCabinet'> My cabinet</NavLink>
                         </li>
                         <li className="nav-item">
-                            <NavLink className="nav-item nav-link" to='/logIn' >Log In</NavLink>
+                            <NavLink className="nav-item nav-link" to='/login' >Log In</NavLink>
                         </li>
                         <li className="nav-item">
-                            <NavLink className="nav-item nav-link" to='/signUp' >Sign Up</NavLink>
+                            <NavLink className="nav-item nav-link" to='/register' >Sign Up</NavLink>
                         </li>
                         <form className="form-inline">
                             <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />

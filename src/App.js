@@ -11,7 +11,8 @@ import DescriptionContainer from './component/Description/DescriptionContainer';
 import ScreenSaved from "./component/screenSaved/screenSaved";
 import Advertising from "./component/Advertising/Advertising";
 import CardsCampaignContainer from "./component/CardsCampaign/CardsCampaignContainer";
-import Count from "./component/counter/Count";
+import LoginContainer from "./component/Login/LoginContainer";
+import RegisterContainer from "./component/Register/RegisterContainer";
 
 
 const App = (props) => {
@@ -22,10 +23,20 @@ const App = (props) => {
         render={() => <ScreenSaved />} />
       <Route path="/description"
         render={() => <ScreenSaved />} />
+      <Route path="/lookCompany/"
+        render={() => <ScreenSaved />} />
       <Route path="/myCabinet"
         render={() => <Advertising />} />
       <Route exact path="/"
         render={() => <Picture />} />
+      <div className="appWrapperCompany">
+        <Route path="/lookCompany/:id"
+          render={() => <LookCompanyContainer />} />
+        <Route exact path="/login"
+          render={() => <LoginContainer />} />
+        <Route exact path="/register"
+          render={() => <RegisterContainer />} />
+      </div>
       <div className="appWrapperContent">
         <Route path="/description/:id"
           render={() => <DescriptionContainer />} />
@@ -35,10 +46,8 @@ const App = (props) => {
           render={() => <CreateCompanyContainer />} />
         <Route exact path="/"
           render={() => <CardsCampaignContainer />} />
-        <Route path="/lookCompany/:id"
-          render={() => <LookCompanyContainer />} />
-        <Route path="/counter"
-          render={() => <Count />} />
+
+
       </div>
       <div className="appWrapperFooter">
         <Footer />

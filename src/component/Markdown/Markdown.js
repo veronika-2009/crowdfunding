@@ -45,7 +45,7 @@ function Markdown(props) {
  
   const submitDescription=(e)=>{
     e.preventDefault()
-  const idCompany = props.idCompany
+  const idCompany = props.match.params.id
       axios.post('http://localhost:4000/saveDescription/'+idCompany, {value} )
       .then(function (response) {
         if (response) {

@@ -44,10 +44,6 @@ const [value, setValue] = React.useState(props.startEdit);
 const [selectedTab, setSelectedTab] = React.useState("write");
   const id = props.id;
           props.setMarkdownCreator({ id:id, value: value })
-     
-//   });
-//   debugger
-//   props.setMarkdown({ id:id, value: value })
   return (
     <div className={styles.container}>
       <ReactMde
@@ -68,9 +64,6 @@ const [selectedTab, setSelectedTab] = React.useState("write");
     </div>
   );
 }
-// let mapStateToProps = (state) => ({
-//     company: state.companyPage.company
-// })
 let mapDispatchToProps = (dispatch) => {
     return {
         setMarkdownCreator: (textMarkdown) => {

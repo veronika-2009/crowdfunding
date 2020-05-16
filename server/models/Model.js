@@ -3,6 +3,7 @@ const db = require('../../server');
 const Image = require('./ImageModel');
 const Video = require('./VideoModel');
 
+
 const Company = db.sequelize.define(
     "company",
     {
@@ -42,7 +43,6 @@ const Company = db.sequelize.define(
             allowNull: true
         }
     },
-    
     {
         timestamps: false,
     }

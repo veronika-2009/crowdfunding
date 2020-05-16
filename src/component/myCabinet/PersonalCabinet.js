@@ -12,9 +12,11 @@ const PersonalCabinet = (props) => {
                 myCompany.map((company) =>
                     <div key={company.id} className="col-xl-6" >
                         <div className={style.container} >
-                            <div className="card" style={{ height: "750px" }}>
+                            <div className="card" style={{ height: "650px" }}>
                                 {company.image_links.map(home =>
-                                    <img style={{ height: "420px" }} src={home.link_image} className="card-img-top" alt="campaignPhoto" />
+                                 <div className={style.ramka}>
+                                     <img style={{ height: "220px" }} src={home.link_image} className="card-img-top" alt="campaignPhoto" />
+                                     </div>
                                 )}
                                 <div className="card-body">
                                     <h5 className="card-title">{company.nameCompany}</h5>

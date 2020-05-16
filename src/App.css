@@ -21,6 +21,13 @@ html {
     margin: 5% 25% 10% 25%;
     width: 55%;
   }
+  .appWrapperCompany {
+    position: relative;
+    background-color: #ffffff;
+    display: block;
+    margin: 5% 10% 10% 10%;
+    width: 75%;
+  }
   
   .appWrapperProfile {
     position: relative;

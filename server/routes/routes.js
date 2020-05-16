@@ -3,7 +3,12 @@ const users = express.Router();
 const Image = require('../models/ImageModel');
 const Video = require('../models/VideoModel');
 const Company = require('../models/Model');
+const User = require('../models/UsersModel');
 const cloudinary = require('cloudinary').v2;
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcrypt');
+
+process.env.SECRET_KEY = 'secret';
 
 cloudinary.config({
     cloud_name: 'site1',
@@ -24,10 +29,18 @@ users.post('/saveNewCompany', function (req, res, next) {
     }).then((data) => {
         const id = data.id
         console.log(id)
-       return res.json({ id: id })
+        return res.json({ id: id })
     }).catch(err => console.log(err));
 })
 users.post('/saveDescription/:id', function (req, res, next) {
+    const description = req.body.value;
+    const id = req.params.id
+    console.log(req.body)
+    Company.update({ description: description }, { where: { id: id } }).then(() => {
+        return res.sendStatus(200);
+    }).catch(err => console.log(err));
+})
+users.post('/saveEditDescription/:id', function (req, res, next) {
     const description = req.body.updateTextMarkdown;
     const id = req.params.id
     console.log(description)
@@ -52,7 +65,7 @@ users.post('/upload/:id', function (req, res, next) {
     })
 })
 users.post('/editImage/:id', function (req, res, next) {
-    if(!req.files) return 'no modified photo'
+    if (!req.files) return 'no modified photo'
     console.log(req.files.file)
     const file = req.files.file
     const id = req.params.id
@@ -86,34 +99,34 @@ users.post("/editVideo/:id", function (req, res) {
 });
 
 users.get("/myCabinet/", (req, res) => {
-    Company.findAll({include: [{ model: Image }, { model: Video } ]})
+    Company.findAll({ include: [{ model: Image }, { model: Video }] })
         .then((respone) =>
             res.send(respone))
 });
 
 users.get("/lookCompany/:id", (req, res) => {
     const id = req.params.id;
-    Company.findAll({ where: { id: id }, include: [{ model: Image }, { model: Video } ] })
+    Company.findAll({ where: { id: id }, include: [{ model: Image }, { model: Video }] })
         .then((respone) =>
             res.send(respone))
 });
 
 users.get("/lookImage/:id", (req, res) => {
     const id = req.params.id;
-    Image.findAll({ where: { id: id }  })
+    Image.findAll({ where: { id: id } })
         .then((respone) =>
             res.send(respone))
 });
 users.get("/lookVideo/:id", (req, res) => {
     const id = req.params.id;
-    Video.findAll({ where: { id: id }  })
+    Video.findAll({ where: { id: id } })
         .then((respone) =>
             res.send(respone))
 });
 
 users.get("/editCompany/:id", (req, res) => {
     const id = req.params.id;
-    Company.findAll({ where: { id: id }, include: [{ model: Image }, { model: Video } ] })
+    Company.findAll({ where: { id: id }, include: [{ model: Image }, { model: Video }] })
         .then((respone) =>
             res.send(respone))
 });
@@ -152,4 +165,62 @@ users.put("/editCompany/:id", function (req, res) {
         .catch(err => console.log(err));
 });
 
+users.post('/register', (req, res) => {
+    const today = new Date()
+    const userData = {
+        login: req.body.login,
+        password: req.body.password,
+        email: req.body.email,
+        date_reg: req.body.date_reg,
+        date_author: today,
+        status: req.body.status
+    }
+    User.findOne({
+        where: {
+            email: req.body.email
+        }
+    })
+        .then(data => {
+            if (!data) {
+                bcrypt.hash(req.body.password, 10, (err, hash) => {
+                    userData.password = hash
+                    User.create(userData)
+                        .then(data => {
+                            res.json({ status: data.email + 'register' })
+                        })
+                        .catch(err => {
+                            res.send('error' + err)
+                        })
+                })
+            } else {
+                res.json({ error: 'Usee already exist' })
+            }
+        })
+        .catch(err => {
+            res.send('error:' + err)
+        })
+})
+
+users.post('/login', (req, res) => {
+    User.findOne({
+        where: {
+            email: req.body.email
+        }
+    })
+        .then(data => {
+            if (data) {
+                if (bcrypt.compareSync(req.body.password, data.password)) {
+                    let token = jwt.sign(data.dataValues, process.env.SECRET_KEY, {
+                        expiresIn: 1440
+                    })
+                    res.send(token)
+                }
+            } else {
+                res.status(400).json({ error: 'User does not exist' })
+            }
+        })
+        .catch(err => {
+            res.status(400).json({ error: err })
+        })
+})
 module.exports = users;

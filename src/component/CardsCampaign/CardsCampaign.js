@@ -12,9 +12,11 @@ const CardsCampaign = (props) => {
                 campaign.map((company) =>
                     <div key={company.id} className="col-xl-4" >
                         <div className={style.container} >
-                            <div className="card" style={{ height: "670px" }}>
+                            <div className="card" style={{ height: "570px" }}>
                                 {company.image_links.map(home =>
-                                    <img src={home.link_image} style={{ height: "280px" }} className="card-img-top" alt="campaignPhoto" />
+                                    <div className={style.ramka}>
+                                        <img src={home.link_image} style={{ height: "180px" }} className="card-img-top" alt="campaignPhoto" />
+                                    </div>
                                 )}
                                 <div className="card-body">
                                     <h5 className="card-title">{company.nameCompany}</h5>
