@@ -7,7 +7,7 @@ const Company = require('./Model');
 const User = db.sequelize.define(
     "newUser",
     {
-        id: {
+        newUserId: {
             type: Sequelize.INTEGER,
             autoIncrement: true,
             primaryKey: true,

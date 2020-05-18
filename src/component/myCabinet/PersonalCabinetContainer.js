@@ -1,13 +1,9 @@
 import React from "react";
 import PersonalCabinet from "./PersonalCabinet";
 import { getCompanyAPI } from "../API/api";
-import Cookies from "universal-cookie";
 import { withRouter } from "react-router-dom";
 
 
-const cookies = new Cookies();
-cookies.set("nameCompany", "name", { path: "/"});
-console.log(cookies.get("nameCompany"));
 class PersonalCabinetContainer extends React.Component {
     constructor() {
         super()

@@ -4,7 +4,7 @@ const db = require('../../server');
 const Roles = db.sequelize.define(
     "roles",
     {
-        id: {
+        roleId: {
             type: Sequelize.INTEGER,
             autoIncrement: true,
             primaryKey: true,

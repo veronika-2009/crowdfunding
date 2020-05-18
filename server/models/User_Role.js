@@ -10,9 +10,9 @@ const User_Role = db.sequelize.define(
             primaryKey: true,
             allowNull: false
         },
-        roles: {
-            type: Sequelize.INTEGER
-        }
+        // newUserId: {
+        //     type: Sequelize.INTEGER
+        // }
     },
     {
         timestamps: false

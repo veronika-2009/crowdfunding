@@ -4,9 +4,11 @@ const Image = require('../models/ImageModel');
 const Video = require('../models/VideoModel');
 const Company = require('../models/Model');
 const User = require('../models/UsersModel');
+const Role = require('../models/RolesModel');
 const cloudinary = require('cloudinary').v2;
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
+const userRole = require('../models/User_Role');
 
 process.env.SECRET_KEY = 'secret';
 
@@ -166,14 +168,14 @@ users.put("/editCompany/:id", function (req, res) {
 });
 
 users.post('/register', (req, res) => {
-    const today = new Date()
     const userData = {
+        roles: [{
+            roles: 'user'
+        }],
         login: req.body.login,
         password: req.body.password,
         email: req.body.email,
-        date_reg: req.body.date_reg,
-        date_author: today,
-        status: req.body.status
+
     }
     User.findOne({
         where: {
@@ -184,7 +186,7 @@ users.post('/register', (req, res) => {
             if (!data) {
                 bcrypt.hash(req.body.password, 10, (err, hash) => {
                     userData.password = hash
-                    User.create(userData)
+                    User.create(userData, { include: [{ model: Role, as: 'roles' }] })
                         .then(data => {
                             res.json({ status: data.email + 'register' })
                         })
@@ -202,25 +204,30 @@ users.post('/register', (req, res) => {
 })
 
 users.post('/login', (req, res) => {
-    User.findOne({
+    User.findAll({
         where: {
             email: req.body.email
-        }
+            
+        },  include: Role
     })
         .then(data => {
+            const role = data[0].roles[0].roles;
             if (data) {
-                if (bcrypt.compareSync(req.body.password, data.password)) {
-                    let token = jwt.sign(data.dataValues, process.env.SECRET_KEY, {
+                if (bcrypt.compareSync(req.body.password, data[0].password)) {
+                    let token = jwt.sign(data[0].dataValues, process.env.SECRET_KEY, {
                         expiresIn: 1440
                     })
-                    res.send(token)
+                    res.send({
+                        token,
+                        role
+                    })
                 }
             } else {
-                res.status(400).json({ error: 'User does not exist' })
+                res.sendStatus(400).json({ error: 'User does not exist' })
             }
         })
         .catch(err => {
-            res.status(400).json({ error: err })
+            res.sendStatus(400).json({ error: err })
         })
 })
 module.exports = users;
