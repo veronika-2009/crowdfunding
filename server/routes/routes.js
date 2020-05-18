@@ -170,7 +170,7 @@ users.put("/editCompany/:id", function (req, res) {
 users.post('/register', (req, res) => {
     const userData = {
         roles: [{
-            roles: 'user'
+            roles: 'users'
         }],
         login: req.body.login,
         password: req.body.password,
