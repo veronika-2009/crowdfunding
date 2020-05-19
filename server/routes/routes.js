@@ -18,15 +18,16 @@ cloudinary.config({
     api_secret: '6j3sGiCQbU3kESqYhEJyWxYE4LA',
 });
 
-users.post('/saveNewCompany', function (req, res, next) {
+users.post('/saveNewCompany/:id', function (req, res, next) {
     console.log(req.body)
+    const id = req.params.id
     const nameCompany = req.body.values.nameCompany;
     const tag = req.body.values.tag;
     const shortDescription = req.body.values.shortDescription;
     const money = req.body.values.money;
     const days = req.body.values.days;
     Company.create({
-        nameCompany: nameCompany, many: money,
+        nameCompany: nameCompany, many: money, newUserId:id,
         short_description: shortDescription, tag: tag, days: days
     }).then((data) => {
         const id = data.id
@@ -106,6 +107,15 @@ users.get("/myCabinet/", (req, res) => {
             res.send(respone))
 });
 
+users.get("/myPersonalCabinet/:id", (req, res) => {
+    const id = req.params.id;
+    console.log(req)
+    console.log(id)
+    Company.findAll({ where: { newUserId: id }, include: [{ model: Image }, { model: Video }] })
+        .then((respone) =>
+            res.send(respone))
+});
+
 users.get("/lookCompany/:id", (req, res) => {
     const id = req.params.id;
     Company.findAll({ where: { id: id }, include: [{ model: Image }, { model: Video }] })
@@ -170,7 +180,7 @@ users.put("/editCompany/:id", function (req, res) {
 users.post('/register', (req, res) => {
     const userData = {
         roles: [{
-            roles: 'users'
+            roles: 'user'
         }],
         login: req.body.login,
         password: req.body.password,
@@ -207,19 +217,25 @@ users.post('/login', (req, res) => {
     User.findAll({
         where: {
             email: req.body.email
-            
-        },  include: Role
+
+        }, include: [{
+            model: Role
+        }]
     })
         .then(data => {
+                console.log(data)
             const role = data[0].roles[0].roles;
+            const dataValue = data[0].dataValues;
+            const newUserId = data[0].newUserId;
             if (data) {
                 if (bcrypt.compareSync(req.body.password, data[0].password)) {
-                    let token = jwt.sign(data[0].dataValues, process.env.SECRET_KEY, {
+                    let token = jwt.sign({ dataValue, role }, process.env.SECRET_KEY, {
                         expiresIn: 1440
                     })
                     res.send({
                         token,
-                        role
+                        role,
+                        newUserId
                     })
                 }
             } else {

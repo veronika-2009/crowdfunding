@@ -29,7 +29,7 @@ const User = db.sequelize.define(
     }
 )
 User.belongsToMany(Roles,{ through: User_Role})
-User.hasMany(Company,{ foreignKey: 'id'})
+User.hasMany(Company,{ foreignKey: 'newUserId'})
 module.exports = User;
 db.sequelize.sync().then(result => {
     console.log('table created')

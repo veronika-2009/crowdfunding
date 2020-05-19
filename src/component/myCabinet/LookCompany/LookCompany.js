@@ -30,6 +30,22 @@ const LookCompany = (props) => {
     )
 }
 const EditCompany = (props) => {
+    let token = JSON.parse(localStorage.getItem('usertoken'));
+
+    const user = (
+        <div>
+        </div>
+    )
+    const creator = (
+        <div className={styles.logOut}>
+            <button to="/myCabinet"
+                onClick={() => props.removeCompany(props.company.id)}
+                className="btn btn-danger">Remove company</button>
+            <button type="submit" onClick={props.goToEditMode}
+                className="btn btn-danger">Edit company</button>
+        </div>
+    )
+
     const sourse = props.company.description
     return (<div>
         <div className={styles.container}>
@@ -45,10 +61,10 @@ const EditCompany = (props) => {
                     <div className="col-8">
                         <img className={styles.generalImage} src={props.generalImage.link_image} alt="generalImage" />
                         <ReactPlayer url={props.generalVideo.video} controls={true}
-                        width="260px"
-                        height="200px"
-                        className={styles.reactPlayer}
-                    />
+                            width="260px"
+                            height="200px"
+                            className={styles.reactPlayer}
+                        />
                     </div>
                     <div className="xs-col ml-4">
                         <div className={styles.infoBar}>
@@ -61,15 +77,11 @@ const EditCompany = (props) => {
                             <br />
                         </div>
                         <div className={styles.editButton}>
-                            <button to="/myCabinet"
-                                onClick={() => props.removeCompany(props.company.id)}
-                                className="btn btn-danger">Remove company</button>
-                            <button type="submit" onClick={props.goToEditMode}
-                                className="btn btn-danger">Edit company</button>
+
+                            {token === null ? user : token.role === "admin" || token.id === props.company.newUserId ? creator : user}
                         </div>
                     </div>
                 </div>
-
                 <p className={styles.headingDescription}>Short description project</p>
                 <div className={styles.shortDescription}>{props.company.short_description}</div>
             </div>

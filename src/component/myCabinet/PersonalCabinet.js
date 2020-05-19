@@ -5,6 +5,9 @@ import style from "./PersonalCabinet.module.css";
 
 const PersonalCabinet = (props) => {
     const myCompany = Object.values(props.state.data)
+    if(myCompany.length===0){
+        return <h2>You no have campaigns created</h2>
+    }else{
     return (<>
         <h2>My Companies</h2>
         <div className="row" >
@@ -40,5 +43,6 @@ const PersonalCabinet = (props) => {
         </div >
     </>
     );
+        }
 }
 export default PersonalCabinet;

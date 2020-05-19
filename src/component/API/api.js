@@ -57,8 +57,8 @@ export const login = (data) => {
     email: data.email,
     password: data.password
   }).then(res => {
-    localStorage.setItem('usertoken', res.data.token);
-    localStorage.setItem('userRole', res.data.role);
+    let tokenObject = { 'token': res.data.token, 'role': res.data.role, 'id': res.data.newUserId};
+    localStorage.setItem('usertoken', JSON.stringify(tokenObject));
     return res.data;
   }).catch(function (err) {
     console.log(err);
