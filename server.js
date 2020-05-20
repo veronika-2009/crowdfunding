@@ -33,6 +33,10 @@ app.use(cors());
 app.use(cookieParser())
 let routes = require('./server/routes/routes');
 app.use('/', routes);
+app.use(require('serve-static')(__dirname + '/../../public'));
+app.use(require('cookie-parser')());
+app.use(require('body-parser').urlencoded({ extended: true }));
+
 
 
 sequelize.sync().then(()=>{
@@ -40,3 +44,10 @@ sequelize.sync().then(()=>{
     console.log("Example app listening on port 4000!");
   });
 }).catch(err=>console.log(err));
+// http://localhost:4000/callbackGitHub
+// Client ID
+// 3ddb089b13313937c81f
+// Client Secret
+// 3e408c6a804c9c2de8561369dff64ff9af31cf8b
+//id 58051511028-3avvt4ovho56p2ll4p9s57fhg99du3rp.apps.googleusercontent.com
+//secret j5MoPGdZ11yXNqdC73OOvGdD

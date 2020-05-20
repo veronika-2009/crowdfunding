@@ -10,7 +10,8 @@ const RegisterContainer = (props) => {
         const data = {
             email: values.email,
             login: values.login,
-            password: values.password
+            password: values.password,
+            name: values.name
         }
         register(data).then(res => {
             props.history.push('/login')

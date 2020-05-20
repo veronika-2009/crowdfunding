@@ -4,6 +4,7 @@ import git from "../../img/git.png";
 import { Field } from "redux-form";
 import { Input } from "../FormsControl/FormsControls";
 import { required } from "../validation/Validation";
+import GoogleRegister from './GoogleLogin';
 
 const Register = (props) => {
     return (
@@ -18,6 +19,16 @@ const Register = (props) => {
                                 className='form-control'
                                 name='login'
                                 placeholder='Enter Login'
+                                component={Input}
+                                validate={[required]}
+                            />
+                        </div>
+                        <div className='form-group'>
+                            <label htmlform='name'>Name</label>
+                            <Field type='text'
+                                className='form-control'
+                                name='name'
+                                placeholder='Enter Name'
                                 component={Input}
                                 validate={[required]}
                             />
@@ -42,7 +53,9 @@ const Register = (props) => {
                                 validate={[required]}
                             />
                         </div>
-                        <img className="mb-4" src={git} alt="git" />
+                        <div className={styles.google}>
+                        <GoogleRegister/>
+                        </div>
                         <div className={styles.button}>
                             <button type='submit'
                                 className='btn btn-lg btn-danger btn-block'>Sign in</button>

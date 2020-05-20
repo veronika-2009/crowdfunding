@@ -8,7 +8,9 @@ const Role = require('../models/RolesModel');
 const cloudinary = require('cloudinary').v2;
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
-const userRole = require('../models/User_Role');
+const superagent = require('superagent');
+
+
 
 process.env.SECRET_KEY = 'secret';
 
@@ -27,7 +29,7 @@ users.post('/saveNewCompany/:id', function (req, res, next) {
     const money = req.body.values.money;
     const days = req.body.values.days;
     Company.create({
-        nameCompany: nameCompany, many: money, newUserId:id,
+        nameCompany: nameCompany, many: money, newUserId: id,
         short_description: shortDescription, tag: tag, days: days
     }).then((data) => {
         const id = data.id
@@ -185,7 +187,7 @@ users.post('/register', (req, res) => {
         login: req.body.login,
         password: req.body.password,
         email: req.body.email,
-
+        name: req.body.name
     }
     User.findOne({
         where: {
@@ -223,10 +225,11 @@ users.post('/login', (req, res) => {
         }]
     })
         .then(data => {
-                console.log(data)
+            console.log(data)
             const role = data[0].roles[0].roles;
             const dataValue = data[0].dataValues;
             const newUserId = data[0].newUserId;
+            const name = data[0].name;
             if (data) {
                 if (bcrypt.compareSync(req.body.password, data[0].password)) {
                     let token = jwt.sign({ dataValue, role }, process.env.SECRET_KEY, {
@@ -235,7 +238,8 @@ users.post('/login', (req, res) => {
                     res.send({
                         token,
                         role,
-                        newUserId
+                        newUserId,
+                        name
                     })
                 }
             } else {
@@ -246,4 +250,6 @@ users.post('/login', (req, res) => {
             res.sendStatus(400).json({ error: err })
         })
 })
+
+
 module.exports = users;

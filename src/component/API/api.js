@@ -57,7 +57,7 @@ export const login = (data) => {
     email: data.email,
     password: data.password
   }).then(res => {
-    let tokenObject = { 'token': res.data.token, 'role': res.data.role, 'id': res.data.newUserId};
+    let tokenObject = { 'token': res.data.token, 'role': res.data.role, 'id': res.data.newUserId, name: res.data.name};
     localStorage.setItem('usertoken', JSON.stringify(tokenObject));
     return res.data;
   }).catch(function (err) {
@@ -68,7 +68,8 @@ export const register = (data) => {
   return instance.post('register', {
     login: data.login,
     email: data.email,
-    password: data.password
+    password: data.password,
+    name: data.name
   }).then(res => {
     console.log('Registred');
     return res.data;

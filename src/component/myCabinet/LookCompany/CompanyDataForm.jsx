@@ -1,8 +1,8 @@
 import React from "react";
 import { createField, Input, Textarea } from "../../FormsControl/FormsControls";
 import { reduxForm } from "redux-form";
-import styles from "../CreateCompany.module.css";
-import EditDropzone from "../EditDropzone";
+import styles from "../../CreateCompany/CreateCompany.module.css";
+import EditDropzone from "../Dropzone/EditDropzone";
 import ReactPlayer from "react-player";
 import EditMarkdown from "../../Markdown/EditMarkdown";
 
@@ -59,28 +59,27 @@ const CompanyDataForm = (props) => {
                         <p>We draw your attention to the fact that INDIEGOGO
                                     takes a commission only from successful projects.</p>
                     </div>
-                   
                     <div className={styles.container}>
-                                <h5> Project cover and video</h5>
-                                <p>This is the main image of your project.JPG, PNG, GIF, BMP / Format: 16x9 / Limit: 5 Mb</p>
-                                 <EditDropzone image={props.image} />
-                                <div className="form-row">
-                                    <div className="col" >
-                                    {createField("inputValue", "inputValue", [], Input, { placeholder: "Specify link with YouTube" })}
-                                        <ReactPlayer controls={true}
-                                        url={props.video[0].video} 
-                                            width='80%'
-                                            height='80%'
-                                            className={styles.reactPlayer}
-                                        />
-                                    </div>
-                                </div>
+                        <h5> Project cover and video</h5>
+                        <p>This is the main image of your project.JPG, PNG, GIF, BMP / Format: 16x9 / Limit: 5 Mb</p>
+                        <EditDropzone image={props.image} />
+                        <div className="form-row">
+                            <div className="col" >
+                                {createField("inputValue", "inputValue", [], Input, { placeholder: "Specify link with YouTube" })}
+                                <ReactPlayer controls={true}
+                                    url={props.video[0].video}
+                                    width='85%'
+                                    height='350px'
+                                    className={styles.reactPlayer}
+                                />
                             </div>
-                </div>
-                    <div className="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-                            <EditMarkdown startEdit={props.company.description} 
-                            id={props.company.id}/>
                         </div>
+                    </div>
+                </div>
+                <div className="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                    <EditMarkdown startEdit={props.company.description}
+                        id={props.company.id} />
+                </div>
             </div>
         </form>
     )

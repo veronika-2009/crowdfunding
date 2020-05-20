@@ -2,7 +2,8 @@
   font-family: 'Helvetica Neue', 'Open Sans', 'Segoe UI', Helvetica, Arial, sans-serif;
   margin-top: 5%;
   display: block;
-  width: 100%;
+  width: 80%;
+  margin-left: 10%;
   height: 100%;
   color: #2a2a2a;
 }
@@ -67,5 +68,6 @@ h4 {
 .reactPlayer {
     background: url(../../img/youtube2.png)  no-repeat;
     background-size: contain;
-    margin: 3% 0 0 0;
+    margin: 3% 0 0 28px;
 }
+

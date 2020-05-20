@@ -5,7 +5,7 @@ import Header from "./component/Header/Header";
 import Footer from "./component/Footer/Footer";
 import Picture from "./component/Picture/Picture";
 import PersonalCabinetContainer from "./component/myCabinet/PersonalCabinetContainer";
-import CreateCompanyContainer from "./component/myCabinet/CreateCompanyContainer";
+import CreateCompanyContainer from "./component/CreateCompany/CreateCompanyContainer";
 import LookCompanyContainer from "./component/myCabinet/LookCompany/LookCompanyContainer";
 import DescriptionContainer from './component/Description/DescriptionContainer';
 import ScreenSaved from "./component/screenSaved/screenSaved";
@@ -13,6 +13,7 @@ import Advertising from "./component/Advertising/Advertising";
 import CardsCampaignContainer from "./component/CardsCampaign/CardsCampaignContainer";
 import LoginContainer from "./component/Login/LoginContainer";
 import RegisterContainer from "./component/Register/RegisterContainer";
+import EditCompany from "./component/myCabinet/LookCompany/EditCompany";
 
 
 const App = (props) => {
@@ -46,8 +47,6 @@ const App = (props) => {
           render={() => <CreateCompanyContainer />} />
         <Route exact path="/"
           render={() => <CardsCampaignContainer />} />
-
-
       </div>
       <div className="appWrapperFooter">
         <Footer />

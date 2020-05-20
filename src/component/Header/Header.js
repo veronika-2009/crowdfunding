@@ -9,8 +9,14 @@ const Header = (props) => {
         localStorage.removeItem('usertoken')
         props.history.push('/')
     }
+    let token = JSON.parse(localStorage.getItem('usertoken'));
     const userLink = (
         <ul className='navbar-nav'>
+            <div className={styles.name}>
+                <li className="nav-item">
+                    <NavLink className="nav-item nav-link" to='/'>{token === null ? 'anonim' : token.name} </NavLink>
+                </li>
+            </div>
             <div className={styles.logOut}>
                 <li className="nav-item">
                     <NavLink className="nav-item nav-link" to='/login' onClick={logOut}>Log Out</NavLink>

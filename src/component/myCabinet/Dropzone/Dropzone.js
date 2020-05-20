@@ -2,7 +2,7 @@ import React, { useCallback } from "react";
 import { useDropzone } from "react-dropzone";
 import axios from "axios";
 import FormData from "form-data";
-import img from "../../img/nophoto.png";
+import img from "../../../img/nophoto.png";
 import styles from "./Dropzone.module.css";
 
 

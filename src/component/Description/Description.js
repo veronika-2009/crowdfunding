@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./Description.module.css";
 import Markdown from "../Markdown/Markdown";
 import "react-autocomplete-input/dist/bundle.css";
-import MyDropzone from "../myCabinet/Dropzone";
+import MyDropzone from "../myCabinet/Dropzone/Dropzone";
 import ReactPlayer from "react-player";
 
 

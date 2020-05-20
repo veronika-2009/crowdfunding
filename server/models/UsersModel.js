@@ -22,6 +22,9 @@ const User = db.sequelize.define(
         },
         email: {
             type: Sequelize.STRING
+        },
+        name: {
+            type: Sequelize.STRING
         }
     },
     {

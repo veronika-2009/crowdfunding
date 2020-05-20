@@ -75,16 +75,6 @@ export const setGeneralImage = (generalImage) => ({ type: SET_GENERAL_IMAGE, gen
 export const setgeneralVideo = (generalVideo) => ({ type: SET_GENERAL_VIDEO, generalVideo})
 export const setMarkdown = (textMarkdown) => ({ type: SET_MARKDOWN, textMarkdown})
 export const setCompany = (company) => ({ type: SET_COMPANY, company })
-
-// export const newCompany = (nameCompany, description, tag) => async (dispatch) => {
-//     myCompanyAPI.newCompanyAPI(nameCompany, description, tag)
-//         .then(response => {
-//             if (response.data.resultCode === 0) {
-//                 let { nameCompany, description, tag } = response.data.payload
-//                 dispatch(addCompanyActionCreator(nameCompany, description, tag))
-//             }
-//         })
-// }
 export const saveCompany = (saveModifiedCompany) => async (dispatch) => {
     let response = await myCompanyAPI.saveCompany(saveModifiedCompany);
 }

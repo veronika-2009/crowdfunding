@@ -14,7 +14,7 @@ const CardsCampaign = (props) => {
                         <div className={style.container} >
                             <div className="card" style={{ height: "570px" }}>
                                 {company.image_links.map(home =>
-                                    <div className={style.ramka}>
+                                    <div className={style.ramka} key={home.id}>
                                         <img src={home.link_image} style={{ height: "180px" }} className="card-img-top" alt="campaignPhoto" />
                                     </div>
                                 )}

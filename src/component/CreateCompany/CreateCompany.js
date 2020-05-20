@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./CreateCompany.module.css";
 import "react-autocomplete-input/dist/bundle.css";
-import AutoCompleteFilter from "./InputAutocomplete/AutocompleteFilter";
+import AutoCompleteFilter from "../myCabinet/InputAutocomplete/AutocompleteFilter";
 import { Field } from "redux-form";
 import { required, maxLengthCreator, maxDaysCreator, minDaysCreator } from "../validation/Validation";
 import { Input, Textarea } from "../FormsControl/FormsControls";
