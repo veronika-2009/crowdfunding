@@ -1,5 +1,8 @@
 const Sequelize = require('sequelize');
 const db = require('../../server');
+const Image = require('./ImageModel');
+const Video = require('./VideoModel');
+
 
 const Company = db.sequelize.define(
     "company",
@@ -8,12 +11,13 @@ const Company = db.sequelize.define(
             type: Sequelize.INTEGER,
             autoIncrement: true,
             primaryKey: true,
-            allowNull: false
+            allowNull: false,
+            unique: false
         },
         nameCompany: {
             type: Sequelize.STRING,
             allowNull: true,
-            unique: true
+            unique: false
         },
         description: {
             type: Sequelize.STRING,
@@ -39,13 +43,13 @@ const Company = db.sequelize.define(
             allowNull: true
         }
     },
-    
     {
-        timestamps: false
+        timestamps: false,
     }
 )
+Company.hasMany(Image,{ foreignKey: 'id'})
+Company.hasMany(Video,{ foreignKey: 'id'})
 module.exports = Company;
-
 
 db.sequelize.sync().then(result=>{
   })

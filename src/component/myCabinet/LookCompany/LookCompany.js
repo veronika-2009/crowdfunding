@@ -1,66 +1,29 @@
-import React from 'react';
-import styles from './LookCompany.module.css';
-import generalImage from '../../../img/hand.jpg';
-import youtube from '../../../img/youtube.png';
-import tag from '../../../img/tag.png';
-import { NavLink } from 'react-router-dom';
-import ReactPlayer from "react-player";
+import React from "react";
+import { useState } from "react";
+import CompanyDataForm from "./CompanyDataForm";
+import EditCompany from "./EditCompany";
+import styles from "./LookCompany.module.css";
+
 
 const LookCompany = (props) => {
-    const myCompany = Object.values(props.state.data);
-    return (<div>
-        {myCompany.map((company) =>
-            <div key={company.id} className={styles.container}>
-                <div className={styles.general}>
-                    <span className={styles.nameCompany}>{company.nameCompany}</span>
-                    <div>
-                        <NavLink to='/' className={'tag'}>
-                            <img src={tag} alt='tag' />
-                            {company.tag}
-                        </NavLink>
-                    </div>
-                    <div className="form-row">
-                        <div className="col-9">
-                            <img className={styles.generalImage} src={generalImage} alt='generalImage' />
-                        </div>
-                        <div className="xs-col">
-                            <div className={styles.infoBar}>
-                                <div className={styles.figures}>0</div>
-                                <div className={styles.text}>sponsors</div>
-                                <div className={styles.figures}>0<span>USA</span></div>
-                                <div className={styles.text}><span>is necessary</span>{company.many}</div>
-                                <div className={styles.figures}>{company.days}</div>
-                                <span className={styles.text}>days left</span>
-                                <br />
-                            </div>
-                            <div className={styles.editButton}>
-                                <button type="submit"
-                                    className="btn btn-danger">Edit company</button>
-                            </div>
-
-                        </div>
-                    </div>
-                    {/* <img className={styles.youtube} src={youtube} alt='youtube' /> */}
-                    <ReactPlayer url={`https://www.youtube.com/watch?v=_BXuxeuT8ms`} controls={true}
-                                            width='583px'
-                                            height='300px'
-                                            className={styles.reactPlayer}
-                                        />
-                    <div className={'shortDescription'}>{company.short_description}</div>
-                    <hr className={styles.hrShadow} />
-                </div>
-                <div className={styles.topnav}>
-                    <NavLink to='/lookCompany' className={styles.active} >About</NavLink>
-
-                    <NavLink to='/lookCompany/news'>News</NavLink>
-                    <NavLink to='/lookCompany/gallery'>Gallery</NavLink>
-                </div>
-                <div className={'shortDescription'}>{company.short_description}</div>
-
-            </div>
-        )}
-    </div>
-    );
+    const textUpdate = props.newTextMarkdown;
+    const image = props.image;
+    const onSubmit = (formData) => {
+        props.saveCompany(formData);
+        props.saveImage(image);
+        props.saveVideo(formData);
+        props.saveTextMarkdown(textUpdate);
+        props.history.push("/myCabinet")
+    }
+    let [editMode, setEditMode] = useState(false);
+    return (
+        <div >
+            {editMode
+                ? <CompanyDataForm company={props.company} onSubmit={onSubmit} initialValues={props.company}
+                    image={props.image} video={props.video} />
+                : <EditCompany goToEditMode={() => { setEditMode(true) }} {...props} company={props.company}
+                    image={props.company.image_links} />}
+        </div>
+    )
 }
-
 export default LookCompany;

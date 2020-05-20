@@ -4,10 +4,11 @@ import Carousel from 'react-bootstrap/Carousel'
 
 const Picture = (props) => {
     return (
+        <div>
         <Carousel className={styles.slider}>
             <Carousel.Item>
                 <img
-                    className="d-block w-100"
+                    className="d-block w-100 "
                     src="https://c1.iggcdn.com/indiegogo-media-prod-cld/image/upload/f_auto/v1587514313/j5ii7bvsesi2e9syngh9.png"
                     alt="First slide"
                 />
@@ -52,7 +53,7 @@ const Picture = (props) => {
                 </Carousel.Caption>
             </Carousel.Item>
         </Carousel>
-
+        </div>
     );
 }
 

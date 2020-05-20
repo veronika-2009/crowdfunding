@@ -2,3 +2,9 @@
  text-transform: uppercase;
  cursor: pointer;
 }
+.slider{
+    margin-top: 3%;
+}
+@media only screen and (max-width: 480px) {
+    .slider {margin-top: 13%;}
+}

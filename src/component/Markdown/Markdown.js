@@ -1,8 +1,11 @@
-import * as React from "react";
+import  React from "react";
 import ReactMde from "react-mde";
+import { withRouter } from 'react-router-dom';
 import * as Showdown from "showdown";
 import "react-mde/lib/styles/css/react-mde-all.css";
 import styles from './Markdown.module.css';
+import axios from "axios";
+
 
 function loadSuggestions(text) {
   return new Promise((accept, reject) => {
@@ -36,10 +39,23 @@ const converter = new Showdown.Converter({
   strikethrough: true,
   tasklists: true
 });
-export default function Markdown() {
+function Markdown(props) {
   const [value, setValue] = React.useState();
   const [selectedTab, setSelectedTab] = React.useState("write");
-  
+ 
+  const submitDescription=(e)=>{
+    e.preventDefault()
+  const idCompany = props.match.params.id
+      axios.post('http://localhost:4000/saveDescription/'+idCompany, {value} )
+      .then(function (response) {
+        if (response) {
+          return props.history.push("/myCabinet");
+      }
+      })
+      .catch(function (error) {
+          console.log(error)
+      }) 
+}
   return (
     <div className={styles.container}>
       <ReactMde
@@ -57,11 +73,12 @@ export default function Markdown() {
           }
         }}
       />
-
+        <button style={{ marginTop: '20px', padding: '7px' }}
+        className="btn btn-danger" onClick={(e) =>submitDescription(e)}>Save all</button>
     </div>
   );
 }
-
+export default withRouter(Markdown);
 
 
 

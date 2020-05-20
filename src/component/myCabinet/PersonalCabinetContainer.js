@@ -1,32 +1,26 @@
-import React from 'react';
-import PersonalCabinet from './PersonalCabinet';
-import { getCompanyAPI } from '../API/api';
-import Cookies from 'universal-cookie';
-import { withRouter } from 'react-router-dom';
+import React from "react";
+import PersonalCabinet from "./PersonalCabinet";
+import { withRouter } from "react-router-dom";
+import axios from "axios";
 
-const cookies = new Cookies();
-cookies.set('nameCompany', 'name', { path: '/' });
-console.log(cookies.get('nameCompany'));
+
 class PersonalCabinetContainer extends React.Component {
     constructor() {
         super()
         this.state = {
-            data: [],
-            // nameCompany: cookies.get('nameCompany') 
+            data: []
         }
-        this.handleClick = this.handleClick.bind(this);
-    }
-    handleClick = (id) => {
-        this.setState({ id: id })
-        this.props.history.push('/editCompany/?'+id);
-    }
+    } 
     componentDidMount() {
-        getCompanyAPI().then((response) => {
+        let token = JSON.parse( localStorage.getItem('usertoken') );
+        let id = token.id
+        console.log('get')
+        axios.get(`http://localhost:4000/myPersonalCabinet/${id}`).then((response) => {
             let data = response.data;
+            console.log(response)
             this.setState({
                 data: data
             });
-            // cookies.set('nameCompany', 'hhhhh', { path: '/' });
         })
             .catch(error => {
                 console.log(error);
@@ -35,7 +29,7 @@ class PersonalCabinetContainer extends React.Component {
     render() {
         return (
             <div >
-                <PersonalCabinet state={this.state} handleClick={this.handleClick} />
+                <PersonalCabinet state={this.state} />
             </div>
         )
     }

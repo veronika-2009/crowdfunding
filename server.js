@@ -6,8 +6,7 @@ var Sequelize = require('sequelize');
 var cookieParser = require('cookie-parser');
 const fileUpload = require('express-fileupload');
 
-var db = {}
-
+var db ={}
 
 var sequelize = new Sequelize('heroku_3d322cb1144a021','b7dd8f543e5f58', '5833cb15', {
     host: 'us-cdbr-iron-east-01.cleardb.net',
@@ -20,7 +19,6 @@ var sequelize = new Sequelize('heroku_3d322cb1144a021','b7dd8f543e5f58', '5833cb
         idle: 10000
     }
 })
-
 db.sequelize = sequelize
 db.Sequelize = Sequelize
 module.exports = db
@@ -31,9 +29,14 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(cors());
 app.use(cookieParser())
-let routes = require('./server/routes/routes');
+const routes = require('./server/routes/companyRoutes');
 app.use('/', routes);
-
+routes.use('/login', require('./server/routes/loginRoutes'));
+routes.use('/', require('./server/routes/editRoutes'));
+routes.use('/', require('./server/routes/displayRoutes'));
+app.use(require('serve-static')(__dirname + '/../../public'));
+app.use(require('cookie-parser')());
+app.use(require('body-parser').urlencoded({ extended: true }));
 
 sequelize.sync().then(()=>{
   app.listen(PORT, function(){

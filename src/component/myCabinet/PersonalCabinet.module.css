@@ -1,0 +1,31 @@
+.myCompanyLink {
+  font-size: 13px;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: solid 1px;
+  background-color: #e51075;
+  color: #ffffff;
+  border-radius: 4px;
+  padding: 9px;
+  margin-left: 28%;
+}
+@media only screen and (max-width: 480px) {
+  .myCompanyLink {
+    margin-left: 18%;
+  }
+}
+.myCompanyLink:hover {
+  background-color: #eb3288;
+  color: #ffffff;
+  border-color: #e51075;
+  text-decoration: none;
+}
+.container {
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+.container img {
+  /* width: 379px;*/
+  /* height: 200px;   */
+   object-fit: cover;
+} 

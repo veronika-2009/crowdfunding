@@ -18,6 +18,7 @@ const Image = db.sequelize.define(
         timestamps: false
     }
 )
+
 module.exports = Image;
 db.sequelize.sync().then(result=>{
 })
