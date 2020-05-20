@@ -11,11 +11,13 @@ const GoogleRegister = (props) => {
         setName(response.profileObj.name);
         setEmail(response.profileObj.email);
         if (response) {
-            axios.post('http://localhost:4000/register', {
+            axios.post('http://localhost:4000/login/register', {
                 login: response.googleId,
                 email: response.profileObj.email,
                 name: response.profileObj.name
             }).then(res => {
+                let tokenObject = { 'token': res.data.token, 'id': res.data.newUserId, 'name': res.data.name};
+                localStorage.setItem('usertoken', JSON.stringify(tokenObject));
                 console.log('Registred');
                 return res.data;
             })

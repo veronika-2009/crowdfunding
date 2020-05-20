@@ -53,7 +53,7 @@ export const myCompanyAPI = {
 }
 
 export const login = (data) => {
-  return instance.post('login', {
+  return instance.post('login/login', {
     email: data.email,
     password: data.password
   }).then(res => {
@@ -65,7 +65,7 @@ export const login = (data) => {
   })
 }
 export const register = (data) => {
-  return instance.post('register', {
+  return instance.post('login/register', {
     login: data.login,
     email: data.email,
     password: data.password,

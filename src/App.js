@@ -13,7 +13,6 @@ import Advertising from "./component/Advertising/Advertising";
 import CardsCampaignContainer from "./component/CardsCampaign/CardsCampaignContainer";
 import LoginContainer from "./component/Login/LoginContainer";
 import RegisterContainer from "./component/Register/RegisterContainer";
-import EditCompany from "./component/myCabinet/LookCompany/EditCompany";
 
 
 const App = (props) => {

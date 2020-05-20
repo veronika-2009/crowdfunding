@@ -3,6 +3,7 @@ import styles from './Header.module.css';
 import { NavLink } from 'react-router-dom';
 import { withRouter } from "react-router-dom";
 
+
 const Header = (props) => {
     const logOut = (e) => {
         e.preventDefault()
@@ -62,5 +63,4 @@ const Header = (props) => {
         </div>
     );
 }
-
 export default withRouter(Header);
