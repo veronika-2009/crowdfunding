@@ -52,7 +52,6 @@ login.post('/login', (req, res) => {
         }]
     })
         .then(data => {
-            console.log(data)
             const role = data[0].roles[0].roles;
             const dataValue = data[0].dataValues;
             const newUserId = data[0].newUserId;

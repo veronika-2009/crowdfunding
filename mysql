@@ -8,3 +8,4 @@ us-cdbr-iron-east-01.cleardb.net //host
 heroku_3d322cb1144a021 //database
 ?
 reconnect=true
+//mysql -h us-cdbr-iron-east-01.cleardb.net -u b7dd8f543e5f58 -p

@@ -1,5 +1,4 @@
 import React from 'react';
-// import styles from './Footer.module.css';
 import { NavLink } from 'react-router-dom';
 import facebook from '../../img/facebook.png';
 import vk from '../../img/vk.png';
@@ -70,7 +69,4 @@ const Footer = (props) => {
     </footer>
   )
 };
-
-
-
 export default Footer;

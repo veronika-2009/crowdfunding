@@ -14,7 +14,6 @@ cloudinary.config({
     api_secret: '6j3sGiCQbU3kESqYhEJyWxYE4LA',
 });
 users.post('/saveNewCompany/:id', function (req, res, next) {
-    console.log(req.body)
     const id = req.params.id
     const nameCompany = req.body.values.nameCompany;
     const tag = req.body.values.tag;
@@ -23,23 +22,22 @@ users.post('/saveNewCompany/:id', function (req, res, next) {
     const days = req.body.values.days;
     Company.create({
         nameCompany: nameCompany, many: money, newUserId: id,
-        short_description: shortDescription, tag: tag, days: days
+        short_description: shortDescription,
+         tag: tag,
+         days: days
     }).then((data) => {
         const id = data.id
-        console.log(id)
         return res.json({ id: id })
     }).catch(err => console.log(err));
 })
 users.post('/saveDescription/:id', function (req, res, next) {
     const description = req.body.value;
     const id = req.params.id
-    console.log(req.body)
     Company.update({ description: description }, { where: { id: id } }).then(() => {
         return res.sendStatus(200);
     }).catch(err => console.log(err));
 })
 users.post('/upload/:id', function (req, res, next) {
-    console.log(req.files.file)
     const file = req.files.file
     const id = req.params.id
     cloudinary.uploader.upload(file.tempFilePath, function (req, result) {
@@ -48,7 +46,6 @@ users.post('/upload/:id', function (req, res, next) {
             result
         })
         const image = result.url
-        console.log(image)
         Image.create({ link_image: image, id: id }).then(() => {
             return next();
         }).catch(err => console.log(err));
@@ -56,7 +53,6 @@ users.post('/upload/:id', function (req, res, next) {
 })
 users.post('/editImage/:id', function (req, res, next) {
     if (!req.files) return 'no modified photo'
-    console.log(req.files.file)
     const file = req.files.file
     const id = req.params.id
     cloudinary.uploader.upload(file.tempFilePath, function (req, result) {
@@ -65,7 +61,6 @@ users.post('/editImage/:id', function (req, res, next) {
             result
         })
         const image = result.url
-        console.log(image)
         Image.update({ link_image: image }, { where: { id: id } }).then(() => {
             return next();
         }).catch(err => console.log(err));
@@ -81,7 +76,6 @@ users.post("/uploadVideo/:id", function (req, res) {
 });
 users.post("/createCompany", function (req, res, next) {
     if (!req.body) return res.sendStatus(400);
-    console.log(req.body)
     const nameCompany = req.body.values.nameCompany;
     const shortDescription = req.body.values.shortDescription;
     Company.create({ nameCompany: nameCompany, short_description: shortDescription }).then(() => {

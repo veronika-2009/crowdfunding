@@ -16,7 +16,6 @@ edit.post("/editVideo/:id", function (req, res) {
 edit.post('/saveEditDescription/:id', function (req, res, next) {
     const description = req.body.updateTextMarkdown;
     const id = req.params.id
-    console.log(description)
     Company.update({ description: description }, { where: { id: id } }).then(() => {
         return res.sendStatus(200);
     }).catch(err => console.log(err));

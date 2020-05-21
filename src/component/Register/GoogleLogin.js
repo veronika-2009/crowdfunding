@@ -18,7 +18,6 @@ const GoogleRegister = (props) => {
             }).then(res => {
                 let tokenObject = { 'token': res.data.token, 'id': res.data.newUserId, 'name': res.data.name};
                 localStorage.setItem('usertoken', JSON.stringify(tokenObject));
-                console.log('Registred');
                 return res.data;
             })
                 .catch(function (err) {

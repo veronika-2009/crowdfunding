@@ -74,7 +74,7 @@ const EditCompany = (props) => {
                     <div className="tab-pane fade show active" id="nav-home" role="tabpanel"
                         aria-labelledby="nav-home-tab">
                         <div className={styles.description}>
-                            <div className={"description"}>
+                            <div className="description">
                                 <ReactMarkdown
                                     source={sourse}
                                 />

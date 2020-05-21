@@ -12,8 +12,6 @@ display.get("/myCabinet/", (req, res) => {
 });
 display.get("/myPersonalCabinet/:id", (req, res) => {
     const id = req.params.id;
-    console.log(req)
-    console.log(id)
     Company.findAll({ where: { newUserId: id }, include: [{ model: Image }, { model: Video }] })
         .then((respone) =>
             res.send(respone))

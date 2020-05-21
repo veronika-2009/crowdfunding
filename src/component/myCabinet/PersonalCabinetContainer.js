@@ -14,10 +14,8 @@ class PersonalCabinetContainer extends React.Component {
     componentDidMount() {
         let token = JSON.parse( localStorage.getItem('usertoken') );
         let id = token.id
-        console.log('get')
         axios.get(`http://localhost:4000/myPersonalCabinet/${id}`).then((response) => {
             let data = response.data;
-            console.log(response)
             this.setState({
                 data: data
             });
