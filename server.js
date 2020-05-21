@@ -5,6 +5,7 @@ const app = express();
 var Sequelize = require('sequelize');
 var cookieParser = require('cookie-parser');
 const fileUpload = require('express-fileupload');
+const path = require('path');
 
 var db ={}
 var sequelize = new Sequelize('heroku_3d322cb1144a021','b7dd8f543e5f58', '5833cb15', {
@@ -22,7 +23,6 @@ db.sequelize = sequelize
 db.Sequelize = Sequelize
 module.exports = db
 var PORT = process.env.PORT || 4000
-
 app.use(fileUpload({useTempFiles:true}));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}))
@@ -33,10 +33,13 @@ app.use('/', routes);
 routes.use('/login', require('./server/routes/loginRoutes'));
 routes.use('/', require('./server/routes/editRoutes'));
 routes.use('/', require('./server/routes/displayRoutes'));
-app.use(require('serve-static')(__dirname + '/../../public'));
+// app.use(require('serve-static')(__dirname + '/../../public'));
 app.use(require('cookie-parser')());
 app.use(require('body-parser').urlencoded({ extended: true }));
-
+app.use(express.static(path.join(__dirname, '/../../public')));
+app.get('/*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
 sequelize.sync().then(()=>{
   app.listen(PORT, function(){
     console.log("Example app listening on port 4000!");

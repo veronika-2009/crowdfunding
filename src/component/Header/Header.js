@@ -2,6 +2,10 @@ import React from 'react';
 import styles from './Header.module.css';
 import { NavLink } from 'react-router-dom';
 import { withRouter } from "react-router-dom";
+import { locales } from "../shared/locales";
+import { Select, MenuItem } from "@material-ui/core";
+import storageKeys from "../shared/storageKeys";
+import { FormattedMessage } from 'react-intl';
 
 
 const Header = (props) => {
@@ -10,6 +14,10 @@ const Header = (props) => {
         localStorage.removeItem('usertoken')
         props.history.push('/')
     }
+    const onLocaleChange = (e) => {
+        props.setLocale(e.target.value);
+        localStorage.setItem(storageKeys.LOCALE, e.target.value);
+    };
     let token = JSON.parse(localStorage.getItem('usertoken'));
     const userLink = (
         <ul className='navbar-nav'>
@@ -58,6 +66,19 @@ const Header = (props) => {
                             <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                         </form>
                     </ul>
+                </div>
+                <div>
+                    <Select
+                        value={props.locale}
+                        onChange={onLocaleChange}
+                    >
+                        <MenuItem value={locales.RU}>
+                            <FormattedMessage id="language.russian" />
+                        </MenuItem>
+                        <MenuItem value={locales.EN}>
+                            <FormattedMessage id="language.english" />
+                        </MenuItem>
+                    </Select>
                 </div>
             </nav>
         </div>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./App.css"
 import { Route } from "react-router-dom";
 import Header from "./component/Header/Header";
@@ -13,12 +13,17 @@ import Advertising from "./component/Advertising/Advertising";
 import CardsCampaignContainer from "./component/CardsCampaign/CardsCampaignContainer";
 import LoginContainer from "./component/Login/LoginContainer";
 import RegisterContainer from "./component/Register/RegisterContainer";
+import { locales, localeMessages } from "./component/shared/locales";
+import storageKeys from "./component/shared/storageKeys";
+import { IntlProvider } from 'react-intl';
 
 
 const App = (props) => {
+  const [locale, setLocale] = useState(localStorage.getItem(storageKeys.LOCALE) || locales.RU);
   return (
+    <IntlProvider locale={locale} defaultLocale={locales.RU} messages={localeMessages[locale]}>
     <div className="app-wrapper">
-      <Header />
+      <Header locale={locale} setLocale={setLocale}/>
       <Route path="/createCompany"
         render={() => <ScreenSaved />} />
       <Route path="/description"
@@ -51,6 +56,7 @@ const App = (props) => {
         <Footer />
       </div>
     </div>
+    </IntlProvider>
   );
 }
 export default App;
