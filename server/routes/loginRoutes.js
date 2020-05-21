@@ -9,7 +9,7 @@ const login = express.Router();
 login.post('/register', (req, res) => {
     const userData = {
         roles: [{
-            roles: 'user'
+            roles: 'admin'
         }],
         login: req.body.login,
         password: req.body.password,
@@ -52,6 +52,7 @@ login.post('/login', (req, res) => {
         }]
     })
         .then(data => {
+            console.log(data)
             const role = data[0].roles[0].roles;
             const dataValue = data[0].dataValues;
             const newUserId = data[0].newUserId;
@@ -66,7 +67,7 @@ login.post('/login', (req, res) => {
                         role,
                         newUserId,
                         name
-                    })
+                    })   
                 }
             } else {
                 res.sendStatus(400).json({ error: 'User does not exist' })

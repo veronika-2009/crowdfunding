@@ -84,5 +84,4 @@ const Header = (props) => {
         </div>
     );
 }
-// "start": "react-scripts start",
 export default withRouter(Header);

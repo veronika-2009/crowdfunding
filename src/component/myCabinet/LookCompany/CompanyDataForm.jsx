@@ -5,6 +5,7 @@ import styles from "../../CreateCompany/CreateCompany.module.css";
 import EditDropzone from "../Dropzone/EditDropzone";
 import ReactPlayer from "react-player";
 import EditMarkdown from "../../Markdown/EditMarkdown";
+import { required } from "../../validation/Validation";
 
 
 const CompanyDataForm = (props) => {
@@ -27,21 +28,20 @@ const CompanyDataForm = (props) => {
                     aria-labelledby="nav-home-tab">
                     <div className={styles.container}>
                         <h5>Name Company</h5>
-                        {createField("nameCompany", "nameCompany", [], Input, { placeholder: "Enter company name" })}
+                        {createField("Enter company name", "nameCompany", [required], Input)}
                         <p>The name should be concise, unique and memorable.
                                     Be sure that the name of the project reflects its essence.</p>
                     </div>
                     <div className={styles.container}>
                         <h5>Short Company Description</h5>
-                        {createField("short_description", "short_description", [], Textarea,
-                            { placeholder: "Tell us briefly about the project" })}
+                        {createField("Tell us briefly about the project", "short_description", [required], Textarea)}
                         <p>Describe the purpose of your company in one sentence.</p>
                     </div>
                     <div className={styles.container}>
                         <h5>Company tag</h5>
                         <div className="form-row">
                             <div className="col">
-                                {createField("tag", "tag", [], Input, { placeholder: "Enter company tag" })}
+                                {createField("Enter company tag", "tag", [required], Input)}
                             </div>
                         </div>
                     </div>
@@ -49,7 +49,7 @@ const CompanyDataForm = (props) => {
                         <h5>Budget and Campaign Duration</h5>
                         <div className="form-row">
                             <div className="col">
-                                {createField("many", "many", [], Input, { placeholder: "Enter the amount of money in USA" })}
+                                {createField("Enter the amount of money in USA", "many", [required], Input)}
                             </div>
                             <div className="col">
                                 {createField("days", "days", [], Input, { placeholder: "Days" })}
@@ -65,7 +65,7 @@ const CompanyDataForm = (props) => {
                         <EditDropzone image={props.image} />
                         <div className="form-row">
                             <div className="col" >
-                                {createField("inputValue", "inputValue", [], Input, { placeholder: "Specify link with YouTube" })}
+                                {createField("Specify link with YouTube", "inputValue", [required], Input)}
                                 <ReactPlayer controls={true}
                                     url={props.video[0].video}
                                     width='85%'
