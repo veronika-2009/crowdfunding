@@ -36,9 +36,9 @@ routes.use('/', require('./server/routes/displayRoutes'));
 // app.use(require('serve-static')(__dirname + '/../../public'));
 app.use(require('cookie-parser')());
 app.use(require('body-parser').urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, '/../../public')));
+app.use(express.static(path.join(__dirname, 'build')));
 app.get('/*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 sequelize.sync().then(()=>{
   app.listen(PORT, function(){
