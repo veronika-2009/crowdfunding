@@ -6,39 +6,40 @@ import EditDropzone from "../Dropzone/EditDropzone";
 import ReactPlayer from "react-player";
 import EditMarkdown from "../../Markdown/EditMarkdown";
 import { required } from "../../validation/Validation";
+import { FormattedMessage,  useIntl } from 'react-intl';
 
 
 const CompanyDataForm = (props) => {
+    const intl = useIntl();
     return (
         <form onSubmit={props.handleSubmit} className={styles.header}>
             <nav>
                 <div className="nav nav-tabs" id="nav-tab" role="tablist">
                     <a className="nav-item nav-link active" id="nav-home-tab"
                         data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home"
-                        aria-selected="true">General information</a>
+                        aria-selected="true"><FormattedMessage id="navigation.information" /></a>
                     <a className="nav-item nav-link" id="nav-profile-tab" data-toggle="tab"
                         href="#nav-profile" role="tab" aria-controls="nav-profile"
-                        aria-selected="false">Сampaign description</a>
+                        aria-selected="false"><FormattedMessage id="navigation.campaignDescription" /></a>
                     <button type="submit" style={{ marginLeft: "40%" }}
-                        className="btn btn-danger">Save</button>
+                        className="btn btn-danger"><FormattedMessage id="navigation.save" /></button>
                 </div>
             </nav>
             <div className="tab-content" id="nav-tabContent">
                 <div className="tab-pane fade show active" id="nav-home" role="tabpanel"
                     aria-labelledby="nav-home-tab">
                     <div className={styles.container}>
-                        <h5>Name Company</h5>
+                        <h5><FormattedMessage id="navigation.nameCompany" /></h5>
                         {createField("Enter company name", "nameCompany", [required], Input)}
-                        <p>The name should be concise, unique and memorable.
-                                    Be sure that the name of the project reflects its essence.</p>
+                        <p><FormattedMessage id="navigation.uniqueName" /></p>
                     </div>
                     <div className={styles.container}>
-                        <h5>Short Company Description</h5>
+                        <h5><FormattedMessage id="navigation.shortDescription" /></h5>
                         {createField("Tell us briefly about the project", "short_description", [required], Textarea)}
-                        <p>Describe the purpose of your company in one sentence.</p>
+                        <p><FormattedMessage id="navigation.description" /></p>
                     </div>
                     <div className={styles.container}>
-                        <h5>Company tag</h5>
+                        <h5><FormattedMessage id="navigation.tag" /></h5>
                         <div className="form-row">
                             <div className="col">
                                 {createField("Enter company tag", "tag", [required], Input)}
@@ -46,7 +47,7 @@ const CompanyDataForm = (props) => {
                         </div>
                     </div>
                     <div className={styles.container}>
-                        <h5>Budget and Campaign Duration</h5>
+                        <h5><FormattedMessage id="navigation.buldet" /></h5>
                         <div className="form-row">
                             <div className="col">
                                 {createField("Enter the amount of money in USA", "many", [required], Input)}
@@ -54,18 +55,17 @@ const CompanyDataForm = (props) => {
                             <div className="col">
                                 {createField("days", "days", [], Input, { placeholder: "Days" })}
                             </div>
-                            <p>from 1 to 180 days</p>
+                            <p><FormattedMessage id="navigation.days" /></p>
                         </div>
-                        <p>We draw your attention to the fact that INDIEGOGO
-                                    takes a commission only from successful projects.</p>
+                        <p><FormattedMessage id="navigation.commission" /></p>
                     </div>
                     <div className={styles.container}>
-                        <h5> Project cover and video</h5>
-                        <p>This is the main image of your project.JPG, PNG, GIF, BMP / Format: 16x9 / Limit: 5 Mb</p>
+                        <h5> <FormattedMessage id="navigation.coverProject" /></h5>
+                        <p><FormattedMessage id="navigation.formatIMG" /></p>
                         <EditDropzone image={props.image} />
                         <div className="form-row">
                             <div className="col" >
-                                {createField("Specify link with YouTube", "inputValue", [required], Input)}
+                                {createField(intl.formatMessage({id: 'navigation.youtube'}), "inputValue", [required], Input)}
                                 <ReactPlayer controls={true}
                                     url={props.video[0].video}
                                     width='85%'

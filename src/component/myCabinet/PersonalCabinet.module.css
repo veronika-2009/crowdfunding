@@ -24,8 +24,12 @@
   margin-bottom: 10px;
   overflow: hidden;
 }
+.container span {
+  margin-left: 10px;
+}
 .container img {
-  /* width: 379px;*/
-  /* height: 200px;   */
    object-fit: cover;
 } 
+.noHaveCompany{
+  margin-left: 20%;
+}

@@ -1,15 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import style from "./PersonalCabinet.module.css";
+import { FormattedMessage } from 'react-intl';
 
 
 const PersonalCabinet = (props) => {
     const myCompany = Object.values(props.state.data)
     if(myCompany.length===0){
-        return <h2>You no have campaigns created</h2>
+        return <h2 className={style.noHaveCompany}><FormattedMessage id="navigation.noHave" /></h2>
     }else{
     return (<>
-        <h2>My Companies</h2>
+        <h2><FormattedMessage id="navigation.myCompanies" /></h2>
         <div className="row" >
             {
                 myCompany.map((company) =>
@@ -27,13 +28,13 @@ const PersonalCabinet = (props) => {
                                     <p className="card-text" style={{ textTransform: "none" }}>{company.short_description}</p>
                                 </div>
                                 <div className="card-footer">
-                                    <small className="text-muted">{company.many}<span> USA gather</span> </small>
+                                    <small className="text-muted">{company.many}<span><FormattedMessage id="navigation.usa" /></span> </small>
                                     <br />
-                                    <small className="text-muted">{company.days}<span> days left</span></small>
+                                    <small className="text-muted">{company.days}<span><FormattedMessage id="navigation.daysLeft" /></span></small>
                                     <br />
                                     <br />
                                     <Link to={{ pathname: `/lookCompany/${company.id}` }}
-                                        className={style.myCompanyLink}>Look company</Link>
+                                        className={style.myCompanyLink}><FormattedMessage id="navigation.look" /></Link>
                                 </div>
                             </div>
                         </div>

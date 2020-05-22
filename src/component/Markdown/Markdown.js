@@ -5,6 +5,7 @@ import * as Showdown from "showdown";
 import "react-mde/lib/styles/css/react-mde-all.css";
 import styles from './Markdown.module.css';
 import axios from "axios";
+import { FormattedMessage } from 'react-intl';
 
 
 function loadSuggestions(text) {
@@ -74,7 +75,7 @@ function Markdown(props) {
         }}
       />
         <button style={{ marginTop: '20px', padding: '7px' }}
-        className="btn btn-danger" onClick={(e) =>submitDescription(e)}>Save all</button>
+        className="btn btn-danger" onClick={(e) =>submitDescription(e)}><FormattedMessage id="navigation.saveAll" /></button>
     </div>
   );
 }

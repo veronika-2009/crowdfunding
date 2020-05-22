@@ -34,6 +34,9 @@
     margin-bottom: 10px;
     overflow: hidden;
   }
+  .container span {
+    margin-left: 10px;
+  }
   .container img {
      object-fit: cover;
   } 

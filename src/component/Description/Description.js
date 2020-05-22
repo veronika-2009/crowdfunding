@@ -4,39 +4,40 @@ import Markdown from "../Markdown/Markdown";
 import "react-autocomplete-input/dist/bundle.css";
 import MyDropzone from "../myCabinet/Dropzone/Dropzone";
 import ReactPlayer from "react-player";
+import { FormattedMessage,  useIntl } from 'react-intl';
 
 
 const Description = (props) => {
+    const intl = useIntl();
     return (
         <div >
             <div className={styles.header}>
-                <h1>Add a description</h1>
-                <h4>Consistently fill in all the fields.</h4>
+                <h1><FormattedMessage id="navigation.addDescription" /></h1>
+                <h4><FormattedMessage id="navigation.fiilFields" /></h4>
                 <form onSubmit={props.onSubmit}>
                     <nav>
                         <div className="nav nav-tabs" id="nav-tab" role="tablist">
                             <a className="nav-item nav-link active" id="nav-home-tab"
                                 data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home"
-                                aria-selected="true">Photo and Video</a>
+                                aria-selected="true"><FormattedMessage id="navigation.photoVideo" /></a>
                             <a className="nav-item nav-link" id="nav-profile-tab" data-toggle="tab"
                                 href="#nav-profile" role="tab" aria-controls="nav-profile"
-                                aria-selected="false">Detailed information</a>
+                                aria-selected="false"><FormattedMessage id="navigation.detailedInformation" /></a>
                         </div>
                     </nav>
                     <div className="tab-content" id="nav-tabContent">
                         <div className="tab-pane fade show active" id="nav-home" role="tabpanel"
                             aria-labelledby="nav-home-tab">
                             <div className={styles.container}>
-                                <h5> Project cover and video</h5>
-                                {/* <button type="button" className="btn btn-danger">Add cover</button> */}
-                                <p>This is the main image of your project.JPG, PNG, GIF, BMP / Format: 16x9 / Limit: 5 Mb</p>
+                                <h5><FormattedMessage id="navigation.coverProject" /> </h5>
+                                <p><FormattedMessage id="navigation.formatIMG" /></p>
                                 <MyDropzone idCompany={props.idCompany} />
                                 <div className="form-row">
                                     <div className="col" >
                                         <input type="text" style={{ marginTop: "10px" }} name="inputValue"
                                             value={props.state.inputValue}
                                             onChange={props.onChange} className="form-control"
-                                            placeholder="Specify link with YouTube" />
+                                            placeholder={intl.formatMessage({id: "navigation.youtube"})} />
                                         <ReactPlayer url={props.state.url} controls={true}
                                             width="80%"
                                             height="80%"
@@ -46,7 +47,7 @@ const Description = (props) => {
                                     <div className="col">
                                         <button onClick={props.onClick} value={props.state.url}
                                             style={{ marginTop: "170px", marginLeft: "20px" }} type="button"
-                                            className="btn btn-danger">Add video
+                                            className="btn btn-danger"><FormattedMessage id="navigation.addVideo" />
                                     </button>
                                     </div>
                                 </div>

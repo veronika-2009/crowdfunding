@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import style from "./CardCampaign.module.css";
 import tagImage from "../../img/tag.png";
+import { FormattedMessage } from 'react-intl';
 
 
 const CardsCampaign = (props) => {
@@ -26,13 +27,13 @@ const CardsCampaign = (props) => {
                                     <p className="card-text">{company.short_description}</p>
                                 </div>
                                 <div className="card-footer">
-                                    <small className="text-muted">{company.many}<span> USA gather</span> </small>
+                                    <small className="text-muted">{company.many}<span><FormattedMessage id="navigation.usa"/> </span> </small>
                                     <br />
-                                    <small className="text-muted">{company.days}<span> days left</span></small>
+                                    <small className="text-muted">{company.days}<span><FormattedMessage id="navigation.daysLeft"/></span></small>
                                     <br />
                                     <br />
                                     <Link to={{ pathname: `/lookCompany/${company.id}` }}
-                                        className={style.cardsLink} >Look company</Link>
+                                        className={style.cardsLink} ><FormattedMessage id="navigation.look" /></Link>
                                 </div>
                             </div>
                         </div>

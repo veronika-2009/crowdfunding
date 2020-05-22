@@ -5,10 +5,11 @@ import { withRouter } from "react-router-dom";
 import { locales } from "../shared/locales";
 import { Select, MenuItem } from "@material-ui/core";
 import storageKeys from "../shared/storageKeys";
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage,  useIntl } from 'react-intl';
 
 
 const Header = (props) => {
+    const intl = useIntl();
     const logOut = (e) => {
         e.preventDefault()
         localStorage.removeItem('usertoken')
@@ -23,19 +24,27 @@ const Header = (props) => {
         <ul className='navbar-nav'>
             <div className={styles.name}>
                 <li className="nav-item">
-                    <NavLink className="nav-item nav-link" to='/'>{token === null ? 'anonim' : token.name} </NavLink>
+                    <NavLink className="nav-item nav-link" to='/'>
+                        {token === null ? 'anonim' : token.name}
+                    </NavLink>
                 </li>
             </div>
             <div className={styles.logOut}>
                 <li className="nav-item">
-                    <NavLink className="nav-item nav-link" to='/login' onClick={logOut}>Log Out</NavLink>
+                    <NavLink className="nav-item nav-link" to='/login' onClick={logOut}>
+                        <FormattedMessage id="navigation.logout" />
+                    </NavLink>
                 </li>
             </div>
             <li className="nav-item">
-                <NavLink className="nav-item nav-link" to='/createCompany'> Start a Campaign</NavLink>
+                <NavLink className="nav-item nav-link" to='/createCompany'>
+                    <FormattedMessage id="navigation.startCompany" />
+                </NavLink>
             </li>
             <li className="nav-item">
-                <NavLink className="nav-item nav-link" to='/myCabinet'> My cabinet</NavLink>
+                <NavLink className="nav-item nav-link" to='/myCabinet'>
+                    <FormattedMessage id="navigation.cabinet" />
+                </NavLink>
             </li>
         </ul>
     )
@@ -43,10 +52,14 @@ const Header = (props) => {
         <div className={styles.login}>
             <ul className='navbar-nav'>
                 <li className="nav-item">
-                    <NavLink className="nav-item nav-link" to='/login' >Log In</NavLink>
+                    <NavLink className="nav-item nav-link" to='/login'>
+                        <FormattedMessage id="navigation.sign" />
+                    </NavLink>
                 </li>
                 <li className="nav-item">
-                    <NavLink className="nav-item nav-link" to='/register' >Sign Up</NavLink>
+                    <NavLink className="nav-item nav-link" to='/register' >
+                        <FormattedMessage id="navigation.register" />
+                    </NavLink>
                 </li>
             </ul>
         </div>
@@ -62,8 +75,11 @@ const Header = (props) => {
                     <ul className="navbar-nav">
                         {localStorage.usertoken ? userLink : loginRegLink}
                         <form className="form-inline">
-                            <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
-                            <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                            <input className="form-control mr-sm-2" type="search" 
+                            placeholder={intl.formatMessage({id: 'navigation.search'})} aria-label="Search" />
+                            <button className="btn btn-outline-success my-2 my-sm-0" type="submit">
+                            <FormattedMessage id="navigation.search" />
+                               </button>
                         </form>
                     </ul>
                 </div>

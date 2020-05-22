@@ -5,6 +5,7 @@ import img from "../../../img/nophoto.png";
 import styles from "./Dropzone.module.css";
 import { connect } from "react-redux";
 import { setImage } from "../../../Redux/companyReducer";
+import { FormattedMessage } from 'react-intl';
 
 
 function EditDropzone(props) {
@@ -27,8 +28,8 @@ function EditDropzone(props) {
             <input  {...getInputProps()} />
             {
                 isDragActive ?
-                    <p>Drop the files here ...</p> :
-                    <p>Drag 'n' drop some files here, or click to select files</p>
+                    <p><FormattedMessage id="navigation.dropFiles" /></p> :
+                    <p><FormattedMessage id="navigation.dragnDrop" /></p>
             }
             <img id="imageUploadPreview" src={props.company.image_links[0].link_image} alt="yourImage" />
         </div>

@@ -19,9 +19,9 @@ import { IntlProvider } from 'react-intl';
 
 
 const App = (props) => {
-  const [locale, setLocale] = useState(localStorage.getItem(storageKeys.LOCALE) || locales.RU);
+  const [locale, setLocale] = useState(localStorage.getItem(storageKeys.LOCALE) || locales.EN);
   return (
-    <IntlProvider locale={locale} defaultLocale={locales.RU} messages={localeMessages[locale]}>
+    <IntlProvider locale={locale} defaultLocale={locales.EN} messages={localeMessages[locale]}>
     <div className="app-wrapper">
       <Header locale={locale} setLocale={setLocale}/>
       <Route path="/createCompany"
@@ -36,24 +36,24 @@ const App = (props) => {
         render={() => <Picture />} />
       <div className="appWrapperCompany">
         <Route path="/lookCompany/:id"
-          render={() => <LookCompanyContainer />} />
+          render={() => <LookCompanyContainer locale={locale} setLocale={setLocale}/>} />
         <Route exact path="/login"
-          render={() => <LoginContainer />} />
+          render={() => <LoginContainer locale={locale} setLocale={setLocale}/>} />
         <Route exact path="/register"
-          render={() => <RegisterContainer />} />
+          render={() => <RegisterContainer locale={locale} setLocale={setLocale}/>} />
       </div>
       <div className="appWrapperContent">
         <Route path="/description/:id"
           render={() => <DescriptionContainer />} />
         <Route path="/myCabinet"
-          render={() => <PersonalCabinetContainer />} />
+          render={() => <PersonalCabinetContainer locale={locale} setLocale={setLocale}/>} />
         <Route path="/createCompany/"
-          render={() => <CreateCompanyContainer />} />
+          render={() => <CreateCompanyContainer locale={locale} setLocale={setLocale}/>} />
         <Route exact path="/"
-          render={() => <CardsCampaignContainer />} />
+          render={() => <CardsCampaignContainer locale={locale} setLocale={setLocale} />} />
       </div>
       <div className="appWrapperFooter">
-        <Footer />
+        <Footer locale={locale} setLocale={setLocale}/>
       </div>
     </div>
     </IntlProvider>

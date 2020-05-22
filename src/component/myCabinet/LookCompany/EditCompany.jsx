@@ -4,6 +4,7 @@ import tag from "../../../img/tag.png";
 import { NavLink } from "react-router-dom";
 import ReactPlayer from "react-player";
 import ReactMarkdown from "react-markdown";
+import { FormattedMessage } from 'react-intl';
 
 
 const EditCompany = (props) => {
@@ -16,9 +17,9 @@ const EditCompany = (props) => {
         <div >
             <button to="/myCabinet"
                 onClick={() => props.removeCompany(props.company.id)}
-                className="btn btn-danger">Remove company</button>
+                className="btn btn-danger"><FormattedMessage id="navigation.removeButton" /></button>
             <button type="submit" onClick={props.goToEditMode}
-                className="btn btn-danger">Edit company</button>
+                className="btn btn-danger"><FormattedMessage id="navigation.editButton" /></button>
         </div>
     )
     const sourse = props.company.description
@@ -44,11 +45,11 @@ const EditCompany = (props) => {
                     <div className="xs-col ml-4">
                         <div className={styles.infoBar}>
                             <div className={styles.data}>155</div>
-                            <div className={styles.text}>sponsors</div>
+                            <div className={styles.text}><FormattedMessage id="navigation.sponsors" /></div>
                             <div className={styles.data}>300<span>$</span></div>
-                            <div className={styles.text}><div>is necessary</div>{props.company.many}</div>
+                            <div className={styles.text}><div><FormattedMessage id="navigation.isNecessary" /></div>{props.company.many}</div>
                             <div className={styles.data}>{props.company.days}</div>
-                            <span className={styles.text}>days left</span>
+                            <span className={styles.text}><FormattedMessage id="navigation.daysLeft" /></span>
                             <br />
                         </div>
                         <div className={styles.editButton}>
@@ -56,7 +57,7 @@ const EditCompany = (props) => {
                         </div>
                     </div>
                 </div>
-                <p className={styles.headingDescription}>Short description project</p>
+                <p className={styles.headingDescription}><FormattedMessage id="navigation.shortDescription" /></p>
                 <div className={styles.shortDescription}>{props.company.short_description}</div>
             </div>
             <div className={styles.navigationСontent}>
@@ -64,10 +65,10 @@ const EditCompany = (props) => {
                     <div className="nav nav-tabs" id="nav-tab" role="tablist">
                         <a className="nav-item nav-link active" id="nav-home-tab"
                             data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home"
-                            aria-selected="true">About</a>
+                            aria-selected="true"><FormattedMessage id="navigation.about" /></a>
                         <a className="nav-item nav-link" id="nav-profile-tab" data-toggle="tab"
                             href="#nav-profile" role="tab" aria-controls="nav-profile"
-                            aria-selected="false">News</a>
+                            aria-selected="false"><FormattedMessage id="navigation.news" /></a>
                     </div>
                 </nav>
                 <div className="tab-content" id="nav-tabContent">
