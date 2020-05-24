@@ -1,0 +1,15 @@
+.container button {
+    margin-left: 5%;
+    margin-top: 10%;
+    background-color: #e51075;
+    border-color: #e51075;
+    padding: 2%;
+  }
+  .container button:hover {
+    background-color: #f02885;
+    border-color: #f02885;
+  }
+  .container button:focus {
+    background-color: #f02885;
+    border-color: #f02885;
+  }

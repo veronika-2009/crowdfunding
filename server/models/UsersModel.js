@@ -1,10 +1,9 @@
-const Sequelize = require('sequelize');
-const db = require('../../server');
-const Roles = require('./RolesModel');
-const User_Role = require('./User_Role');
-const Company = require('./Model');
-const Role = require('../models/RolesModel');
-const bcrypt = require('bcrypt');
+const Sequelize = require("sequelize");
+const db = require("../../server");
+const Roles = require("./RolesModel");
+const User_Role = require("./User_Role");
+const Company = require("./Model");
+const Role = require("../models/RolesModel");
 
 
 const User = db.sequelize.define(
@@ -42,21 +41,21 @@ db.sequelize.sync().then(result => {
         roles: [{
             roles: 'admin'
         }],
-        login: 999999,
-        password: 999999,
-        email: 999999,
+        login: 123456,
+        password: 123456,
+        email: 123456,
         name: 'admin'
     }
     User.findOne({
         where: {
-            email: 999999
+            email: 123456
         }
     }).then(data => {
         if (!data) {
             User.create(admin, { include: [{ model: Role, as: 'roles' }] });
 
         } else {
-            return ({ error: 'Admin already exist' })
+            return ({ error: "Admin already exist"})
         }
     })
 })

@@ -1,7 +1,7 @@
-const Sequelize = require('sequelize');
-const db = require('../../server');
-const Image = require('./ImageModel');
-const Video = require('./VideoModel');
+const Sequelize = require("sequelize");
+const db = require("../../server");
+const Image = require("./ImageModel");
+const Video = require("./VideoModel");
 
 
 const Company = db.sequelize.define(
@@ -47,10 +47,9 @@ const Company = db.sequelize.define(
         timestamps: false,
     }
 )
-Company.hasMany(Image,{ foreignKey: 'id'})
-Company.hasMany(Video,{ foreignKey: 'id'})
+Company.hasMany(Image, { foreignKey: "id" })
+Company.hasMany(Video, { foreignKey: "id"})
 module.exports = Company;
-
-db.sequelize.sync().then(result=>{
-  })
-  .catch(err=> console.log(err));
+db.sequelize.sync().then(result => {
+})
+    .catch(err => console.log(err));

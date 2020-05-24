@@ -1,8 +1,9 @@
-import React from 'react';
-import { register } from '../API/api';
+import React from "react";
+import { register } from "../API/api";
 import { withRouter } from "react-router-dom";
-import Register from './Register';
+import Register from "./Register";
 import { reduxForm } from "redux-form";
+
 
 const RegisterContainer = (props) => {
     const CreateRegisterFormRedux = reduxForm({ form: "Register" })(Register)
@@ -14,7 +15,7 @@ const RegisterContainer = (props) => {
             name: values.name
         }
         register(data).then(res => {
-            props.history.push('/login')
+            props.history.push("/login")
         })
     }
     return (

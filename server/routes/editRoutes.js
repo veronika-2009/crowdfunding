@@ -1,8 +1,8 @@
-const express = require('express');
+const express = require("express");
 const edit = express.Router();
-const Image = require('../models/ImageModel');
-const Video = require('../models/VideoModel');
-const Company = require('../models/Model');
+const Image = require("../models/ImageModel");
+const Video = require("../models/VideoModel");
+const Company = require("../models/Model");
 
 
 edit.post("/editVideo/:id", function (req, res) {
@@ -13,7 +13,7 @@ edit.post("/editVideo/:id", function (req, res) {
         return res.sendStatus(200);
     }).catch(err => console.log(err));
 });
-edit.post('/saveEditDescription/:id', function (req, res, next) {
+edit.post("/saveEditDescription/:id", function (req, res, next) {
     const description = req.body.updateTextMarkdown;
     const id = req.params.id
     Company.update({ description: description }, { where: { id: id } }).then(() => {

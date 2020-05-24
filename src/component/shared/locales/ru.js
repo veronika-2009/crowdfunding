@@ -77,6 +77,12 @@ const messages = {
     "navigation.enterPassword": "Введите пароль",
     "navigation.enterName": "Ввелите имя",
     "navigation.enterLogin": "Введите логин",
+    "navigation.removeUser": "Удалить",
+    "navigation.assignAdmin": "админ.",
+    "navigation.assignUser": "пользователь",
+    "navigation.id": "Идентификатор",
+    "navigation.myEmail": "Электронная почта",
+    "navigation.role": "Роль",
+    "navigation.adminPanel": "Админка",
 };
-
 export default messages;

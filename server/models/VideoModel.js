@@ -1,5 +1,5 @@
-const Sequelize = require('sequelize');
-const db = require('../../server');
+const Sequelize = require("sequelize");
+const db = require("../../server");
 
 
 const Video = db.sequelize.define(
@@ -20,6 +20,6 @@ const Video = db.sequelize.define(
     }
 )
 module.exports = Video;
-db.sequelize.sync().then(result=>{
+db.sequelize.sync().then(result => {
 })
-.catch(err=> console.log(err));
+    .catch(err => console.log(err));

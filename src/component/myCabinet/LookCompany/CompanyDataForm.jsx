@@ -6,7 +6,7 @@ import EditDropzone from "../Dropzone/EditDropzone";
 import ReactPlayer from "react-player";
 import EditMarkdown from "../../Markdown/EditMarkdown";
 import { required } from "../../validation/Validation";
-import { FormattedMessage,  useIntl } from 'react-intl';
+import { FormattedMessage, useIntl } from "react-intl";
 
 
 const CompanyDataForm = (props) => {
@@ -65,11 +65,11 @@ const CompanyDataForm = (props) => {
                         <EditDropzone image={props.image} />
                         <div className="form-row">
                             <div className="col" >
-                                {createField(intl.formatMessage({id: 'navigation.youtube'}), "inputValue", [required], Input)}
+                                {createField(intl.formatMessage({ id: "navigation.youtube" }), "inputValue", [required], Input)}
                                 <ReactPlayer controls={true}
                                     url={props.video[0].video}
-                                    width='85%'
-                                    height='350px'
+                                    width="85%"
+                                    height="350px"
                                     className={styles.reactPlayer}
                                 />
                             </div>

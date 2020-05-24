@@ -1,5 +1,6 @@
-const Sequelize = require('sequelize');
-const db = require('../../server');
+const Sequelize = require("sequelize");
+const db = require("../../server");
+
 
 const Image = db.sequelize.define(
     "image_link",
@@ -18,8 +19,7 @@ const Image = db.sequelize.define(
         timestamps: false
     }
 )
-
 module.exports = Image;
-db.sequelize.sync().then(result=>{
+db.sequelize.sync().then(result => {
 })
-.catch(err=> console.log(err));
+    .catch(err => console.log(err));

@@ -4,7 +4,7 @@ import Markdown from "../Markdown/Markdown";
 import "react-autocomplete-input/dist/bundle.css";
 import MyDropzone from "../myCabinet/Dropzone/Dropzone";
 import ReactPlayer from "react-player";
-import { FormattedMessage,  useIntl } from 'react-intl';
+import { FormattedMessage, useIntl } from "react-intl";
 
 
 const Description = (props) => {
@@ -37,7 +37,7 @@ const Description = (props) => {
                                         <input type="text" style={{ marginTop: "10px" }} name="inputValue"
                                             value={props.state.inputValue}
                                             onChange={props.onChange} className="form-control"
-                                            placeholder={intl.formatMessage({id: "navigation.youtube"})} />
+                                            placeholder={intl.formatMessage({ id: "navigation.youtube" })} />
                                         <ReactPlayer url={props.state.url} controls={true}
                                             width="80%"
                                             height="80%"
@@ -48,7 +48,7 @@ const Description = (props) => {
                                         <button onClick={props.onClick} value={props.state.url}
                                             style={{ marginTop: "170px", marginLeft: "20px" }} type="button"
                                             className="btn btn-danger"><FormattedMessage id="navigation.addVideo" />
-                                    </button>
+                                        </button>
                                     </div>
                                 </div>
                             </div>

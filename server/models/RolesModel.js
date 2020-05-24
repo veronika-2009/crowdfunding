@@ -1,5 +1,6 @@
-const Sequelize = require('sequelize');
-const db = require('../../server');
+const Sequelize = require("sequelize");
+const db = require("../../server");
+
 
 const Roles = db.sequelize.define(
     "roles",
@@ -19,6 +20,6 @@ const Roles = db.sequelize.define(
     }
 )
 module.exports = Roles;
-db.sequelize.sync().then(result=>{
+db.sequelize.sync().then(result => {
 })
-.catch(err=> console.log(err));
+    .catch(err => console.log(err));

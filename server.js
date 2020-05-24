@@ -1,11 +1,12 @@
-const express = require('express');
-const cors = require ('cors');
-const bodyParser = require ('body-parser');
+const express = require("express");
+const cors = require ("cors");
+const bodyParser = require ("body-parser");
 const app = express();
-var Sequelize = require('sequelize');
-var cookieParser = require('cookie-parser');
-const fileUpload = require('express-fileupload');
-const path = require('path');
+var Sequelize = require("sequelize");
+var cookieParser = require("cookie-parser");
+const fileUpload = require("express-fileupload");
+const path = require("path");
+
 
 var db ={}
 var sequelize = new Sequelize('heroku_3d322cb1144a021','b7dd8f543e5f58', '5833cb15', {
@@ -33,6 +34,7 @@ app.use('/', routes);
 routes.use('/login', require('./server/routes/loginRoutes'));
 routes.use('/', require('./server/routes/editRoutes'));
 routes.use('/', require('./server/routes/displayRoutes'));
+routes.use('/', require('./server/routes/AdminPanel'));
 // app.use(require('serve-static')(__dirname + '/../../public'));
 app.use(require('cookie-parser')());
 app.use(require('body-parser').urlencoded({ extended: true }));

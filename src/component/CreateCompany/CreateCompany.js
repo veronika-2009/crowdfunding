@@ -4,7 +4,7 @@ import "react-autocomplete-input/dist/bundle.css";
 import { Field } from "redux-form";
 import { required, maxLengthCreator, maxDaysCreator, minDaysCreator } from "../validation/Validation";
 import { Input, Textarea } from "../FormsControl/FormsControls";
-import { FormattedMessage,  useIntl } from 'react-intl';
+import { FormattedMessage, useIntl } from "react-intl";
 
 
 let maxLength255 = maxLengthCreator(255);
@@ -35,7 +35,7 @@ const CreateCompany = (props) => {
                                 <h5><FormattedMessage id="navigation.nameCompany" /></h5>
                                 <Field name={"nameCompany"} onChange={props.onChange}
                                     className="form-control form-control-lg" component={Input}
-                                    type={"text"} placeholder={intl.formatMessage({id: "navigation.enterNameCompany"})} 
+                                    type={"text"} placeholder={intl.formatMessage({ id: "navigation.enterNameCompany" })}
                                     validate={[required, maxLength255]} />
                                 <p><FormattedMessage id="navigation.uniqueName" /></p>
                             </div>
@@ -44,18 +44,18 @@ const CreateCompany = (props) => {
                                 <Field name={"shortDescription"}
                                     component={Textarea}
                                     className="form-control form-control-lg" type={"text"}
-                                    placeholder={intl.formatMessage({id: "navigation.enterShortDescription"})} 
-                                    validate={[required, maxLength400]}/>
+                                    placeholder={intl.formatMessage({ id: "navigation.enterShortDescription" })}
+                                    validate={[required, maxLength400]} />
                                 <p><FormattedMessage id="navigation.description" /></p>
                             </div>
                             <div className={styles.container}>
                                 <h5><FormattedMessage id="navigation.tag" /></h5>
                                 <div className="form-row">
                                     <div className="col">
-                                        <Field  name={"tag"} 
+                                        <Field name={"tag"}
                                             className="form-control form-control-lg" component={Input}
-                                            type={"text"} placeholder={intl.formatMessage({id: "navigation.enterTag"})}
-                                            validate={[required, maxLength255]}/>
+                                            type={"text"} placeholder={intl.formatMessage({ id: "navigation.enterTag" })}
+                                            validate={[required, maxLength255]} />
                                     </div>
                                 </div>
                             </div>
@@ -64,15 +64,15 @@ const CreateCompany = (props) => {
                                 <div className="form-row">
                                     <div className="col">
                                         <Field name={"money"} component={Input}
-                                            type={"number"} min="1" className="form-control" 
-                                            placeholder={intl.formatMessage({id: "navigation.enterUSA"})} 
-                                            validate={[required]}/>
+                                            type={"number"} min="1" className="form-control"
+                                            placeholder={intl.formatMessage({ id: "navigation.enterUSA" })}
+                                            validate={[required]} />
                                     </div>
                                     <div className="col">
                                         <Field name={"days"} component={Input}
-                                            type={"number"} min="1" max="180" className="form-control" 
-                                            placeholder={intl.formatMessage({id: "navigation.enterDays"})} 
-                                            validate={[required, maxDays, minDays]}/>
+                                            type={"number"} min="1" max="180" className="form-control"
+                                            placeholder={intl.formatMessage({ id: "navigation.enterDays" })}
+                                            validate={[required, maxDays, minDays]} />
                                     </div>
                                     <p><FormattedMessage id="navigation.days" /></p>
                                 </div>

@@ -8,9 +8,9 @@ import { reduxForm } from "redux-form";
 const CreateCompanyContainer = (props) => {
     const CreateCompanyFormRedux = reduxForm({ form: "CreateCompany" })(CreateCompany)
     const onSubmit = (values) => {
-        let token = JSON.parse( localStorage.getItem('usertoken') );
+        let token = JSON.parse(localStorage.getItem("usertoken"));
         let id = token.id
-        axios.post("http://localhost:4000/saveNewCompany/"+id, { values }, {
+        axios.post("http://localhost:4000/saveNewCompany/" + id, { values }, {
         }).then(response => {
             if (response) {
                 let id = response.data.id

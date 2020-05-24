@@ -4,7 +4,7 @@ import axios from "axios";
 import FormData from "form-data";
 import img from "../../../img/nophoto.png";
 import styles from "./Dropzone.module.css";
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage } from "react-intl";
 
 
 function MyDropzone(props) {

@@ -1,9 +1,8 @@
-import React from 'react';
-import styles from './Advertising.module.css';
+import React from "react";
+import styles from "./Advertising.module.css";
 
 
 const Advertising = (props) => {
-
     return (
         <div className={styles.advertising}>
             <h2>Indiegogo InDemand</h2>
@@ -12,5 +11,4 @@ const Advertising = (props) => {
         </div>
     );
 }
-
 export default Advertising;

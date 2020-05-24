@@ -1,15 +1,15 @@
-const express = require('express');
-const User = require('../models/UsersModel');
-const Role = require('../models/RolesModel');
-const jwt = require('jsonwebtoken');
-const bcrypt = require('bcrypt');
+const express = require("express");
+const User = require("../models/UsersModel");
+const Role = require("../models/RolesModel");
+const jwt = require("jsonwebtoken");
+const bcrypt = require("bcrypt");
 const login = express.Router();
 
 
-login.post('/register', (req, res) => {
+login.post("/register", (req, res) => {
     const userData = {
         roles: [{
-            roles: 'user'
+            roles: "user"
         }],
         login: req.body.login,
         password: req.body.password,
@@ -25,24 +25,23 @@ login.post('/register', (req, res) => {
             if (!data) {
                 bcrypt.hash(req.body.password, 10, (err, hash) => {
                     userData.password = hash
-                    User.create(userData, { include: [{ model: Role, as: 'roles' }] })
+                    User.create(userData, { include: [{ model: Role, as: "roles" }] })
                         .then(data => {
-                            res.json({ status: data.email + 'register' })
+                            res.json({ status: data.email + "register" })
                         })
                         .catch(err => {
-                            res.send('error' + err)
+                            res.send("error" + err)
                         })
                 })
             } else {
-                res.json({ error: 'Usee already exist' })
+                res.json({ error: "Usee already exist" })
             }
         })
         .catch(err => {
-            res.send('error:' + err)
+            res.send("error:" + err)
         })
 })
-
-login.post('/login', (req, res) => {
+login.post("/login", (req, res) => {
     User.findAll({
         where: {
             email: req.body.email
@@ -67,10 +66,10 @@ login.post('/login', (req, res) => {
                         role,
                         newUserId,
                         name
-                    })   
+                    })
                 }
             } else {
-                res.sendStatus(400).json({ error: 'User does not exist' })
+                res.sendStatus(400).json({ error: "User does not exist" })
             }
         })
         .catch(err => {

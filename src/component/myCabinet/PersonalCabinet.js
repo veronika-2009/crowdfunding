@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import style from "./PersonalCabinet.module.css";
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage } from "react-intl";
 
 
 const PersonalCabinet = (props) => {

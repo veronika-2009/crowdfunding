@@ -1,12 +1,12 @@
-import * as axios from 'axios';
+import * as axios from "axios";
 import FormData from "form-data";
 
 const instance = axios.create({
-  baseURL: 'http://localhost:4000/'
+  baseURL: "http://localhost:4000/"
 })
 
 export const getCompanyAPI = () => {
-  return instance.get('myCabinet')
+  return instance.get("myCabinet")
 }
 
 export const myCompanyAPI = {
@@ -47,28 +47,39 @@ export const myCompanyAPI = {
 }
 
 export const login = (data) => {
-  return instance.post('login/login', {
+  return instance.post("login/login", {
     email: data.email,
     password: data.password
   }).then(res => {
-    let tokenObject = { 'token': res.data.token, 'role': res.data.role, 'id': res.data.newUserId, name: res.data.name};
-    localStorage.setItem('usertoken', JSON.stringify(tokenObject));
+    let tokenObject = { "token": res.data.token, "role": res.data.role, "id": res.data.newUserId, name: res.data.name };
+    localStorage.setItem("usertoken", JSON.stringify(tokenObject));
     return res.data;
   }).catch(function (err) {
     console.log(err);
   })
 }
 export const register = (data) => {
-  return instance.post('login/register', {
+  return instance.post("login/register", {
     login: data.login,
     email: data.email,
     password: data.password,
     name: data.name
   }).then(res => {
-    console.log('Registred');
+    console.log("Registred");
     return res.data;
   })
     .catch(function (err) {
       console.log(err);
     })
 }
+export const usersList = (data) => {
+  return instance.get("usersList", {
+  })
+    .then(response => {
+      return response;
+    })
+    .catch(function (err) {
+      console.log(err);
+    })
+}
+

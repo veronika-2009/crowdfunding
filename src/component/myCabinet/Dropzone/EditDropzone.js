@@ -5,7 +5,7 @@ import img from "../../../img/nophoto.png";
 import styles from "./Dropzone.module.css";
 import { connect } from "react-redux";
 import { setImage } from "../../../Redux/companyReducer";
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage } from "react-intl";
 
 
 function EditDropzone(props) {

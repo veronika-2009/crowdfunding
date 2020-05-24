@@ -1,5 +1,5 @@
-import React from 'react';
-import { login } from '../API/api';
+import React from "react";
+import { login } from "../API/api";
 import { withRouter } from "react-router-dom";
 import Login from "./Login";
 import { reduxForm } from "redux-form";
@@ -14,7 +14,7 @@ const LoginContainer = (props) => {
         }
         login(data).then(res => {
             if (res) {
-                props.history.push('/')
+                props.history.push("/")
             }
         })
     }

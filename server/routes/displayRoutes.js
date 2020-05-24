@@ -1,8 +1,8 @@
-const express = require('express');
+const express = require("express");
 const display = express.Router();
-const Image = require('../models/ImageModel');
-const Video = require('../models/VideoModel');
-const Company = require('../models/Model');
+const Image = require("../models/ImageModel");
+const Video = require("../models/VideoModel");
+const Company = require("../models/Model");
 
 
 display.get("/myCabinet/", (req, res) => {

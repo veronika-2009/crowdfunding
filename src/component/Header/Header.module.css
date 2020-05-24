@@ -45,7 +45,7 @@
 .name{
   display: block;
   margin-left: 300px;
-  margin-right: -480px;
+  margin-right: -490px;
 }
 @media only screen and (max-width: 480px) {
   .login {

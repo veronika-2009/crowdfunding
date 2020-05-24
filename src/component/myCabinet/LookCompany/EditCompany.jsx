@@ -4,11 +4,11 @@ import tag from "../../../img/tag.png";
 import { NavLink } from "react-router-dom";
 import ReactPlayer from "react-player";
 import ReactMarkdown from "react-markdown";
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage } from "react-intl";
 
 
 const EditCompany = (props) => {
-    let token = JSON.parse(localStorage.getItem('usertoken'));
+    let token = JSON.parse(localStorage.getItem("usertoken"));
     const user = (
         <div>
         </div>

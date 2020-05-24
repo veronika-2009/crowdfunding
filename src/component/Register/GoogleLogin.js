@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import GoogleLogin from 'react-google-login';
-import axios from 'axios';
+import React, { useState } from "react";
+import GoogleLogin from "react-google-login";
+import axios from "axios";
 import { withRouter } from "react-router-dom";
 
 
@@ -11,19 +11,19 @@ const GoogleRegister = (props) => {
         setName(response.profileObj.name);
         setEmail(response.profileObj.email);
         if (response) {
-            axios.post('http://localhost:4000/login/register', {
+            axios.post("http://localhost:4000/login/register", {
                 login: response.googleId,
                 email: response.profileObj.email,
                 name: response.profileObj.name
             }).then(res => {
-                let tokenObject = { 'token': res.data.token, 'id': res.data.newUserId, 'name': res.data.name};
-                localStorage.setItem('usertoken', JSON.stringify(tokenObject));
+                let tokenObject = { "token": res.data.token, "id": res.data.newUserId, "name": res.data.name };
+                localStorage.setItem("usertoken", JSON.stringify(tokenObject));
                 return res.data;
             })
                 .catch(function (err) {
                     console.log(err);
                 })
-            props.history.push('/')
+            props.history.push("/")
         }
     }
     return (
@@ -33,7 +33,7 @@ const GoogleRegister = (props) => {
                 buttonText="Login"
                 onSuccess={responseGoogle}
                 onFailure={responseGoogle}
-                cookiePolicy={'single_host_origin'}
+                cookiePolicy={"single_host_origin"}
             />
         </div>
     )
