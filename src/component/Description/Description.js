@@ -38,15 +38,19 @@ const Description = (props) => {
                                             value={props.state.inputValue}
                                             onChange={props.onChange} className="form-control"
                                             placeholder={intl.formatMessage({ id: "navigation.youtube" })} />
+                                            <div className={styles.player}>
+
                                         <ReactPlayer url={props.state.url} controls={true}
                                             width="80%"
                                             height="80%"
                                             className={styles.reactPlayer}
                                         />
+                                            </div>
                                     </div>
                                     <div className="col">
+
                                         <button onClick={props.onClick} value={props.state.url}
-                                            style={{ marginTop: "170px", marginLeft: "20px" }} type="button"
+                                            style={{ marginTop: "70px", marginLeft: "20px" }} type="button"
                                             className="btn btn-danger"><FormattedMessage id="navigation.addVideo" />
                                         </button>
                                     </div>

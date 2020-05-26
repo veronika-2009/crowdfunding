@@ -1,15 +1,14 @@
+  * {
+    margin: 0;
+    padding: 0;
+  }
+
 html {
     margin: 0;
     padding: 0;
     font: inherit;
     color: rgb(255, 255, 255);
   }
-  
-  * {
-    margin: 0;
-    padding: 0;
-  }
-  
   .appWrapperContent {
     position: relative;
     display: flex;
@@ -28,7 +27,6 @@ html {
     margin: 5% 10% 10% 10%;
     width: 75%;
   }
-  
   .appWrapperProfile {
     position: relative;
     display: flex;
@@ -38,3 +36,5 @@ html {
     margin-left: -25%;
     width: 1200px;
   }
+
+

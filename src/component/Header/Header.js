@@ -22,10 +22,10 @@ const Header = (props) => {
     let token = JSON.parse(localStorage.getItem("usertoken"));
     const userLink = (
         <ul className="navbar-nav">
-            <div className={styles.name}>
+            <div className={styles.adminPanel}>
                 <li className="nav-item">
                     <NavLink className="nav-item nav-link" to="/admin">
-                        {token === null ? null : token.role === "admin"|| token.role === "admin" ? <FormattedMessage id="navigation.adminPanel" /> : null}
+                        {token === null ? null : token.role === "admin" || token.role === "admin" ? <FormattedMessage id="navigation.adminPanel" /> : null}
                     </NavLink>
                 </li>
             </div>

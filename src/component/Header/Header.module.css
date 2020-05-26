@@ -1,7 +1,6 @@
 .header {
   font-family: benton-sans, Helvetica, "Sans-serif";
 }
-
 .header a {
   font-weight: 700;
   text-decoration: none;
@@ -18,16 +17,13 @@
   border-color: #e51075;
   background-color: #e51075;
 }
-
 .header a:hover {
   color: #e51075;
 }
-
 .header a:hover:after,
 .header a:focus:after {
   width: 100%;
 }
-
 .header .logo {
   color: #e51075;
   font-size: 1.8rem;
@@ -42,16 +38,30 @@
 .login {
   margin-left: 650px;
 }
-.name{
+.name {
   display: block;
   margin-left: 300px;
   margin-right: -490px;
+}
+.adminPanel {
+  margin-left: 300px;
+  margin-right: -480px;
+}
+.theme {
+  margin-right: 5px;
+  cursor: pointer;
 }
 @media only screen and (max-width: 480px) {
   .login {
     margin-left: 1px;
   }
   .logOut {
+    margin-left: 1px;
+  }
+  .name {
+    margin-left: 1px;
+  }
+  .adminPanel {
     margin-left: 1px;
   }
 }

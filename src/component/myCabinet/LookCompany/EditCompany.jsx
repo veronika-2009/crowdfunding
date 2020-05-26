@@ -66,9 +66,6 @@ const EditCompany = (props) => {
                         <a className="nav-item nav-link active" id="nav-home-tab"
                             data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home"
                             aria-selected="true"><FormattedMessage id="navigation.about" /></a>
-                        <a className="nav-item nav-link" id="nav-profile-tab" data-toggle="tab"
-                            href="#nav-profile" role="tab" aria-controls="nav-profile"
-                            aria-selected="false"><FormattedMessage id="navigation.news" /></a>
                     </div>
                 </nav>
                 <div className="tab-content" id="nav-tabContent">
@@ -81,9 +78,6 @@ const EditCompany = (props) => {
                                 />
                             </div>
                         </div>
-                    </div>
-                    <div className="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-                        <p>news</p>
                     </div>
                 </div>
             </div>

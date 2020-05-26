@@ -21,8 +21,10 @@ function MyDropzone(props) {
         const idCompany = props.idCompany;
         axios.post("http://localhost:4000/upload/" + idCompany, formData, {
         }).then(res => {
-            console.log(res.statusText)
-        })
+            console.log('ok')
+        }).catch(function(err) {
+            console.log(err)
+         })
     }, [])
     const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop })
     return (

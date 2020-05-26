@@ -35,7 +35,6 @@ routes.use('/login', require('./server/routes/loginRoutes'));
 routes.use('/', require('./server/routes/editRoutes'));
 routes.use('/', require('./server/routes/displayRoutes'));
 routes.use('/', require('./server/routes/AdminPanel'));
-// app.use(require('serve-static')(__dirname + '/../../public'));
 app.use(require('cookie-parser')());
 app.use(require('body-parser').urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'build')));

@@ -20,7 +20,6 @@ class AdminContainer extends Component {
             this.setState({
                 data: data
             });
-            console.log(data)
         })
             .catch(error => {
                 console.log(error);
@@ -30,25 +29,31 @@ class AdminContainer extends Component {
         axios.post("http://localhost:4000/delete/" + id)
             .then(response => {
                 if (response) {
-                    return response;
+                    console.log('ok')
                 }
-            })
+            }).catch(function(err) {
+                console.log(err)
+             })
     }
     assignAdmin(id) {
         axios.post("http://localhost:4000/assignAdmin/" + id)
             .then(response => {
                 if (response) {
-                    return response;
+                    console.log('ok')
                 }
-            })
+            }).catch(function(err) {
+                console.log(err)
+             })
     }
     assignUser(id) {
         axios.post("http://localhost:4000/assignUser/" + id)
             .then(response => {
                 if (response) {
-                    return response;
+                    console.log('ok')
                 }
-            })
+            }).catch(function(err) {
+                console.log(err)
+             })
     }
     checkboxId = (id) => {
         this.setState({ checkboxId: id })
