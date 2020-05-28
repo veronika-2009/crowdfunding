@@ -51,7 +51,9 @@ export const login = (data) => {
     email: data.email,
     password: data.password
   }).then(res => {
-    let tokenObject = { "token": res.data.token, "role": res.data.role, "id": res.data.newUserId, name: res.data.name };
+    let tokenObject = { "token": res.data.token, "role": res.data.role, "id": res.data.newUserId, "name": res.data.name,
+    "email": res.data.email
+   };
     localStorage.setItem("usertoken", JSON.stringify(tokenObject));
     return res.data;
   }).catch(function (err) {

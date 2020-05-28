@@ -27,6 +27,9 @@ const User = db.sequelize.define(
         },
         name: {
             type: Sequelize.STRING
+        },
+        imageProfile: {
+            type: Sequelize.STRING
         }
     },
     {

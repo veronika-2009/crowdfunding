@@ -84,5 +84,6 @@ const messages = {
     "navigation.myEmail": "Электронная почта",
     "navigation.role": "Роль",
     "navigation.adminPanel": "Админка",
+    "navigation.edit": "Редактировать профиль",
 };
 export default messages;

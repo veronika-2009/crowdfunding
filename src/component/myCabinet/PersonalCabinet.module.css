@@ -9,16 +9,16 @@
   padding: 9px;
   margin-left: 28%;
 }
-@media only screen and (max-width: 480px) {
-  .myCompanyLink {
-    margin-left: 18%;
-  }
-}
 .myCompanyLink:hover {
   background-color: #eb3288;
   color: #ffffff;
   border-color: #e51075;
   text-decoration: none;
+}
+@media only screen and (max-width: 480px) {
+  .myCompanyLink {
+    margin-left: 18%;
+  }
 }
 .container {
   margin-bottom: 10px;
@@ -28,8 +28,8 @@
   margin-left: 10px;
 }
 .container img {
-   object-fit: cover;
-} 
-.noHaveCompany{
+  object-fit: cover;
+}
+.noHaveCompany {
   margin-left: 20%;
 }

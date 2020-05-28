@@ -56,6 +56,7 @@ login.post("/login", (req, res) => {
             const dataValue = data[0].dataValues;
             const newUserId = data[0].newUserId;
             const name = data[0].name;
+            const email = data[0].email;
             if (data) {
                 if (bcrypt.compareSync(req.body.password, data[0].password)) {
                     let token = jwt.sign({ dataValue, role }, process.env.SECRET_KEY, {
@@ -65,7 +66,8 @@ login.post("/login", (req, res) => {
                         token,
                         role,
                         newUserId,
-                        name
+                        name,
+                        email
                     })
                 }
             } else {

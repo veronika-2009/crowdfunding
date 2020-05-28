@@ -81,8 +81,9 @@ const messages = {
     "navigation.assignAdmin": "Assign admin",
     "navigation.assignUser": "Assign user",
     "navigation.id": "Id",
-    "navigation.myEmail": "Email ",
+    "navigation.myEmail": "Email",
     "navigation.role": "Role",
     "navigation.adminPanel": " Admin panel",
+    "navigation.edit": "Edit profile",
 };
 export default messages;

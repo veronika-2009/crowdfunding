@@ -39,7 +39,7 @@ const Admin = (props) => {
                                     <td>{user.login}</td>
                                     <td>{user.email}</td>
                                     <td>{user.roles.length === 0 ? null : user.roles[0].roles}</td>
-                                    <td>{user.companies.length === 0 ? null : user.companies[0].nameCompany}<br /></td>
+                                    <td>{user.companies.length === 0 ? null : user.companies[0].nameCompany+';'}</td>
                                 </tr>
                             )}
                         </tbody>
