@@ -8,8 +8,6 @@ import ProfileDropzone from "./ProfileDropzone";
 
 
 const ProfileForm = (props) => {
-    // debugger
-    // const imgProfile = props.state.data;
     return (<form onSubmit={props.handleSubmit} className={styles.header}>
         <div className={styles.container}>
             <div className="row">
@@ -17,7 +15,7 @@ const ProfileForm = (props) => {
                     <div className="row">
                         <div className="col-sm-4">
                             <div className="image-container ">
-                                <ProfileDropzone/>
+                                <ProfileDropzone {...props}/>
                                 <div className="middle mt-5 ml-2">
                                     <button type="submit"
                                         className="btn btn-danger"><FormattedMessage id="navigation.save" /></button>
@@ -26,8 +24,8 @@ const ProfileForm = (props) => {
                         </div>
                         <div className="col-sm-8 mt-5">
                             <div className="userData ml-3 ">
-                                <h2 className="d-block" style={{ fontSize: "1.5rem", fontWeight: "bold" }}><FormattedMessage id="navigation.name" />:
-                                <span>{createField("Name", "name", [], Input)}</span>
+                                <h2 className="d-block" style={{ fontSize: "1.5rem", fontWeight: "bold" }}><FormattedMessage id="navigation.login" />:
+                                <span>{createField("Login", "login", [], Input)}</span>
                                 </h2>
                                 <h6 className="d-block"><FormattedMessage id="navigation.myEmail" />:
                                 <span>{createField("Email", "email", [], Input)}</span></h6>

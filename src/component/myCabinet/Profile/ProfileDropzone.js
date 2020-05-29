@@ -32,7 +32,7 @@ function ProfileDropzone(props) {
         <div {...getRootProps()} className={styles.profileDropzone}>
             <input  {...getInputProps()} />
     
-            <img id="imageUploadPreview" src={img} alt="yourImage" className="img-thumbnail"/>
+            <img id="imageUploadPreview" src={props.imgProfile.imageProfile} alt="yourImage" className="img-thumbnail"/>
             {
                 isDragActive ?
                     <p><FormattedMessage id="navigation.dropFiles" /></p> :

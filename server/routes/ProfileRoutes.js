@@ -32,4 +32,14 @@ profile.post("/uploadProfileImg/:id", function (req, res, next) {
         }).catch(err => console.log(err));
     })
 })
+profile.post("/saveNewProfile/:id", function (req, res, next) {
+    const id = req.params.id
+    const login = req.body.values.login;
+    const email = req.body.values.email;
+    User.update({
+        login: login, email: email
+    }, { where: { newUserId: id } }).then((respone) => {
+        return res.send( respone )
+    }).catch(err => console.log(err));
+})
 module.exports = profile;

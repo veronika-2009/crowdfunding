@@ -11,10 +11,8 @@ class ProfileContainer extends React.Component {
         }
     }
     componentDidMount() {
-       
         let userTokenId = JSON.parse(localStorage.getItem("usertoken"));
         let id = userTokenId.id;
-        // debugger
         axios.get("http://localhost:4000/lookImageProfile/" + id, {
         }).then((image) => {
             let profile = image.data[0];
@@ -29,7 +27,7 @@ class ProfileContainer extends React.Component {
         return (
             <div >
                 <Profile state={this.state}
-                    />
+                />
             </div>
         )
     }

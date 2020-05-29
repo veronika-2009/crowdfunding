@@ -6,7 +6,6 @@ import img from "../../../img/noProfilePhoto.png";
 
 const ProfileInfo = (props) => {
     const imgProfile = props.state.data.imageProfile;
-    let userToken = JSON.parse(localStorage.getItem("usertoken"));
     return (<div>
         <div className={styles.container}>
             <div className="row">
@@ -24,10 +23,10 @@ const ProfileInfo = (props) => {
                         </div>
                         <div className="col-sm-8 mt-5">
                             <div className="userData ml-3 ">
-                                <h2 className="d-block" style={{ fontSize: "1.5rem", fontWeight: "bold" }}><FormattedMessage id="navigation.name" />:
-                            <span>{userToken.name}</span>
+                                <h2 className="d-block" style={{ fontSize: "1.5rem", fontWeight: "bold" }}><FormattedMessage id="navigation.login" />:
+                            <span>{props.state.data.login}</span>
                                 </h2>
-                                <h6 className="d-block"><FormattedMessage id="navigation.myEmail" />:{userToken.email}</h6>
+                                <h6 className="d-block"><FormattedMessage id="navigation.myEmail" />:{props.state.data.email}</h6>
                             </div>
 
                             <div className="ml-auto">

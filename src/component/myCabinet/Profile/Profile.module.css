@@ -31,6 +31,10 @@
   background-color: #f02885;
   border-color: #f02885;
 }
+.container input {
+  height: 30px;
+  font-size: 15px;
+}
 @media only screen and (max-width: 480px) {
   .myCompanyLink {
     margin-left: 1%;
