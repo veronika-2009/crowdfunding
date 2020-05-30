@@ -11,7 +11,13 @@ const Profile = (props) => {
         let id = token.id
         axios.post("http://localhost:4000/saveNewProfile/" + id, { values }, {
         }).then(response => {
-            setEditProfile(false)
+            if (response) {
+                props.updateState();
+                setTimeout(() => {
+
+                    setEditProfile(false);
+                }, 190);
+            }
         })
     }
     let [editProfile, setEditProfile] = useState(false);

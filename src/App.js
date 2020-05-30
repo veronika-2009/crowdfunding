@@ -44,14 +44,14 @@ const App = (props) => {
             render={() => <LoginContainer locale={locale} setLocale={setLocale} />} />
           <Route exact path="/register"
             render={() => <RegisterContainer locale={locale} setLocale={setLocale} />} />
+          <Route path="/createCompany/"
+            render={() => <CreateCompanyContainer locale={locale} setLocale={setLocale} />} />
         </div>
         <div className="appWrapperContent">
           <Route path="/description/:id"
             render={() => <DescriptionContainer />} />
           <Route path="/myCabinet"
             render={() => <PersonalCabinetContainer locale={locale} setLocale={setLocale} />} />
-          <Route path="/createCompany/"
-            render={() => <CreateCompanyContainer locale={locale} setLocale={setLocale} />} />
           <Route exact path="/"
             render={() => <CardsCampaignContainer locale={locale} setLocale={setLocale} />} />
         </div>

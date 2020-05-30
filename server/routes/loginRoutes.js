@@ -27,7 +27,7 @@ login.post("/register", (req, res) => {
                     userData.password = hash
                     User.create(userData, { include: [{ model: Role, as: "roles" }] })
                         .then(data => {
-                            res.json({ status: data.email + "register" })
+                         return res.json({ status: data.email + "register" })
                         })
                         .catch(err => {
                             res.send("error" + err)
@@ -62,7 +62,7 @@ login.post("/login", (req, res) => {
                     let token = jwt.sign({ dataValue, role }, process.env.SECRET_KEY, {
                         expiresIn: 1440
                     })
-                    res.send({
+                     res.send({
                         token,
                         role,
                         newUserId,
@@ -71,7 +71,7 @@ login.post("/login", (req, res) => {
                     })
                 }
             } else {
-                res.sendStatus(400).json({ error: "User does not exist" })
+               res.sendStatus(400).json({ error: "User does not exist" })
             }
         })
         .catch(err => {
