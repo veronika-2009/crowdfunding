@@ -68,6 +68,7 @@ const messages = {
     "navigation.campaignDescription": "Описание компании",
     "navigation.save": "Сохранить",
     "navigation.pleaseSignIn": "Пожалуйста войдите",
+    "navigation.pleaseSignUp": "Зарегистрироваться",
     "navigation.name": "Имя",
     "navigation.password": "Пароль",
     "navigation.email": "Адрес электронной почты",

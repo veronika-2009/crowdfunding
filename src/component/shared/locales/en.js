@@ -68,6 +68,7 @@ const messages = {
     "navigation.campaignDescription": "Сampaign description",
     "navigation.save": "Save",
     "navigation.pleaseSignIn": "Please sign in",
+    "navigation.pleaseSignUp": "Sign Up",
     "navigation.name": "Name",
     "navigation.password": "Password",
     "navigation.email": "Email address",

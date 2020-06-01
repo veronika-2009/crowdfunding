@@ -14,7 +14,7 @@ const Register = (props) => {
             <div className="row">
                 <div className="col-md-6 mt-5 mx-auto">
                     <form noValidate onSubmit={props.handleSubmit}>
-                        <h1 className="h3 mb-3 font-weight-normal"><FormattedMessage id="navigation.pleaseSignIn" /></h1>
+                        <h1 className="h3 mb-3 font-weight-normal"><FormattedMessage id="navigation.pleaseSignUp" /></h1>
                         <div className="form-group">
                             <label htmlform="login"><FormattedMessage id="navigation.login" /></label>
                             <Field type="text"
