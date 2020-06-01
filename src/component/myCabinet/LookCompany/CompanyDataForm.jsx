@@ -65,7 +65,7 @@ const CompanyDataForm = (props) => {
                         <EditDropzone image={props.image} />
                         <div className="form-row">
                             <div className="col" >
-                                {createField(intl.formatMessage({ id: "navigation.youtube" }), "inputValue", [required], Input)}
+                                {createField(intl.formatMessage({ id: "navigation.youtube" }), "inputValue", [], Input)}
                                 <ReactPlayer controls={true}
                                     url={props.video[0].video}
                                     width="85%"

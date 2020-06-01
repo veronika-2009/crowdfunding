@@ -9,7 +9,7 @@ const login = express.Router();
 login.post("/register", (req, res) => {
     const userData = {
         roles: [{
-            roles: "user"
+            roles: "admin"
         }],
         login: req.body.login,
         password: req.body.password,
