@@ -44,14 +44,14 @@ db.sequelize.sync().then(result => {
         roles: [{
             roles: 'admin'
         }],
-        login: 123456,
-        password: 123456,
-        email: 123456,
+        login: 1234567,
+        password: 1234567,
+        email: 1234567,
         name: 'admin'
     }
     User.findOne({
         where: {
-            email: 123456
+            email: 1234567
         }
     }).then(data => {
         if (!data) {
